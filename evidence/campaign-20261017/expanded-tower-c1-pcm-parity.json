@@ -1,0 +1,50 @@
+[
+  {
+    "request": 0,
+    "same_pcm": true,
+    "bytes_a": 184320,
+    "bytes_b": 184320
+  },
+  {
+    "request": 1,
+    "same_pcm": true,
+    "bytes_a": 249856,
+    "bytes_b": 249856
+  },
+  {
+    "request": 2,
+    "same_pcm": true,
+    "bytes_a": 495616,
+    "bytes_b": 495616
+  },
+  {
+    "request": 3,
+    "same_pcm": true,
+    "bytes_a": 208896,
+    "bytes_b": 208896
+  },
+  {
+    "request": 4,
+    "same_pcm": true,
+    "bytes_a": 360448,
+    "bytes_b": 360448
+  },
+  {
+    "request": 5,
+    "same_pcm": true,
+    "bytes_a": 221184,
+    "bytes_b": 221184
+  },
+  {
+    "request": 6,
+    "same_pcm": true,
+    "bytes_a": 757760,
+    "bytes_b": 757760
+  },
+  {
+    "request": 7,
+    "same_pcm": true,
+    "bytes_a": 393216,
+    "bytes_b": 393216
+  }
+]

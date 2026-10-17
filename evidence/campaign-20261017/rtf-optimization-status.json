@@ -1,0 +1,316 @@
+{
+  "status": "TARGETS_NOT_MET",
+  "targets": {
+    "c1_rtf_mean_lt": 0.1,
+    "c64_rtf_mean_lt": 1.0
+  },
+  "baseline_revision": "f022d5c",
+  "baseline_c1": {
+    "requests": 8,
+    "rtf_mean": 5.3296455441343245,
+    "profiled": true,
+    "quality": "NOT_RUN"
+  },
+  "candidate_changes": [
+    "defer tower sampling validation until complete frame",
+    "opt-in row-independent tower graphs with eager dynamic attention"
+  ],
+  "validation": {
+    "cpu_tests": 34,
+    "cpu_exit": 0,
+    "npu_tiny_generation_exit": 0,
+    "npu_stage_parity": "exact, batches 1/3/2",
+    "full_weight_candidate": "REQUESTS_AND_EXIT_PASS_QUALITY_PENDING"
+  },
+  "target_met": false,
+  "latest_code_revision": "d7b796e",
+  "graph_candidate": {
+    "revision": "eb6347b",
+    "c1_rtf_mean": 3.8513059384027093,
+    "c64_rtf_mean": 29.660725536189705,
+    "server_exit": -11,
+    "quality": "NOT_RUN",
+    "acceptance": "FAIL_LIFECYCLE"
+  },
+  "graph_worker_reproducer": {
+    "devices": 1,
+    "exit": 0,
+    "reproduced": false
+  },
+  "public_pr_updated": false,
+  "conv_codec_candidate": {
+    "revision": "80a3b86",
+    "status": "FAIL_LIFECYCLE",
+    "server_exit": -11,
+    "quality": "NOT_RUN",
+    "target_met": false,
+    "metrics": {
+      "1": {
+        "requests": 8,
+        "successful_requests": 8,
+        "failed_requests": 0,
+        "wall_time_s": 117.63838806655258,
+        "throughput_frames_s": 5.958939182364665,
+        "audio_seconds_per_wall_second": 0.27673259513566517,
+        "ttfa_p50_ms": 763.6712878011167,
+        "ttfa_p95_ms": 787.7116526477039,
+        "rtf_mean": 3.6357093086306302,
+        "eligible_for_comparison": true
+      },
+      "64": {
+        "requests": 64,
+        "successful_requests": 64,
+        "failed_requests": 0,
+        "wall_time_s": 100.86319644469768,
+        "throughput_frames_s": 53.89478215654713,
+        "audio_seconds_per_wall_second": 2.5028687949344337,
+        "ttfa_p50_ms": 14231.57803202048,
+        "ttfa_p95_ms": 14245.274505298585,
+        "rtf_mean": 18.532244204048858,
+        "eligible_for_comparison": true
+      }
+    },
+    "notes": [
+      "All 72 measured requests succeeded; shutdown crashed in torch_npu._npu_shutdown after the backend shutdown marker.",
+      "Device-local graph-entry destruction did not resolve the full-weight exit failure.",
+      "Shared-host single-round observations; no matched A/B speedup claim."
+    ]
+  },
+  "active_experiments": [],
+  "expanded_tower_candidate": {
+    "revision": "2d22d59",
+    "status": "FAIL",
+    "targets": {
+      "c1": 0.1,
+      "c64": 1
+    },
+    "target_met": false,
+    "previous_server_exit": 0,
+    "graphs_enabled": true,
+    "physical_devices": [
+      6,
+      7
+    ],
+    "codec_precision": "strict FP32",
+    "server_pid": 1190049,
+    "c1_client_exit": 0,
+    "c64_client_exit": 1,
+    "error": "RuntimeError('C64 client failed')",
+    "server_exit": -11,
+    "metrics": {
+      "1": {
+        "requests": 8,
+        "successful_requests": 8,
+        "failed_requests": 0,
+        "wall_time_s": 83.61962901242077,
+        "throughput_frames_s": 8.38319911579462,
+        "audio_seconds_per_wall_second": 0.38931500655663004,
+        "ttfa_p50_ms": 662.8900142386556,
+        "ttfa_p95_ms": 683.8688944932073,
+        "rtf_mean": 2.5803819239165877,
+        "eligible_for_comparison": true
+      },
+      "64": {
+        "requests": 64,
+        "successful_requests": 63,
+        "failed_requests": 1,
+        "wall_time_s": 114.08946385979652,
+        "throughput_frames_s": 49.06675700465496,
+        "audio_seconds_per_wall_second": 2.2786557447966747,
+        "ttfa_p50_ms": 13841.33584331721,
+        "ttfa_p95_ms": 13855.816446151584,
+        "rtf_mean": 16.932710034159463,
+        "eligible_for_comparison": false
+      }
+    },
+    "quality": "NOT_RUN",
+    "acceptance": "FAIL_REQUEST_AND_LIFECYCLE",
+    "notes": [
+      "C64 had one failed request due to an overly strict generated residual-code bound. The upstream DAC clamps residual model indices; the guard has been corrected in 2b6085f.",
+      "The shutdown SIGSEGV is independent and remains unresolved.",
+      "C1 PCM was byte-identical to 80a3b86 on all eight measured requests."
+    ]
+  },
+  "process_candidate": {
+    "revision": "4bd2b40",
+    "status": "MEASURED_NOT_QUALIFIED",
+    "targets": {
+      "c1": 0.1,
+      "c64": 1
+    },
+    "target_met": false,
+    "previous_graph_exit": 0,
+    "graphs_enabled": true,
+    "physical_devices": [
+      6,
+      7
+    ],
+    "codec_precision": "strict FP32",
+    "server_pid": 1198098,
+    "worker_process": true,
+    "c1_client_exit": 0,
+    "c64_client_exit": 0,
+    "server_exit": 0,
+    "c1_quality_exit": 0,
+    "c64_quality_exit": 0,
+    "metrics": {
+      "1": {
+        "requests": 8,
+        "successful_requests": 8,
+        "failed_requests": 0,
+        "wall_time_s": 81.72799991443753,
+        "throughput_frames_s": 8.57723180224512,
+        "audio_seconds_per_wall_second": 0.39832586691605454,
+        "ttfa_p50_ms": 659.4501389190555,
+        "ttfa_p95_ms": 694.1950439009815,
+        "rtf_mean": 2.5425903022216527,
+        "eligible_for_comparison": true
+      },
+      "64": {
+        "requests": 64,
+        "successful_requests": 64,
+        "failed_requests": 0,
+        "wall_time_s": 135.86935970187187,
+        "throughput_frames_s": 44.67526757555164,
+        "audio_seconds_per_wall_second": 2.074715374030154,
+        "ttfa_p50_ms": 14727.06351801753,
+        "ttfa_p95_ms": 14742.130993399769,
+        "rtf_mean": 16.94142069130256,
+        "eligible_for_comparison": true
+      }
+    },
+    "thresholds_observed": false,
+    "quality": {
+      "1": {
+        "status": "MEASURED_NOT_QUALIFIED",
+        "samples": 8,
+        "wer_corpus": 0.0,
+        "sim_percent_mean": 62.55360460281372,
+        "asr_model": "/dataset/models/whisper-large-v3",
+        "asr_device": "npu:0",
+        "asr_precision": "float32",
+        "normalizer": "whisper.normalizers.EnglishTextNormalizer",
+        "speaker_assets": {
+          "wavlm_large_finetune.pth": {
+            "repository": "popsoda2002/seedtts-wavlm-sim",
+            "revision": "508f5410742122c7fb0d94e288152debd92cf629",
+            "filename": "wavlm_large_finetune.pth",
+            "path": "/home/why/drama3-research/quality-assets/popsoda2002--seedtts-wavlm-sim/wavlm_large_finetune.pth",
+            "size": 1301926579,
+            "sha256": "51f07e3b94d9e0262a6a675ef5a087be3dd09e8c62e9d886827f44f82fe7f94b"
+          },
+          "wavlm_large.pt": {
+            "repository": "s3prl/converted_ckpts",
+            "revision": "8cad0b370e7e35f8d56951d95d2be036ea85510c",
+            "filename": "wavlm_large.pt",
+            "path": "/home/why/drama3-research/quality-assets/s3prl--converted_ckpts/wavlm_large.pt",
+            "size": 1261965425,
+            "sha256": "6fb4b3c3e6aa567f0a997b30855859cb81528ee8078802af439f7b2da0bf100f"
+          }
+        },
+        "workload_sha256": "9bdd98e981c46225cb7a85362115f2e72e53ca94e17e38154f1e507d3917c2af",
+        "speaker_scorer_sha256": "18528106c718384e6e096b79031c78fbc90890344d80ba6ae3d4cbadc0d2545e",
+        "notes": "Observed quality only; matched baseline/candidate quality comparison remains required."
+      },
+      "64": {
+        "status": "MEASURED_NOT_QUALIFIED",
+        "samples": 64,
+        "wer_corpus": 0.025604551920341393,
+        "sim_percent_mean": 62.16945171356201,
+        "asr_model": "/dataset/models/whisper-large-v3",
+        "asr_device": "npu:0",
+        "asr_precision": "float32",
+        "normalizer": "whisper.normalizers.EnglishTextNormalizer",
+        "speaker_assets": {
+          "wavlm_large_finetune.pth": {
+            "repository": "popsoda2002/seedtts-wavlm-sim",
+            "revision": "508f5410742122c7fb0d94e288152debd92cf629",
+            "filename": "wavlm_large_finetune.pth",
+            "path": "/home/why/drama3-research/quality-assets/popsoda2002--seedtts-wavlm-sim/wavlm_large_finetune.pth",
+            "size": 1301926579,
+            "sha256": "51f07e3b94d9e0262a6a675ef5a087be3dd09e8c62e9d886827f44f82fe7f94b"
+          },
+          "wavlm_large.pt": {
+            "repository": "s3prl/converted_ckpts",
+            "revision": "8cad0b370e7e35f8d56951d95d2be036ea85510c",
+            "filename": "wavlm_large.pt",
+            "path": "/home/why/drama3-research/quality-assets/s3prl--converted_ckpts/wavlm_large.pt",
+            "size": 1261965425,
+            "sha256": "6fb4b3c3e6aa567f0a997b30855859cb81528ee8078802af439f7b2da0bf100f"
+          }
+        },
+        "workload_sha256": "9bdd98e981c46225cb7a85362115f2e72e53ca94e17e38154f1e507d3917c2af",
+        "speaker_scorer_sha256": "18528106c718384e6e096b79031c78fbc90890344d80ba6ae3d4cbadc0d2545e",
+        "notes": "Observed quality only; matched baseline/candidate quality comparison remains required."
+      }
+    },
+    "notes": [
+      "Exploratory shared-host single round; not matched A/B.",
+      "One C64 measured request reached the 500-frame limit.",
+      "RTF targets and 2x faster-than-best-framework target remain unverified/unmet."
+    ]
+  },
+  "int8_single_candidate": {
+    "revision": "d7b796e",
+    "status": "FAIL",
+    "targets": {
+      "c1": 0.1,
+      "c64": 1
+    },
+    "target_met": false,
+    "previous_graph_exit": 0,
+    "graphs_enabled": true,
+    "physical_devices": [
+      0
+    ],
+    "codec_precision": "strict FP32",
+    "expert_precision": "experimental W8A8; speech quality not qualified",
+    "server_pid": 1198879,
+    "worker_process": true,
+    "c1_client_exit": 0,
+    "c64_client_exit": 1,
+    "error": "RuntimeError('C64 client failed')",
+    "server_exit": 0,
+    "c1_metrics": {
+      "requests": 8,
+      "successful_requests": 8,
+      "failed_requests": 0,
+      "wall_time_s": 69.5069377515465,
+      "throughput_frames_s": 10.862225044336693,
+      "audio_seconds_per_wall_second": 0.5044407458231643,
+      "ttfa_p50_ms": 551.636369433254,
+      "ttfa_p95_ms": 569.0032098442316,
+      "rtf_mean": 2.015387900323252,
+      "eligible_for_comparison": true
+    },
+    "notes": [
+      "C64 warmup failed with NPU OOM; no eligible C64 measurement.",
+      "C1 W8A8 output differs from BF16 (755 versus 701 frames); quality has not been evaluated. No matched speedup claim.",
+      "All reported RTF targets remain unmet."
+    ]
+  },
+  "int8_compact_candidate": {
+    "revision": "d7b796e",
+    "status": "FAIL",
+    "targets": {
+      "c1": 0.1,
+      "c64": 1
+    },
+    "target_met": false,
+    "previous_graph_exit": 0,
+    "graphs_enabled": true,
+    "physical_devices": [
+      0
+    ],
+    "codec_precision": "strict FP32",
+    "expert_precision": "experimental W8A8; speech quality not qualified",
+    "context_length": 768,
+    "verified_workload_max_prompt_plus_generation": 743,
+    "allocator": "expandable_segments:True",
+    "server_pid": 1199618,
+    "worker_process": true,
+    "c1_client_exit": 1,
+    "error": "RuntimeError('C1 client failed')",
+    "server_exit": 0
+  }
+}

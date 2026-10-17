@@ -36,10 +36,15 @@ class DecodeCacheBatch:
                     tensors = [getattr(source, name) for source in sources]
                     if any(t.shape[0] != 1 or t.shape[-2] != n for t, n in zip(tensors, self.lengths)):
                         raise ValueError('Expected one unpadded sequence per request')
-                    setattr(layer, name, torch.cat([
-                        F.pad(t, (0, 0, 0, self.padded_length - n))
-                        for t, n in zip(tensors, self.lengths)
-                    ], dim=0))
+                    # DynamicLayer.update appends into a new tensor; a single
+                    # request can safely share its read-only prefix until commit.
+                    if len(tensors) == 1:
+                        setattr(layer, name, tensors[0])
+                    else:
+                        setattr(layer, name, torch.cat([
+                            F.pad(t, (0, 0, 0, self.padded_length - n)) if n < self.padded_length else t
+                            for t, n in zip(tensors, self.lengths)
+                        ], dim=0))
             elif type(template) is LinearAttentionLayer:
                 if any(source.record_past or source.number_of_states != 1
                        or not source.has_previous_state[0] for source in sources):
@@ -48,7 +53,8 @@ class DecodeCacheBatch:
                     tensors = [getattr(source, name)[0] for source in sources]
                     if any(t is None or t.shape[0] != 1 for t in tensors):
                         raise ValueError('Expected one GDN state per request')
-                    setattr(layer, name, {0: torch.cat(tensors, dim=0)})
+                    packed = tensors[0].clone() if len(tensors) == 1 else torch.cat(tensors, dim=0)
+                    setattr(layer, name, {0: packed})
                 for name in ('is_conv_states_initialized', 'is_recurrent_states_initialized',
                              'has_previous_state', 'conv_kernel_size'):
                     setattr(layer, name, dict(getattr(template, name)))
@@ -77,7 +83,10 @@ class DecodeCacheBatch:
                 if type(source) is DynamicLayer:
                     for name in ('keys', 'values'):
                         tensor = getattr(source, name)[row:row + 1]
-                        setattr(target, name, torch.cat((tensor[..., :length, :], tensor[..., -1:, :]), dim=-2))
+                        if length == self.padded_length:
+                            setattr(target, name, tensor)
+                        else:
+                            setattr(target, name, torch.cat((tensor[..., :length, :], tensor[..., -1:, :]), dim=-2))
                 else:
                     for name in ('conv_states', 'recurrent_states'):
                         setattr(target, name, {0: getattr(source, name)[0][row:row + 1]})

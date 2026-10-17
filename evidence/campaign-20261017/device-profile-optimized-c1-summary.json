@@ -1,0 +1,158 @@
+{
+  "kernel_details.csv": [
+    {
+      "name": "aclnnMatmul_MatMulCommon_MatMulV2",
+      "total_us": 20567.300000000003,
+      "calls": 1434
+    },
+    {
+      "name": "aclnnGroupedMatmulV5_GroupedMatmul_GroupedMatmul",
+      "total_us": 9410.740000000003,
+      "calls": 240
+    },
+    {
+      "name": "_update",
+      "total_us": 6343.659999999999,
+      "calls": 90
+    },
+    {
+      "name": "aclnnMul_MulAiCore_Mul",
+      "total_us": 4446.920000000004,
+      "calls": 1578
+    },
+    {
+      "name": "aclnnMul_StridedSliceAiCore_StridedSlice",
+      "total_us": 3172.6200000000017,
+      "calls": 312
+    },
+    {
+      "name": "aclnnInplaceCopy_TensorMoveAiCore_TensorMove",
+      "total_us": 2111.2399999999993,
+      "calls": 270
+    },
+    {
+      "name": "aclnnReduceSum_ReduceSumOpAiCore_ReduceSum",
+      "total_us": 2074.8199999999993,
+      "calls": 300
+    },
+    {
+      "name": "aclnnRepeatInterleaveIntWithDim_RepeatInterleaveV2_RepeatInterleave",
+      "total_us": 1521.2199999999996,
+      "calls": 180
+    },
+    {
+      "name": "PagedAttentionMaskNdKernel",
+      "total_us": 1483.66,
+      "calls": 39
+    },
+    {
+      "name": "_step",
+      "total_us": 1419.5999999999997,
+      "calls": 90
+    },
+    {
+      "name": "aclnnPowTensorScalar_PowsAiCore_Pows",
+      "total_us": 1363.1600000000003,
+      "calls": 90
+    },
+    {
+      "name": "aclnnMoeInitRoutingV3_MoeInitRoutingV3_MoeInitRoutingV3",
+      "total_us": 1346.2199999999998,
+      "calls": 120
+    },
+    {
+      "name": "aclnnInplaceCopy_CastAiCore_Cast",
+      "total_us": 1198.98,
+      "calls": 1065
+    },
+    {
+      "name": "aclnnCat_ConcatD_ConcatD",
+      "total_us": 1192.0000000000005,
+      "calls": 306
+    },
+    {
+      "name": "_norm",
+      "total_us": 1179.2399999999996,
+      "calls": 576
+    }
+  ],
+  "operator_details.csv": [
+    {
+      "name": "aten::cat",
+      "total_us": 70279.43000000001,
+      "calls": 381
+    },
+    {
+      "name": "aten::copy_",
+      "total_us": 44860.560000000056,
+      "calls": 1146
+    },
+    {
+      "name": "empty_tensor",
+      "total_us": 26823.430000000015,
+      "calls": 3477
+    },
+    {
+      "name": "aten::as_strided",
+      "total_us": 25412.009999999995,
+      "calls": 2772
+    },
+    {
+      "name": "aten::_index_put_impl_",
+      "total_us": 15587.14,
+      "calls": 78
+    },
+    {
+      "name": "aclnnInplaceCopy",
+      "total_us": 11844.439999999995,
+      "calls": 1065
+    },
+    {
+      "name": "aten::matmul",
+      "total_us": 10730.6,
+      "calls": 303
+    },
+    {
+      "name": "aten::slice",
+      "total_us": 10581.810000000009,
+      "calls": 1671
+    },
+    {
+      "name": "aten::view",
+      "total_us": 9908.599999999988,
+      "calls": 627
+    },
+    {
+      "name": "aten::empty_like",
+      "total_us": 8987.019999999999,
+      "calls": 273
+    },
+    {
+      "name": "aten::unsqueeze",
+      "total_us": 7887.459999999993,
+      "calls": 342
+    },
+    {
+      "name": "aten::mul",
+      "total_us": 7407.009999999999,
+      "calls": 219
+    },
+    {
+      "name": "aten::empty_strided",
+      "total_us": 5805.749999999998,
+      "calls": 465
+    },
+    {
+      "name": "aten::add",
+      "total_us": 5497.779999999998,
+      "calls": 162
+    },
+    {
+      "name": "aten::_to_copy",
+      "total_us": 5399.95,
+      "calls": 153
+    }
+  ],
+  "scope": "Three profiled C1 decode steps, 83d3501 model code, not an unprofiled benchmark",
+  "process_exit": 0
+}

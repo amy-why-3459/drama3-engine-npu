@@ -40,6 +40,10 @@ class ReferenceBackend:
 
         torch.set_num_threads(args.cpu_threads)
         torch.npu.set_device(args.devices[0])
+        self.codec_batch_size = getattr(args, "codec_batch_size", 1)
+        if self.codec_batch_size > 1:
+            torch.npu.conv.allow_hf32 = False
+            torch.npu.matmul.allow_hf32 = False
         torch.manual_seed(args.seed)
         torch.npu.manual_seed_all(args.seed)
         self.model = Drama3Model.load(args.model, args.devices, cache_slots=args.max_active,
@@ -49,7 +53,10 @@ class ReferenceBackend:
                                      use_npu_gdn_decode=args.npu_gdn_decode,
                                      use_npu_norm=args.npu_norm,
                                      use_npu_gdn_graph=args.npu_gdn_graph,
-                                     use_npu_layer_graph=args.npu_layer_graph)
+                                     use_npu_layer_graph=args.npu_layer_graph,
+                                     use_npu_tower_graph=args.npu_tower_graph,
+                                     use_npu_conv=getattr(args, "npu_conv", False),
+                                     use_npu_int8_experts=getattr(args, "npu_int8_experts", False))
         self.codec = AudioCodec(args.model / 'codec.pth', args.devices[-1], torch.float32)
         self.tokenizer = AutoTokenizer.from_pretrained(args.model, local_files_only=True)
         self.generator = ReferenceGenerator(self.model)
@@ -83,7 +90,7 @@ class ReferenceBackend:
 
     def prepare(self, session):
         import torch
-        from drama3.generation import Sampling
+        from drama3.sampling import Sampling
         from drama3.model.prompt import Reference, build_prompt_frames
 
         references = []
@@ -115,7 +122,10 @@ class ReferenceBackend:
 
         finished = code is None
         if code is not None:
-            if not (0 <= code[0] < 4096 and ((code[1:] >= 0) & (code[1:] < 1024)).all()):
+            # All tower heads have 4096 logits. The upstream DAC normalizes
+            # residual indices to its 1024-entry codebooks before lookup.
+            if (code.shape != (10,) or code.dtype not in (torch.int32, torch.int64)
+                    or not ((code >= 0) & (code < 4096)).all()):
                 raise RuntimeError('Invalid generated acoustic frame')
             session.codes.append(code)
             session.generated_frames += 1
@@ -147,6 +157,7 @@ class BatchedBackend(ReferenceBackend):
         from drama3.batching import BatchedGenerator
 
         self.generator = BatchedGenerator(self.model)
+        self.prefill_batch_size = args.prefill_batch_size
 
     def step_batch(self, sessions):
         import torch
@@ -154,13 +165,29 @@ class BatchedBackend(ReferenceBackend):
         torch.npu.set_device(self.model.devices[0])
         results = [None] * len(sessions)
         prepared = []
+        pending = []
         for index, session in enumerate(sessions):
             try:
                 if session.stream is None:
+                    if getattr(self, 'prefill_batch_size', 1) > 1:
+                        pending.append((index, session, self.prepare(session)))
+                        continue
                     session.stream = self.generator.prefill(*self.prepare(session))
-                prepared.append((index, session))
             except Exception as error:
                 results[index] = error
+        if pending:
+            from drama3.prefill import prefill_many
+
+            for first in range(0, len(pending), self.prefill_batch_size):
+                group = pending[first:first + self.prefill_batch_size]
+                try:
+                    states = prefill_many(self.generator, [x[2][0] for x in group], [x[2][1] for x in group])
+                    for (_, session, _), state in zip(group, states):
+                        session.stream = state
+                except Exception as error:
+                    for index, _, _ in group:
+                        results[index] = error
+        prepared = [(index, session) for index, session in enumerate(sessions) if results[index] is None]
         if prepared:
             try:
                 frames = self.generator.step([session.stream for _, session in prepared])
@@ -168,11 +195,18 @@ class BatchedBackend(ReferenceBackend):
                 for index, _ in prepared:
                     results[index] = error
             else:
-                for (index, session), frame in zip(prepared, frames):
-                    try:
-                        results[index] = self.consume(session, frame)
-                    except Exception as error:
-                        results[index] = error
+                if getattr(self, 'codec_batch_size', 1) > 1:
+                    from drama3.codec_batch import consume_many
+
+                    consumed = consume_many(self, [s for _, s in prepared], frames, self.codec_batch_size)
+                    for (index, _), result in zip(prepared, consumed):
+                        results[index] = result
+                else:
+                    for (index, session), frame in zip(prepared, frames):
+                        try:
+                            results[index] = self.consume(session, frame)
+                        except Exception as error:
+                            results[index] = error
         return results
 
     def close(self, session):
@@ -285,7 +319,7 @@ class ReferenceService:
         for key in ('temperature', 'top_p'):
             if key in sampling and (type(sampling[key]) not in (int, float) or not math.isfinite(sampling[key])):
                 raise web.HTTPBadRequest(text=f'{key} must be finite')
-        from drama3.generation import Sampling
+        from drama3.sampling import Sampling
         try:
             sampling = Sampling(**sampling)
         except (ValueError, TypeError) as error:
@@ -337,26 +371,43 @@ def main():
     parser.add_argument('--left-context-frames', type=int, default=25)
     parser.add_argument('--cpu-threads', type=int, default=8)
     parser.add_argument('--seed', type=int, default=42)
+    parser.add_argument('--codec-batch-size', type=int, default=1, help='Equal-length DAC batches; values >1 enforce strict FP32')
+    parser.add_argument('--npu-conv', action='store_true', help='Fused single-token GDN depthwise convolution')
     parser.add_argument('--npu-moe', action='store_true')
+    parser.add_argument('--npu-int8-experts', action='store_true', help='Experimental W8A8 experts; requires independent quality qualification')
+    parser.add_argument('--npu-tower-graph', action='store_true', help='Graph row-independent tower work; keep dynamic attention eager')
     parser.add_argument('--npu-layer-graph', action='store_true', help='Replay GDN decoder blocks including grouped MoE')
     parser.add_argument('--npu-gdn-graph', action='store_true', help='Replay cached GDN decode in NPU graphs')
     parser.add_argument('--npu-norm', action='store_true', help='Use fused zero-centered RMSNorm')
     parser.add_argument('--npu-gdn-decode', action='store_true', help='Use standalone FP32-state fused GDN decode')
     parser.add_argument('--npu-gdn-prefill', action='store_true', help='Use optional FP32-state Ascend GDN prefill kernels')
     parser.add_argument('--npu-attention', action='store_true', help='Use native paged attention for batched tower decode')
+    parser.add_argument('--prefill-batch-size', type=int, default=1, help='Opt-in left-padded prefill microbatch size')
+    parser.add_argument('--worker-process', action='store_true', help='Own NPU execution and cleanup in a spawned process main thread')
     parser.add_argument('--batched', action='store_true', help='Batch active backbone/tower decode requests')
     parser.add_argument('--telemetry', type=Path, required=True)
     args = parser.parse_args()
     if min(args.max_active, args.max_queued, args.context_length, args.first_chunk_frames,
-           args.chunk_frames, args.cpu_threads) < 1 or args.left_context_frames < 0:
+           args.chunk_frames, args.cpu_threads, args.prefill_batch_size, args.codec_batch_size) < 1 or args.left_context_frames < 0:
         parser.error('Invalid cache, queue, thread or streaming dimensions')
     if args.npu_layer_graph and (args.npu_gdn_graph or not args.npu_moe):
         parser.error('--npu-layer-graph requires --npu-moe and excludes --npu-gdn-graph')
+    if args.npu_int8_experts and not args.npu_moe:
+        parser.error('--npu-int8-experts requires --npu-moe')
+    if args.worker_process and not args.batched:
+        parser.error('--worker-process requires --batched')
+    if args.codec_batch_size > 1 and not args.batched:
+        parser.error('--codec-batch-size > 1 requires --batched')
+    if args.prefill_batch_size > 1 and not args.batched:
+        parser.error('--prefill-batch-size > 1 requires --batched')
     if args.npu_attention and not args.batched:
         parser.error('--npu-attention requires --batched')
     args.telemetry.parent.mkdir(parents=True, exist_ok=True)
     with args.telemetry.open('x') as telemetry, ThreadPoolExecutor(max_workers=1) as executor:
         backend_class = BatchedBackend if args.batched else ReferenceBackend
+        if args.worker_process:
+            from drama3.process_backend import ProcessBackend
+            backend_class = ProcessBackend
         backend = executor.submit(backend_class, args).result()
         service = ReferenceService(backend, executor, args.max_active, args.max_queued, telemetry)
         app = web.Application()

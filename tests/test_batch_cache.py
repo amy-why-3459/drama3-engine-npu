@@ -27,9 +27,15 @@ class BatchCacheTest(unittest.TestCase):
                                 for i, f in zip(order, frames)]
                     batch = DecodeCacheBatch([actual[i] for i in order])
                     before = [cache.get_seq_length() for cache in actual]
+                    snapshots = [[layer.keys.clone() if hasattr(layer, 'keys') else layer.recurrent_states[0].clone()
+                                  for layer in actual[i].layers] for i in order]
                     result = model.hidden(torch.cat(frames), cache=batch.cache,
                                           **batch.model_inputs('cpu'))
                     self.assertEqual(before, [cache.get_seq_length() for cache in actual])
+                    for i, snapshot in zip(order, snapshots):
+                        for layer, previous in zip(actual[i].layers, snapshot):
+                            value = layer.keys if hasattr(layer, 'keys') else layer.recurrent_states[0]
+                            torch.testing.assert_close(value, previous, rtol=0, atol=0)
                     torch.testing.assert_close(result.last_hidden_state, torch.cat(expected), atol=.025, rtol=.025)
                     batch.commit()
                     with self.assertRaises(RuntimeError):

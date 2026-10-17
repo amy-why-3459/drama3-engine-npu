@@ -1,0 +1,47 @@
+{
+  "title": "Deferred validation component observation",
+  "synthetic": false,
+  "context": {
+    "hardware": "Ascend 910B1 physical 1",
+    "baseline_revision": "f022d5c sampler",
+    "candidate_revision": "eb6347b sampler",
+    "timing_scope": "nine sampling calls with final device synchronization",
+    "source_logs": "deferred-sampling-component.log"
+  },
+  "checks": {
+    "comparable": "unknown",
+    "correctness": "pass",
+    "lifecycle": "pass"
+  },
+  "notes": [
+    "One process with ABBA order, summarized as one observation per arm, not independent repetitions.",
+    "Shared host and possible tiny-model probe overlap; no serving RTF claim.",
+    "Exact fixed-seed output equality at batch 1 and 64; root exit 0."
+  ],
+  "metrics": [
+    {
+      "name": "Nine codebook samples",
+      "scenario": "batch 1",
+      "unit": "ms",
+      "direction": "lower",
+      "before": [
+        11.189108528196812
+      ],
+      "after": [
+        10.414061835035682
+      ]
+    },
+    {
+      "name": "Nine codebook samples",
+      "scenario": "batch 64",
+      "unit": "ms",
+      "direction": "lower",
+      "before": [
+        11.090396996587515
+      ],
+      "after": [
+        10.53603459149599
+      ]
+    }
+  ]
+}

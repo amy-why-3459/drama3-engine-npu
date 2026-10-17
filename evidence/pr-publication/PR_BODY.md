@@ -1,91 +1,85 @@
-实现独立 DRAMA-3 Ascend 推理框架，支持完整权重加载、连续批处理、请求独立缓存、PCM 流式服务，以及 NPU attention、GDN、RMSNorm 和可选 decoder layer graph。模型与调度路径不依赖 vLLM/SGLang runtime；可选 GDN prefill 使用 sgl_kernel_npu 算子库。
+实现独立 DRAMA-3 Ascend NPU 流式推理框架，并补充图执行、批量 prefill、缓存复制优化、严格 FP32 批量 DAC，以及可选的独立推理进程。`--worker-process` 由子进程主线程持有 NPU 模型和图；父进程检查真实退出码。W8A8 专家量化保持实验性、默认关闭。
 
-## 验证与范围
+**当前未达到 C1 RTF < 0.1、C64 RTF < 1；相对 vLLM-Omni / SGLang-Omni 较优框架的 2 倍目标也未验证。** 以下是共享主机单轮观察，不是匹配 AB/BA 加速比。
 
-- 双 910B1 完整权重 C4 功能验证：4 次 warmup、4 次 measured 请求全部成功，client/server exit 0；独立质量评估 WER 0、mean SIM 59.94（仅 4 条样本）。对应模型代码 `5a74c2e`。
-- Graph 实现 `f022d5c`：双 NPU 小模型输出/状态/变长 batch 验证通过；完整权重 C4 请求 4/4 成功，但该 graph 版本的质量和服务退出验证尚未完成。
-- 以下数据为单轮观察，不是三框架同条件完成的性能验收；2 倍吞吐目标尚未验证。
+## 最新完整模型验证
+
+BF16 模型实现对应本地 `4bd2b40`，双 910B1（物理 6/7）按 backbone 层切分，并非 TP2。C1 1 次 warmup + 8 条 measured；C64 64 次 warmup + 64 条 measured。两档请求全部成功，client/server/quality evaluator 均 exit 0。本轮未重现此前图执行版本退出时的 SIGSEGV；不据单次结果宣称全面解决所有历史挂起问题。
+
+| 并发 | measured 成功数 | Throughput frames/s | TTFA p50 ms | TTFA p95 ms | RTF mean | WER corpus | SIM mean |
+|---:|---:|---:|---:|---:|---:|---:|---:|
+| 1 | 8/8 | 8.577 | 659.45 | 694.20 | 2.5426 | 0.00% | 62.55 |
+| 64 | 64/64 | 44.675 | 14727.06 | 14742.13 | 16.9414 | 2.56% | 62.17 |
+
+C64 有一条 measured 请求到达 500 帧上限，必须与质量结果一起解读。WER/SIM 来自 Whisper FP32 NPU ASR + CPU WavLM；未完成匹配基线的音质验收。C1/C64 并非完整 128 条重复轮次 qualification。
 
 ## 框架结构
 
 ```mermaid
 flowchart TD
-    Client["客户端：文本 + 预编码参考音频"] --> API["aiohttp POST /v1/audio/speech"]
-    API --> Scheduler["ReferenceService：有界队列、准入、取消与背压"]
-    Scheduler --> Worker["单工作线程：BatchedBackend"]
-    Worker --> Prefill["逐请求 prompt prefill"]
-    Prefill --> State["请求独立状态：KV / FP32 GDN / slot / 采样历史"]
-    State --> Batch["连续批处理：组装活跃请求、变长 mask"]
-    Batch --> NPU0["NPU 0：backbone 前半层"]
-    NPU0 --> NPU1["NPU 1：backbone 后半层"]
-    NPU1 --> Sample["逐请求 semantic 采样 / RAS / EOS"]
-    Sample --> Tower["批量 codebook tower：原生 paged attention"]
-    Tower --> Cache["回写独立 cache、释放已结束 slot"]
-    Cache --> State
-    Tower --> Codec["按请求 DAC 解码：首块 2 帧，后续 25 帧"]
-    Codec --> PCM["44.1 kHz mono PCM16 流"]
+    Client["文本 + 参考音频编码"] --> API["aiohttp 流式 API"]
+    API --> Queue["有界队列 / 准入 / 取消 / 背压"]
+    Queue --> RPC["串行 RPC：仅传请求、PCM、计数与错误"]
+    RPC --> Owner["可选 spawn 子进程：主线程持有模型与 NPU"]
+    Owner --> Prefill["批量左填充 prefill"]
+    Prefill --> State["请求独立 KV / GDN 状态 / tower slot"]
+    State --> Decode["连续批处理 decode"]
+    Decode --> Backbone["BF16 双卡层切分 backbone / GDN layer graph"]
+    Backbone --> Sampling["semantic 采样 / RAS / EOS"]
+    Sampling --> Tower["codebook tower：分段图 + 原生 paged attention"]
+    Tower --> Commit["提交独立状态 / 释放结束请求"]
+    Commit --> State
+    Tower --> DAC["等长分组 DAC：严格 FP32"]
+    DAC --> PCM["44.1 kHz mono PCM16"]
     PCM --> Client
-    Worker -.-> Ops["分组 BF16 MoE / FP32 GDN / 可选 RMSNorm 与 layer graph"]
-    Worker -.-> Frames["request-id + 声学帧 telemetry"]
-    PCM -.-> Bench["HTTP benchmark：frames/s、TTFA、RTF"]
-    Frames -.-> Bench
-    PCM -.-> Quality["离线独立质量评估：Whisper WER + WavLM SIM"]
+    Owner --> Exit["正常清理与子进程退出码检查"]
+    PCM -.-> Bench["客户端 TTFA / RTF + 声学帧 telemetry"]
+    PCM -.-> Quality["独立 WER / SIM 评估"]
 ```
 
-图中为 `--batched` 路径；当前实现为 Python/PyTorch engine，未实现 Rust engine。双卡采用 backbone 层切分，非 TP2；图不表示两个阶段已流水并行。单工作线程驱动 NPU 推理，codebook tower 使用最后一张模型设备。Graph/RMSNorm 为可选实验开关，不属于已完成质量和生命周期验证的 `5a74c2e` 配置。
+图示为可选 `--batched --worker-process` 路径；默认线程模式仍可用。当前 engine 为 Python/PyTorch，未实现 Rust engine；不依赖 vLLM/SGLang 调度器或模型运行时，可选 GDN prefill 使用 `sgl_kernel_npu` 算子库。双卡层切分不代表流水并行。
 
-## 三框架验证对比
+## C1 / C8 / C16 / C32 / C64 三框架对照
 
-下表区分原始 main、NPU 适配、请求成功、质量与进程退出。它补充性能表，不将算子预检当作完整模型推理。
+单位：Throughput frames/s，TTFA ms，RTF mean 越低越好。`—` 表示无有效完整模型测量。样本数、设备分配和后端不同，不能从表中计算正式加速比。
 
-| 验证项 | DRAMA-3 standalone | vLLM-Omni | SGLang-Omni |
-|---|---|---|---|
-| 被验证实现 | 本地 `5a74c2e` 完整模型；`f022d5c` graph 单独验证 | main `6d29fde` 与 NPU quant 适配 `0eb6f3c` | main `2c23b68` 的 NPU 适配 `0f84b193` |
-| NPU 前置验证 | 原生 attention / GDN / RMSNorm 及双卡 cache、graph 状态检查 | main quant method 选择 exit 2；适配后选择 exit 0，仅验证方法选择 | TP2 + BF16 expansion + page16 attention，已执行完整权重请求 |
-| 完整权重服务 | C4：4 warmup + 4 measured 全部完成 | NOT_RUN；TP1 限制、完整权重加载及 NPU 执行仍待解决 | C1/2/4/8/16/32 各 128/128 measured 完成；C64 失败 |
-| 独立语音质量 | C4 的 4 条：WER 0，SIM 59.9359；小样本 | NOT_RUN | 单独 C8 qualification 的 8 条：WER 0，SIM 60.7748；不是 128 条 sweep 的质量结果 |
-| 质量评估后端 | Whisper FP32 NPU ASR + CPU WavLM | 无输出可评估 | Whisper FP32 CPU ASR + CPU WavLM |
-| 进程生命周期 | `5a74c2e` client/server/evaluator exit 0；graph 完整服务退出待核验 | main 与适配均为 8 个断言通过后 exit 134；不能记为完整 PASS | sweep 的 C64 TP0 exit -6，出现 heap corruption；该 sweep 非干净完成 |
-| 可用于正式加速比 | 否：指定档位及匹配实验不足 | 否：没有完整模型 baseline | 否：单轮共享主机、质量未测齐、C64 失败 |
-
-质量数值来自不同样本数、并发及 ASR 设备，不能据此判断谁的音质更好。已有四条 CPU/NPU Whisper 一致性检查仅覆盖该小样本，不代表所有样本的评估后端等价。本次补充为已有证据核验，没有新跑三框架完整 sweep。
-
-证据：[vLLM 预检与退出状态](https://github.com/amy-why-3459/drama3-engine-npu/blob/feat/standalone-drama3-npu/evidence/campaign-20261017/vllm-validation.json)、[SGLang 各档请求结果](https://github.com/amy-why-3459/drama3-engine-npu/blob/feat/standalone-drama3-npu/evidence/pr-publication/sglang-sweep-status.json)、[SGLang C8 小样本质量](https://github.com/amy-why-3459/drama3-engine-npu/blob/feat/standalone-drama3-npu/evidence/campaign-20261017/sglang-qualification-quality/summary.json)、[独立框架完整模型验证](https://github.com/amy-why-3459/drama3-engine-npu/blob/feat/standalone-drama3-npu/evidence/campaign-20261017/standalone-status.json)、[独立框架质量](https://github.com/amy-why-3459/drama3-engine-npu/blob/feat/standalone-drama3-npu/evidence/campaign-20261017/batched-attempt3/quality/summary.json)。
-
-## C1 / C8 / C16 / C32 / C64 对比
-
-Throughput 单位 frames/s；TTFA 单位 ms；RTF 为 mean，越低越好。`—` 表示未获得有效测量，不能解释为 0。
-
-| 框架 | 并发 | Throughput | TTFA p50 | TTFA p95 | RTF mean | 状态 |
+| 框架 | 并发 | Throughput | TTFA p50 | TTFA p95 | RTF mean | 验证状态 |
 |---|---:|---:|---:|---:|---:|---|
-| DRAMA-3 standalone | 1 | — | — | — | — | 未测：已有 C4 功能样本不能替代此档位 |
-| vLLM-Omni | 1 | — | — | — | — | 未测：尚无该并发档位完整基线 |
-| SGLang-Omni | 1 | 3.166 | 897.24 | 1109.08 | 6.839 | 128/128 请求完成；质量/生命周期未通过完整验收 |
-| DRAMA-3 standalone | 8 | — | — | — | — | 未测：已有 C4 功能样本不能替代此档位 |
-| vLLM-Omni | 8 | — | — | — | — | 未测：尚无该并发档位完整基线 |
-| SGLang-Omni | 8 | 19.428 | 1259.06 | 2873.44 | 8.186 | 128/128 请求完成；质量/生命周期未通过完整验收 |
-| DRAMA-3 standalone | 16 | — | — | — | — | 未测：已有 C4 功能样本不能替代此档位 |
-| vLLM-Omni | 16 | — | — | — | — | 未测：尚无该并发档位完整基线 |
-| SGLang-Omni | 16 | 24.811 | 1787.69 | 8733.08 | 13.192 | 128/128 请求完成；质量/生命周期未通过完整验收 |
-| DRAMA-3 standalone | 32 | — | — | — | — | 未测：已有 C4 功能样本不能替代此档位 |
-| vLLM-Omni | 32 | — | — | — | — | 未测：尚无该并发档位完整基线 |
-| SGLang-Omni | 32 | 31.135 | 3682.73 | 7268.35 | 14.665 | 128/128 请求完成；质量/生命周期未通过完整验收 |
-| DRAMA-3 standalone | 64 | — | — | — | — | 未测：已有 C4 功能样本不能替代此档位 |
-| vLLM-Omni | 64 | — | — | — | — | 未测：尚无该并发档位完整基线 |
-| SGLang-Omni | 64 | — | — | — | — | C64 失败：TP0 exit -6，出现 heap corruption；不报有效性能 |
+| standalone BF16 | 1 | 8.577 | 659.45 | 694.20 | 2.543 | 8/8；质量已测；退出 0 |
+| vLLM-Omni | 1 | — | — | — | — | 完整模型基线未取得 |
+| SGLang-Omni NPU 适配 | 1 | 3.166 | 897.24 | 1109.08 | 6.839 | 128/128；完整质量与生命周期未验收 |
+| standalone BF16 | 8 | — | — | — | — | 此版本未测 |
+| vLLM-Omni | 8 | — | — | — | — | 完整模型基线未取得 |
+| SGLang-Omni NPU 适配 | 8 | 19.428 | 1259.06 | 2873.44 | 8.186 | 128/128；完整质量与生命周期未验收 |
+| standalone BF16 | 16 | — | — | — | — | 此版本未测 |
+| vLLM-Omni | 16 | — | — | — | — | 完整模型基线未取得 |
+| SGLang-Omni NPU 适配 | 16 | 24.811 | 1787.69 | 8733.08 | 13.192 | 128/128；完整质量与生命周期未验收 |
+| standalone BF16 | 32 | — | — | — | — | 此版本未测 |
+| vLLM-Omni | 32 | — | — | — | — | 完整模型基线未取得 |
+| SGLang-Omni NPU 适配 | 32 | 31.135 | 3682.73 | 7268.35 | 14.665 | 128/128；完整质量与生命周期未验收 |
+| standalone BF16 | 64 | 44.675 | 14727.06 | 14742.13 | 16.941 | 64/64；质量已测；退出 0；一条达帧上限 |
+| vLLM-Omni | 64 | — | — | — | — | 完整模型基线未取得 |
+| SGLang-Omni NPU 适配 | 64 | — | — | — | — | TP0 exit -6 / heap corruption |
 
-## 可比性与来源
+- SGLang 上游 main `2c23b68f4f763c14cfb845eadb4883a5e791b701`；测量使用 NPU 适配 `0f84b193a0e01719cf3a2bb95ff5cfc9d0f3f4e8`，物理 0/1、TP2。每档 128 measured，warmup=max(8, concurrency)。单独 C8 qualification 的 8 条质量为 WER 0、SIM 60.7748（CPU Whisper），不能代替 sweep 的质量结果，也不能直接与本 PR 不同 cohort 比较音质。
+- vLLM main `6d29fde51c08b2512eafa8778315c2eda745bebe`；NPU quant 适配 `0eb6f3c`。main quant method 选择 exit 2，适配后 exit 0，仅证明方法选择；两版预检均有 8 个断言通过后 exit 134。TP1 限制和完整模型执行仍未解决，无可用完整服务性能或音质基线。
+- 模型 HF revision `e0a9218aa48888270f06ef1ed9ea67622c0e17d2`；BF16 路径展开原始 block-FP8 专家权重。固定 SeedTTS English 128 条 workload SHA256 `9bdd98e981c46225cb7a85362115f2e72e53ca94e17e38154f1e507d3917c2af`，standalone 本轮取其中前 8/64 条。
+- temperature=1、top_p=0.9、top_k=30、max_frames=500；44.1kHz、hop=2048；首块 2 帧、后续 25 帧、left context 25 帧。RTF 是逐请求从发送到最后音频的时间除以输出音频时长，再求均值，包含排队和 prefill，不是总音频吞吐的倒数。
 
-- SGLang 上游 main 固定为 `2c23b68f4f763c14cfb845eadb4883a5e791b701`，NPU 适配版本 `0f84b193a0e01719cf3a2bb95ff5cfc9d0f3f4e8`。表中数字来自 **NPU 适配版**，不是未修改 main；运行时标记为 `2c23b68-npu-page16-tp-stop-worker-log`。
-- vLLM-Omni main 固定为 `6d29fde51c08b2512eafa8778315c2eda745bebe`，NPU 适配预检版本 `0eb6f3c`；尚无完整服务 benchmark。
-- 模型 `/dataset/models/drama-3`，HF revision `e0a9218aa48888270f06ef1ed9ea67622c0e17d2`；原始 block-FP8 expert 权重精确展开为 BF16。
-- SGLang 使用物理 NPU 0/1、TP2；独立框架使用物理 6/7、层切分。共享主机存在并行实验，未完成独占设备同条件 AB/BA；不能将不同 cohort 的结果计算成正式加速比。
-- 英文 SeedTTS 128 条固定 workload SHA256：`9bdd98e981c46225cb7a85362115f2e72e53ca94e17e38154f1e507d3917c2af`。每档 128 measured，warmup max(8, concurrency)。采样 temperature=1、top_p=0.9、top_k=30、max_frames=500；44.1 kHz、hop=2048，初始 chunk 2 帧、后续 25 帧、left context 25 帧。
-- Throughput 使用完整 measured cohort wall time 与真实声学帧数；TTFA 为客户端首个音频数据到达，RTF 按音频时长归一化。请求完成、语音质量与进程退出分开判定。
-- sweep 在 C64 崩溃后停止，完整 128 条 cohort 的 WER/SIM 尚未执行，不能将 C4 的质量结果套用于其它档位。
+## 实验性 INT8 与拒绝结果
 
-证据：`evidence/pr-publication/sglang-sweep-status.json`；完整实现与既有验证见 `README.md` 和 `evidence/campaign-20261017/README.md`。
+`d7b796e` 添加默认关闭的 `--npu-int8-experts`。发布副本重新运行 45 项 CPU 测试，exit 0；真实形状专家 B1/B3/B8/B64 eager/graph 精确一致、小模型混合长度/请求增删/图缓存测试通过且 exit 0。以上不是 BF16 音质等价证明。
 
-## 公开发布范围
+- 单卡 C1：8/8，RTF 2.0154，10.862 frames/s，TTFA 551.64/569.00ms。生成 755 帧，BF16 为 701 帧；语音质量未测，不能宣称等质量加速。
+- 单卡 C64：warmup OOM，无有效性能；服务 exit 0。
+- 缓存 768（全部输入加最大输出为 625–743 帧）+ expandable segments 重试：C1 图捕获内存地址预留失败，client exit 1、server exit 0，无有效性能。未通过缩短输出规避失败。
+- 历史 graph 版本的 exit -11、请求失败和挂起控制均保留为失败证据，未计入通过结果。
 
-本 PR 为本地 `fc12301` 的源码快照。上述历史提交号用于本地实验溯源，不属于新公开仓的 Git 历史。未发布模型权重、生成音频、tensor 文件或 SeedTTS 参考音频编码 workload；历史证据中对这些文件的引用仅指本地保留材料。详见 `PUBLICATION.md`。
+## 证据与发布范围
+
+- [最新 BF16 指标、质量与退出状态](https://github.com/amy-why-3459/drama3-engine-npu/blob/feat/standalone-drama3-npu/evidence/campaign-20261017/rtf-process-candidate-result.json)
+- [INT8 单卡失败及 C1 观察](https://github.com/amy-why-3459/drama3-engine-npu/blob/feat/standalone-drama3-npu/evidence/campaign-20261017/rtf-int8-single-candidate-result.json)、[缓存重试失败](https://github.com/amy-why-3459/drama3-engine-npu/blob/feat/standalone-drama3-npu/evidence/campaign-20261017/rtf-int8-compact-candidate-result.json)
+- [vLLM 验证](https://github.com/amy-why-3459/drama3-engine-npu/blob/feat/standalone-drama3-npu/evidence/campaign-20261017/vllm-validation.json)、[SGLang sweep](https://github.com/amy-why-3459/drama3-engine-npu/blob/feat/standalone-drama3-npu/evidence/pr-publication/sglang-sweep-status.json)
+- [完整优化状态](https://github.com/amy-why-3459/drama3-engine-npu/blob/feat/standalone-drama3-npu/evidence/campaign-20261017/rtf-optimization-status.json)
+
+源码快照对应本地 `7bca349a3ac55462dad8250769117c81fad2fdff`，发布时补齐已结束实验状态。上述本地 SHA 用于实验溯源，不属于公开仓 Git 历史。未发布权重、生成音频、tensor 或编码参考音频 workload；详见 PUBLICATION.md。

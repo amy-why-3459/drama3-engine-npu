@@ -1,3 +1,5 @@
+> Latest publication update: [process-backed BF16 C1/C64 results](rtf-process-candidate-result.json) now include completed independent quality evaluation and clean client/server/evaluator exits. RTF is 2.5426 / 16.9414; targets remain unmet. [INT8 single-device](rtf-int8-single-candidate-result.json) and [compact-cache retry](rtf-int8-compact-candidate-result.json) are failed experiments, not accepted performance results. Historical entries below retain their original scope.
+
 # DRAMA-3 concurrency campaign, 2026-10-17
 
 Status: standalone functional smoke complete; comparative performance remains INCONCLUSIVE. No 2x claim.

@@ -1,6 +1,5 @@
 """Sequential reference generation with explicit request-owned tower state."""
 
-from dataclasses import dataclass
 from collections.abc import Iterator
 
 import torch
@@ -9,16 +8,7 @@ from drama3.model.backbone import Drama3Model
 from drama3.model.tower import TowerBatch, sample_top_k_top_p
 
 
-@dataclass(frozen=True)
-class Sampling:
-    temperature: float = 1.0
-    top_k: int = 30
-    top_p: float = 0.9
-    max_frames: int = 500
-
-    def __post_init__(self):
-        if self.temperature < 0 or not 0 < self.top_p <= 1 or self.max_frames < 1:
-            raise ValueError("Invalid sampling parameters")
+from drama3.sampling import Sampling
 
 
 class ReferenceGenerator:

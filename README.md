@@ -20,6 +20,52 @@ Current components:
 
 The initial checkpoint is block-FP8 MoE with BF16 non-expert weights. Exact block expansion into BF16 is the first reference path for Ascend 910B; it needs more than one card for full residency. Device allocation, quality gates and workload will be frozen before performance search.
 
+## RTF optimization experiments
+
+The targets are mean per-request RTF < 0.1 at C1 and < 1 at C64, including
+queueing and prefill. **Neither target is met.** Current diagnostics are
+single-round, shared-host observations and do not establish a matched speedup.
+
+| Local revision / mode | C1 RTF (8 requests) | C64 RTF (64 requests) | Server exit | Status |
+|---|---:|---:|---:|---|
+| `e3bac8a`, no graphs, prefill batch 4 | 7.1543 | 27.1301 | 0 | Quality measured; targets missed |
+| `80a3b86`, graphs + conv/cache/DAC changes | 3.6357 | 18.5322 | -11 | Lifecycle failure |
+| `2d22d59`, expanded tower graphs | 2.5804 | Invalid: one request failed | -11 | Request and lifecycle failure |
+| `4bd2b40`, spawned inference process | 2.5426 | 16.9414 | 0 | WER C1 0 / C64 2.56%; SIM 62.55 / 62.17; targets unmet |
+| `d7b796e`, experimental single-NPU W8A8 | 2.0154 | Invalid: warmup OOM | 0 | Precision changed; quality unvalidated; targets unmet |
+
+The no-graph run's independent quality evaluation observed C1 WER 0 / SIM
+64.3729 and C64 corpus WER 0.0071124 / SIM 62.5371. This is not a matched
+quality comparison against both upstream engines. The expanded graph C1
+outputs were byte-identical to `80a3b86` on all eight measured requests.
+A separate one-request C1 cleanup test exited 0; it does not establish C64
+lifecycle safety. See [retained observations](evidence/campaign-20261017/rtf-followup-observations.md)
+and [machine-readable status](evidence/campaign-20261017/rtf-optimization-status.json).
+
+Experimental options:
+
+- `--worker-process`: spawn a dedicated inference process whose main thread owns
+  the NPU runtime; parent checks cleanup and child exit status. Requires `--batched`.
+- `--npu-int8-experts`: opt-in W8A8 experts, requires `--npu-moe`; precision and
+  speech quality are not qualified. Single-device C64 warmup failed with OOM.
+
+- `--npu-tower-graph`: captures embedding, norms, QKV, RoPE, output projection
+  and FFN segments; dynamic attention and request-owned KV writes stay outside
+  capture. Logits validation remains fail-closed before frame emission.
+- `--prefill-batch-size 4`: left-padded backbone prefill and grouped
+  teacher-forced tower execution, followed by private unpadded request caches.
+- `--codec-batch-size 8`: equal-length DAC chunks only, enforcing strict FP32.
+- `--npu-conv`: fused four-tap GDN convolution for batches up to 8; larger
+  batches use the measured-faster native implementation.
+
+The generated-code guard now follows the upstream DAC contract: all tower
+heads use a 4096-entry model vocabulary, and DAC normalizes residual indices
+to its 1024-entry codebooks before lookup. Reference-audio input validation
+still requires valid codec indices. The earlier `<1024` generated-code guard
+incorrectly rejected a C64 output. That correction does not resolve the
+separate historical graph shutdown failure. The spawned-process BF16 C1/C64
+run exited normally; historical thread-owned failures remain retained.
+
 ## Tests
 
 From this directory, in the existing Python 3.12 / Torch environment:

@@ -1,0 +1,54 @@
+{
+  "revision": "2d22d59",
+  "status": "FAIL",
+  "targets": {
+    "c1": 0.1,
+    "c64": 1
+  },
+  "target_met": false,
+  "previous_server_exit": 0,
+  "graphs_enabled": true,
+  "physical_devices": [
+    6,
+    7
+  ],
+  "codec_precision": "strict FP32",
+  "server_pid": 1190049,
+  "c1_client_exit": 0,
+  "c64_client_exit": 1,
+  "error": "RuntimeError('C64 client failed')",
+  "server_exit": -11,
+  "metrics": {
+    "1": {
+      "requests": 8,
+      "successful_requests": 8,
+      "failed_requests": 0,
+      "wall_time_s": 83.61962901242077,
+      "throughput_frames_s": 8.38319911579462,
+      "audio_seconds_per_wall_second": 0.38931500655663004,
+      "ttfa_p50_ms": 662.8900142386556,
+      "ttfa_p95_ms": 683.8688944932073,
+      "rtf_mean": 2.5803819239165877,
+      "eligible_for_comparison": true
+    },
+    "64": {
+      "requests": 64,
+      "successful_requests": 63,
+      "failed_requests": 1,
+      "wall_time_s": 114.08946385979652,
+      "throughput_frames_s": 49.06675700465496,
+      "audio_seconds_per_wall_second": 2.2786557447966747,
+      "ttfa_p50_ms": 13841.33584331721,
+      "ttfa_p95_ms": 13855.816446151584,
+      "rtf_mean": 16.932710034159463,
+      "eligible_for_comparison": false
+    }
+  },
+  "quality": "NOT_RUN",
+  "acceptance": "FAIL_REQUEST_AND_LIFECYCLE",
+  "notes": [
+    "C64 had one failed request due to an overly strict generated residual-code bound. The upstream DAC clamps residual model indices; the guard has been corrected in 2b6085f.",
+    "The shutdown SIGSEGV is independent and remains unresolved.",
+    "C1 PCM was byte-identical to 80a3b86 on all eight measured requests."
+  ]
+}

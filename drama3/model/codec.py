@@ -25,7 +25,8 @@ class AudioCodec(nn.Module):
     def decode(self, codes: torch.Tensor) -> torch.Tensor:
         """Decode [batch, 10 codebooks, frames] into [batch, samples].
 
-        The caller supplies valid codec indices (semantic <4096, residual <1024).
+        The caller supplies model vocabulary indices in [0, 4096). The upstream
+        DAC clamps residual indices to 1023 before codebook lookup.
         Frame count is explicit; no token-to-audio estimate is used.
         """
         if codes.ndim != 3 or codes.shape[1] != 10 or codes.shape[2] == 0:

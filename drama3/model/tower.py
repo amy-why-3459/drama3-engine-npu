@@ -459,6 +459,7 @@ def sample_rows(
     top_k: torch.Tensor,
     top_p: torch.Tensor,
     generators: dict[int, torch.Generator] | None = None,
+    *, invalid_flags: list[torch.Tensor] | None = None,
 ) -> torch.Tensor:
     """Sample a column index per row, with per-row temperature, top-k and top-p.
 
@@ -466,11 +467,17 @@ def sample_rows(
     before and including it, over the whole row, stays within top_p; the most
     likely candidate is never filtered out. Greedy rows take the argmax. Rows
     listed in ``generators`` draw from their own generator.
+    Internal callers may collect device-side ``invalid_flags`` and must reject
+    any flagged logits before emitting a completed frame. This avoids a host
+    synchronization at every codebook while retaining fail-closed validation.
     """
     invalid = (torch.isnan(logits) | torch.isposinf(logits)).any()
     invalid = invalid | ~torch.isfinite(logits).any(dim=-1).all()
-    if invalid.item():
-        raise ValueError("Sampling logits contain NaN, positive infinity or no finite candidate")
+    if invalid_flags is None:
+        if invalid.item():
+            raise ValueError("Sampling logits contain NaN, positive infinity or no finite candidate")
+    else:
+        invalid_flags.append(invalid)
     greedy = temperature <= _GREEDY_TEMPERATURE
     scaled = logits.float() / temperature.float().clamp(
         min=_GREEDY_TEMPERATURE
@@ -612,6 +619,7 @@ class CodebookTower(nn.Module):
             )
             layer_index += 1
         codes = [code0]
+        invalid_flags = []
         for r, (layer, head) in enumerate(
             zip(self.audio_decoder_mtp.layers, self.audio_decoder_mtp.heads)
         ):
@@ -628,7 +636,12 @@ class CodebookTower(nn.Module):
             layer_index += 1
             if next_codes is None:
                 sampler = sample_rows if isinstance(sampling[0], torch.Tensor) else sample_top_k_top_p
-                codes.append(sampler(head(hidden), *sampling))
+                if sampler is sample_rows:
+                    codes.append(sampler(head(hidden), *sampling, invalid_flags=invalid_flags))
+                else:
+                    codes.append(sampler(head(hidden), *sampling))
         if next_codes is not None:
             return next_codes
+        if invalid_flags and torch.stack(invalid_flags).any().item():
+            raise ValueError("Sampling logits contain NaN, positive infinity or no finite candidate")
         return torch.stack(codes, dim=-1)

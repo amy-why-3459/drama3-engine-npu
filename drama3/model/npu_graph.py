@@ -50,6 +50,11 @@ class GraphEntry:
 
     def copy_inputs(self, inputs, source):
         batch = len(inputs)
+        if batch == len(self.inputs):
+            self.inputs.copy_(inputs)
+            self.conv.copy_(source.conv_states[0])
+            self.recurrent.copy_(source.recurrent_states[0])
+            return
         self.inputs[:batch].copy_(inputs)
         self.conv[:batch].copy_(source.conv_states[0])
         self.recurrent[:batch].copy_(source.recurrent_states[0])
@@ -62,6 +67,10 @@ class GraphEntry:
         self.copy_inputs(inputs, source)
         self.graph.replay()
         batch = len(inputs)
+        if batch == len(self.inputs):
+            source.conv_states[0].copy_(self.conv)
+            source.recurrent_states[0].copy_(self.recurrent)
+            return self.output
         source.conv_states[0].copy_(self.conv[:batch])
         source.recurrent_states[0].copy_(self.recurrent[:batch])
         return self.output[:batch]
@@ -91,9 +100,12 @@ class GraphGDN(nn.Module):
     def clear_graphs(self):
         with torch.npu.device(self.device):
             torch.npu.synchronize(self.device)
-            for entry in self.entries.values():
+            # Destroy each graph and its stream while its device is current.
+            # A for-loop variable would retain the last entry past this guard.
+            while self.entries:
+                _, entry = self.entries.popitem()
                 entry.graph.reset()
-            self.entries.clear()
+                del entry
 
 
 class GraphGDNDecoder(GraphGDN):

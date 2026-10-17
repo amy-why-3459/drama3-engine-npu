@@ -1,0 +1,94 @@
+{
+  "status": "DIAGNOSTIC_ONLY",
+  "notes": [
+    "Owner-thread explicit runtime finalization returned normally in one C64 control. Production uses spawned main-thread ownership instead.",
+    "Three stalled controls were terminated only after collecting stacks and waiting for graceful exit; exit -9 is failure, never clean completion.",
+    "One no-debugger control also stalled, so debugger involvement does not explain every stall."
+  ],
+  "controls": {
+    "rtf-2b-owner-shutdown": {
+      "revision": "2b6085f",
+      "status": "REQUESTS_COMPLETE",
+      "targets": {
+        "c1": 0.1,
+        "c64": 1
+      },
+      "target_met": false,
+      "previous_graph_exit": 0,
+      "graphs_enabled": true,
+      "physical_devices": [
+        6,
+        7
+      ],
+      "codec_precision": "strict FP32",
+      "runtime_finalization": "original torch_npu cleanup on the owner worker; atexit removed only after return",
+      "server_pid": 1196817,
+      "c64_client_exit": 0,
+      "server_exit": 0,
+      "quality": "NOT_RUN_LIFECYCLE_CONTROL"
+    },
+    "rtf-2b-control-no-debugger": {
+      "revision": "2b6085f",
+      "status": "FAIL",
+      "targets": {
+        "c1": 0.1,
+        "c64": 1
+      },
+      "target_met": false,
+      "previous_graph_exit": 0,
+      "graphs_enabled": true,
+      "physical_devices": [
+        0,
+        1
+      ],
+      "codec_precision": "strict FP32",
+      "server_pid": 1196257,
+      "c64_client_exit": 1,
+      "error": "RuntimeError('C64 client failed')",
+      "server_exit": -9,
+      "quality": "NOT_RUN_LIFECYCLE_CONTROL"
+    },
+    "rtf-gdn-only-lifecycle-v2": {
+      "revision": "2b6085f",
+      "status": "FAIL",
+      "targets": {
+        "c1": 0.1,
+        "c64": 1
+      },
+      "target_met": false,
+      "previous_graph_exit": 0,
+      "graphs_enabled": true,
+      "physical_devices": [
+        0,
+        1
+      ],
+      "codec_precision": "strict FP32",
+      "server_pid": 1192501,
+      "c64_client_exit": 1,
+      "error": "RuntimeError('C64 client failed')",
+      "server_exit": -9,
+      "quality": "NOT_RUN_LIFECYCLE_CONTROL"
+    },
+    "rtf-tower-only-lifecycle": {
+      "revision": "2b6085f",
+      "status": "FAIL",
+      "targets": {
+        "c1": 0.1,
+        "c64": 1
+      },
+      "target_met": false,
+      "previous_graph_exit": 0,
+      "graphs_enabled": true,
+      "physical_devices": [
+        6,
+        7
+      ],
+      "codec_precision": "strict FP32",
+      "server_pid": 1192301,
+      "c64_client_exit": 1,
+      "error": "RuntimeError('C64 client failed')",
+      "server_exit": -9,
+      "quality": "NOT_RUN_LIFECYCLE_CONTROL"
+    }
+  }
+}

@@ -35,8 +35,32 @@ def move_tensors(value, device):
     return value
 
 
-def move_layer_inputs(module, inputs, keywords, *, device):
-    return move_tensors(inputs, device), move_tensors(keywords, device)
+def move_metadata(value, device, transfers):
+    """Reuse immutable attention metadata only within one backbone invocation."""
+    if isinstance(value, torch.Tensor):
+        key = (id(value), device)
+        if key not in transfers:
+            # Retain the source too, so Python object IDs cannot be recycled.
+            transfers[key] = (value, value.to(device))
+        return transfers[key][1]
+    if isinstance(value, tuple):
+        return tuple(move_metadata(item, device, transfers) for item in value)
+    if isinstance(value, dict):
+        return {key: move_metadata(item, device, transfers) for key, item in value.items()}
+    return value
+
+
+def move_layer_inputs(module, inputs, keywords, *, device, transfers):
+    moved = {}
+    for key, value in keywords.items():
+        if key in ('position_embeddings', 'position_ids') and module.block_type == 'linear_attention':
+            # GDN has no rotary attention and does not read these tensors.
+            moved[key] = None
+        elif key in ('position_embeddings', 'position_ids', 'attention_mask'):
+            moved[key] = move_metadata(value, device, transfers)
+        else:
+            moved[key] = move_tensors(value, device)
+    return move_tensors(inputs, device), moved
 
 
 class Drama3Model(nn.Module):
@@ -57,16 +81,19 @@ class Drama3Model(nn.Module):
         )
         self.devices: tuple[torch.device, ...] = ()
         self.layer_hooks = []
+        self.metadata_transfers = {}
 
     @classmethod
     def load(
         cls, directory: str | Path, devices: list[str], cache_slots=1, max_length=1024,
-        use_npu_moe=False, use_npu_attention=False, use_npu_gdn_prefill=False, use_npu_gdn_decode=False, use_npu_norm=False, use_npu_gdn_graph=False, use_npu_layer_graph=False,
+        use_npu_moe=False, use_npu_attention=False, use_npu_gdn_prefill=False, use_npu_gdn_decode=False, use_npu_norm=False, use_npu_gdn_graph=False, use_npu_layer_graph=False, use_npu_tower_graph=False, use_npu_conv=False, use_npu_int8_experts=False,
     ):
         if not devices or cache_slots < 1 or max_length < 1:
             raise ValueError("Nonempty devices and positive cache bounds are required")
         if use_npu_layer_graph and (use_npu_gdn_graph or not use_npu_moe):
             raise ValueError('Decoder layer graphs require grouped NPU MoE and exclude nested GDN graphs')
+        if use_npu_int8_experts and (not use_npu_moe or any(torch.device(d).type != 'npu' for d in devices)):
+            raise ValueError('Experimental INT8 experts require grouped MoE on NPU devices')
         checkpoint = Checkpoint(directory)
         previous_dtype = torch.get_default_dtype()
         try:
@@ -130,6 +157,12 @@ class Drama3Model(nn.Module):
                     )
                 parent_name, leaf = name.rsplit(".", 1)
                 parent = model.get_submodule(parent_name)
+                if use_npu_int8_experts and name.endswith(('.experts.gate_up_proj', '.experts.down_proj')):
+                    # Online symmetric per-output-channel W8A8 conversion.
+                    # This changes precision and requires separate speech-quality validation.
+                    from drama3.model.quantization import quantize_expert_weight
+                    value, scale = quantize_expert_weight(value)
+                    parent.register_buffer(leaf + '_scale', scale.to(target_device))
                 setattr(
                     parent,
                     leaf,
@@ -156,7 +189,7 @@ class Drama3Model(nn.Module):
                 layer.mlp.experts = NpuExperts(layer.mlp.experts)
             model.layer_hooks.append(
                 layer.register_forward_pre_hook(
-                    partial(move_layer_inputs, device=device), with_kwargs=True
+                    partial(move_layer_inputs, device=device, transfers=model.metadata_transfers), with_kwargs=True
                 )
             )
             if hasattr(layer, "linear_attn") and device.type != "cuda":
@@ -173,6 +206,12 @@ class Drama3Model(nn.Module):
                     from drama3.model.npu_recurrent import recurrent_decode
 
                     linear.recurrent_gated_delta_rule = recurrent_decode
+        if use_npu_conv:
+            from drama3.model.npu_conv import causal_conv_update
+
+            for layer, device in zip(model.backbone.model.layers, layer_devices):
+                if hasattr(layer, 'linear_attn') and device.type == 'npu':
+                    layer.linear_attn.causal_conv1d_update = causal_conv_update
         for module in model.tower.modules():
             if isinstance(module, TowerAttention):
                 module.use_npu_paged_attention = use_npu_attention
@@ -195,6 +234,13 @@ class Drama3Model(nn.Module):
             for index, (layer, device) in enumerate(zip(list(model.backbone.model.layers), layer_devices)):
                 if hasattr(layer, 'linear_attn') and device.type == 'npu':
                     model.backbone.model.layers[index] = GraphGDNDecoder(layer)
+        if use_npu_tower_graph:
+            from drama3.model.npu_tower_graph import GraphTowerLayer
+
+            for group in (model.tower.audio_decoder_mtp_shared, model.tower.audio_decoder_mtp):
+                for index, layer in enumerate(list(group.layers)):
+                    if next(layer.parameters()).device.type == 'npu':
+                        group.layers[index] = GraphTowerLayer(layer)
         first_residual = model.tower.codebook_size
         model.register_buffer(
             "backbone_code_embeddings",
@@ -236,14 +282,18 @@ class Drama3Model(nn.Module):
         )
 
     def hidden(self, frames, *, cache=None, attention_mask=None, position_ids=None):
-        return self.backbone.model(
-            inputs_embeds=self.embed_frames(frames),
-            past_key_values=cache,
-            attention_mask=attention_mask,
-            position_ids=position_ids,
-            use_cache=True,
-            return_dict=True,
-        )
+        self.metadata_transfers.clear()
+        try:
+            return self.backbone.model(
+                inputs_embeds=self.embed_frames(frames),
+                past_key_values=cache,
+                attention_mask=attention_mask,
+                position_ids=position_ids,
+                use_cache=True,
+                return_dict=True,
+            )
+        finally:
+            self.metadata_transfers.clear()
 
     def semantic_logits(self, hidden):
         return nn.functional.linear(hidden.to(self.devices[-1]), self.candidate_weights)

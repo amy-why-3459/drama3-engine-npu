@@ -8,6 +8,12 @@ from drama3.model.batch_cache import DecodeCacheBatch
 from drama3.model.tower import TowerBatch, sample_rows
 
 
+def join_rows(tensors):
+    # These inputs are read-only during this step. Avoid a redundant NPU copy
+    # for the common single-request case.
+    return tensors[0] if len(tensors) == 1 else torch.cat(tensors)
+
+
 @dataclass(eq=False)
 class DecodeState:
     owner: object
@@ -74,13 +80,13 @@ class BatchedGenerator:
         continued = [s for _, s in active if s.generated]
         if continued:
             batch = DecodeCacheBatch([s.cache for s in continued])
-            frames = torch.cat([s.inputs for s in continued])[:, None]
+            frames = join_rows([s.inputs for s in continued])[:, None]
             result = model.hidden(frames, cache=batch.cache, **batch.model_inputs(model.devices[0]))
             hidden = result.last_hidden_state[:, -1].to(model.devices[-1])
             batch.commit()
             for row, state in enumerate(continued):
                 state.hidden = hidden[row:row + 1]
-        hidden = torch.cat([s.hidden for _, s in active])
+        hidden = join_rows([s.hidden for _, s in active])
         logits = model.semantic_logits(hidden)
         width = logits.shape[-1]
         temperatures = torch.tensor([s.sampling.temperature for _, s in active], device=hidden.device)
@@ -91,7 +97,7 @@ class BatchedGenerator:
         redraw = model.candidate_ids[sample_rows(logits, torch.ones_like(temperatures),
                                                 torch.full_like(top_k, min(30, width)),
                                                 torch.full_like(top_p, .95))]
-        history = torch.cat([s.history for _, s in active])
+        history = join_rows([s.history for _, s in active])
         repeated = (history == first[:, None]).any(-1)
         token = torch.where(repeated & model.tower.is_semantic(first), redraw, first)
         live_rows = (token != model.config['eos_token_id']).nonzero().flatten()
@@ -103,7 +109,7 @@ class BatchedGenerator:
         if not live_indices:
             return outputs
         live_states = [active[row][1] for row in live_indices]
-        inputs = torch.cat([s.inputs for s in live_states])
+        inputs = join_rows([s.inputs for s in live_states])
         slots = torch.tensor([s.slot for s in live_states], device=hidden.device)
         positions = torch.tensor([s.position for s in live_states], device=hidden.device)
         tokens = token[live_rows]
