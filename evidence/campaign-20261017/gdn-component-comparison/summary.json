@@ -1,0 +1,64 @@
+{
+  "status": "INCONCLUSIVE",
+  "checks": {
+    "comparable": "unknown",
+    "correctness": "pass",
+    "lifecycle": "pass"
+  },
+  "metrics": [
+    {
+      "name": "GDN one-token time",
+      "unit": "ms",
+      "direction": "lower",
+      "scenario": "batch 1",
+      "before": {
+        "mean": 1.0526545718312263,
+        "std": null,
+        "n": 1
+      },
+      "after": {
+        "mean": 0.5203088000416756,
+        "std": null,
+        "n": 1
+      },
+      "improvement_pct": 50.57174366929008,
+      "observation": "single trial"
+    },
+    {
+      "name": "GDN one-token time",
+      "unit": "ms",
+      "direction": "lower",
+      "scenario": "batch 8",
+      "before": {
+        "mean": 1.0705745965242386,
+        "std": null,
+        "n": 1
+      },
+      "after": {
+        "mean": 0.4820520430803299,
+        "std": null,
+        "n": 1
+      },
+      "improvement_pct": 54.97258718398743,
+      "observation": "single trial"
+    },
+    {
+      "name": "GDN one-token time",
+      "unit": "ms",
+      "direction": "lower",
+      "scenario": "batch 32",
+      "before": {
+        "mean": 0.9147615917026997,
+        "std": null,
+        "n": 1
+      },
+      "after": {
+        "mean": 0.4757246561348438,
+        "std": null,
+        "n": 1
+      },
+      "improvement_pct": 47.99468403025651,
+      "observation": "single trial"
+    }
+  ]
+}

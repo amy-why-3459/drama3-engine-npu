@@ -1,0 +1,20 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/why/drama3-engine/drama3/benchmark.py", line 181, in <module>
+    main()
+  File "/home/why/drama3-engine/drama3/benchmark.py", line 177, in main
+    raise SystemExit(asyncio.run(run(args)))
+                     ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.12.13/lib/python3.12/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.12.13/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.12.13/lib/python3.12/asyncio/base_events.py", line 691, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/home/why/drama3-engine/drama3/benchmark.py", line 131, in run
+    raise RuntimeError("Warmup failed; retained traces, measurement not started")
+RuntimeError: Warmup failed; retained traces, measurement not started

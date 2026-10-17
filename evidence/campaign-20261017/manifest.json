@@ -1,0 +1,32 @@
+{
+  "status": "RUNNING_INCONCLUSIVE",
+  "baseline": "SGLang-Omni main plus experimental NPU port",
+  "upstream_main": "2c23b68f4f763c14cfb845eadb4883a5e791b701",
+  "npu_port": "0f84b193a0e01719cf3a2bb95ff5cfc9d0f3f4e8",
+  "patch_sha256": "b497baaedcc7d8a37604701eba23bb046041320797d272ff42e483bd2aa8e6e5",
+  "physical_devices": [
+    0,
+    1
+  ],
+  "model_revision": "e0a9218aa48888270f06ef1ed9ea67622c0e17d2",
+  "precision": "FP8 checkpoint expanded to BF16; FP32 GDN state and codec",
+  "workload_sha256": "9bdd98e981c46225cb7a85362115f2e72e53ca94e17e38154f1e507d3917c2af",
+  "live_results": "/home/why/drama3-engine/runs/sglang-sweep-20261017",
+  "source_revision_label": "2c23b68-npu-page16-tp-stop-worker-log",
+  "precommit_exit": 0,
+  "concurrencies": [
+    1,
+    2,
+    4,
+    8,
+    16,
+    32,
+    64
+  ],
+  "requests_each": 128,
+  "warmup": "max(8,concurrency)",
+  "rounds": 1,
+  "performance_target": "NOT_VALIDATED",
+  "quality": "PENDING",
+  "worker_lifecycle": "PENDING"
+}

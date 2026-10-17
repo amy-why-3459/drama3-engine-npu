@@ -1,0 +1,53 @@
+{
+  "engine": "sglang-omni",
+  "source_revision": "2c23b68-page16-tp-stop-wip",
+  "concurrency": 2,
+  "workload_sha256": "8b9a24759ce144633917764a5481726e90f1a458f527c2fb964f7667e762483c",
+  "run_id": "sglang-shutdown-c2-ready",
+  "endpoint": "http://127.0.0.1:8094/v1/audio/speech",
+  "request_adapter": "drama3-v1",
+  "metrics": {
+    "requests": 2,
+    "successful_requests": 2,
+    "failed_requests": 0,
+    "wall_time_s": 19.522768766619265,
+    "throughput_frames_s": 5.58322445463638,
+    "audio_seconds_per_wall_second": 0.259284437258397,
+    "ttfa_p50_ms": 1612.0539815165102,
+    "ttfa_p95_ms": 2337.9345012363046,
+    "rtf_mean": 6.867206542326799,
+    "eligible_for_comparison": true
+  },
+  "quality": "NOT_RUN",
+  "clean_exit": null,
+  "status": "INCONCLUSIVE",
+  "traces": [
+    {
+      "request_id": "sglang-shutdown-c2-ready-measured-000000",
+      "sent_s": 5752203.89882911,
+      "first_audio_s": 5752206.317417002,
+      "last_audio_s": 5752218.748375227,
+      "terminal_s": 5752218.748668534,
+      "audio_samples": 90112,
+      "sample_rate": 44100,
+      "generated_frames": 44,
+      "success": true,
+      "error": null,
+      "server_request_id": "speech-02e684cf-f89f-44d8-8388-d99b97ebd34f"
+    },
+    {
+      "request_id": "sglang-shutdown-c2-ready-measured-000001",
+      "sent_s": 5752203.899534048,
+      "first_audio_s": 5752204.705054118,
+      "last_audio_s": 5752223.42132292,
+      "terminal_s": 5752223.421597877,
+      "audio_samples": 133120,
+      "sample_rate": 44100,
+      "generated_frames": 65,
+      "success": true,
+      "error": null,
+      "server_request_id": "speech-c58740af-4298-42fd-84e4-1e7444ff4e85"
+    }
+  ],
+  "notes": "Client completion does not establish server clean exit or audio quality. Frame telemetry must count emitted model acoustic frames excluding EOS and context overlap."
+}

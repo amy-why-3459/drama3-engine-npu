@@ -1,0 +1,52 @@
+test_variable_lengths_reordering_and_removed_request (test_batch_cache.BatchCacheTest.test_variable_lengths_reordering_and_removed_request) ... [transformers] The fast path is not available because one of the required library is not installed. Falling back to torch implementation. To install follow https://github.com/fla-org/flash-linear-attention#installation and https://github.com/Dao-AILab/causal-conv1d
+Loaded backbone.model.layers.0.mlp.experts.down_proj on cpu
+Loaded backbone.model.layers.1.mlp.experts.down_proj on cpu
+ok
+test_eos_and_prefill_error_release (test_batching.BatchedGenerationTest.test_eos_and_prefill_error_release) ... Loaded backbone.model.layers.0.mlp.experts.down_proj on cpu
+Loaded backbone.model.layers.1.mlp.experts.down_proj on cpu
+ok
+test_matches_reference_with_mixed_lengths_and_arrivals (test_batching.BatchedGenerationTest.test_matches_reference_with_mixed_lengths_and_arrivals) ... Loaded backbone.model.layers.0.mlp.experts.down_proj on cpu
+Loaded backbone.model.layers.1.mlp.experts.down_proj on cpu
+ok
+test_join_uses_ids_and_rejects_ambiguous_counts (test_benchmark.FrameJoinTests.test_join_uses_ids_and_rejects_ambiguous_counts) ... ok
+test_reference_adapter_preserves_codes_and_rejects_ignored_sampling (test_benchmark.FrameJoinTests.test_reference_adapter_preserves_codes_and_rejects_ignored_sampling) ... ok
+test_server_assigned_id_joins_without_changing_client_artifact_id (test_benchmark.FrameJoinTests.test_server_assigned_id_joins_without_changing_client_artifact_id) ... ok
+test_http_error_json_and_partial_sample_remain_failed_requests (test_benchmark.StreamingTests.test_http_error_json_and_partial_sample_remain_failed_requests) ... ok
+test_pcm_split_sample_is_retained_without_inventing_frames (test_benchmark.StreamingTests.test_pcm_split_sample_is_retained_without_inventing_frames) ... ok
+test_partial_blocks_and_float32_scales (test_checkpoint.BlockFp8Tests.test_partial_blocks_and_float32_scales) ... ok
+test_rejects_incorrect_scale_shape (test_checkpoint.BlockFp8Tests.test_rejects_incorrect_scale_shape) ... ok
+test_audit_rejects_corruption_missing_files_and_path_escape (test_download.DownloadTests.test_audit_rejects_corruption_missing_files_and_path_escape) ... weight: verified
+weight: size or hash mismatch
+weight: missing
+ok
+test_one_failed_range_does_not_hide_a_verified_complete_file (test_download.DownloadTests.test_one_failed_range_does_not_hide_a_verified_complete_file) ... RANGE_FAILED network unavailable
+VERIFIED good ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad
+ok
+test_resume_preserves_range_through_permanent_redirect (test_download.DownloadTests.test_resume_preserves_range_through_permanent_redirect) ... ok
+test_frames_and_early_close_release_state (test_generation.GenerationTest.test_frames_and_early_close_release_state) ... Loaded backbone.model.layers.0.mlp.experts.down_proj on cpu
+Loaded backbone.model.layers.1.mlp.experts.down_proj on cpu
+ok
+test_invalid_logits_cannot_become_legal_code_ids (test_generation.GenerationTest.test_invalid_logits_cannot_become_legal_code_ids) ... ok
+test_comparison_requires_stronger_baseline_and_quality (test_metrics.MetricsTests.test_comparison_requires_stronger_baseline_and_quality) ... ok
+test_failure_remains_in_wall_time_and_blocks_promotion (test_metrics.MetricsTests.test_failure_remains_in_wall_time_and_blocks_promotion) ... ok
+test_invalid_timing_and_nan_fail_closed (test_metrics.MetricsTests.test_invalid_timing_and_nan_fail_closed) ... ok
+test_last_audio_not_terminal_controls_rtf (test_metrics.MetricsTests.test_last_audio_not_terminal_controls_rtf) ... ok
+test_missing_frame_telemetry_is_not_inferred_from_pcm (test_metrics.MetricsTests.test_missing_frame_telemetry_is_not_inferred_from_pcm) ... ok
+test_missing_or_duplicate_requests_are_rejected (test_metrics.MetricsTests.test_missing_or_duplicate_requests_are_rejected) ... ok
+test_checkpoint_mapping_and_cached_decode (test_model.ModelTests.test_checkpoint_mapping_and_cached_decode) ... Loaded backbone.model.layers.0.mlp.experts.down_proj on cpu
+Loaded backbone.model.layers.1.mlp.experts.down_proj on cpu
+ok
+test_actual_batch_dispatch_and_per_request_error (test_serving.BatchedServiceTests.test_actual_batch_dispatch_and_per_request_error) ... ok
+test_backend_failure_is_not_successful_completion (test_serving.BatchedServiceTests.test_backend_failure_is_not_successful_completion) ... ok
+test_backpressure_does_not_block_other_requests_or_cancellation (test_serving.BatchedServiceTests.test_backpressure_does_not_block_other_requests_or_cancellation) ... ok
+test_http_pcm_and_request_id_telemetry_contract (test_serving.BatchedServiceTests.test_http_pcm_and_request_id_telemetry_contract) ... ok
+test_interleaving_frame_telemetry_and_cleanup (test_serving.BatchedServiceTests.test_interleaving_frame_telemetry_and_cleanup) ... ok
+test_backend_failure_is_not_successful_completion (test_serving.ServiceTests.test_backend_failure_is_not_successful_completion) ... ok
+test_backpressure_does_not_block_other_requests_or_cancellation (test_serving.ServiceTests.test_backpressure_does_not_block_other_requests_or_cancellation) ... ok
+test_http_pcm_and_request_id_telemetry_contract (test_serving.ServiceTests.test_http_pcm_and_request_id_telemetry_contract) ... ok
+test_interleaving_frame_telemetry_and_cleanup (test_serving.ServiceTests.test_interleaving_frame_telemetry_and_cleanup) ... ok
+
+----------------------------------------------------------------------
+Ran 31 tests in 1.793s
+
+OK

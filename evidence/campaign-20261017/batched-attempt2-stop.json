@@ -1,0 +1,7 @@
+{
+  "pid": 1178479,
+  "cmdline": "/home/why/drama3-research/venv-sglang/bin/python -m drama3.serving --model /dataset/models/drama-3 --devices npu:0 npu:1 --npu-moe --batched --npu-attention --npu-gdn-prefill --npu-gdn-decode --max-active 4 --context-length 2048 --cpu-threads 4 --port 8096 --telemetry runs/batched-smoke-20261017-attempt2-frames.jsonl ",
+  "starttime": "578065564",
+  "signal": "SIGTERM",
+  "reason": "Four warmups and four measured requests complete; independent quality evaluation is CPU-only"
+}

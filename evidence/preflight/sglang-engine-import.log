@@ -1,0 +1,23 @@
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/contrib/transfer_to_npu.py:390: ImportWarning: 
+    *************************************************************************************************************
+    The torch.Tensor.cuda and torch.nn.Module.cuda are replaced with torch.Tensor.npu and torch.nn.Module.npu now..
+    The torch.cuda.DoubleTensor is replaced with torch.npu.FloatTensor cause the double type is not supported now..
+    The backend in torch.distributed.init_process_group set to hccl now..
+    The torch.cuda.* and torch.cuda.amp.* are replaced with torch.npu.* and torch.npu.amp.* now..
+    The device parameters have been replaced with npu in the function below:
+    torch.logspace, torch.randint, torch.hann_window, torch.rand, torch.full_like, torch.ones_like, torch.rand_like, torch.randperm, torch.arange, torch.frombuffer, torch.normal, torch._empty_per_channel_affine_quantized, torch.empty_strided, torch.empty_like, torch.scalar_tensor, torch.tril_indices, torch.bartlett_window, torch.ones, torch.sparse_coo_tensor, torch.randn, torch.kaiser_window, torch.tensor, torch.triu_indices, torch.as_tensor, torch.zeros, torch.randint_like, torch.full, torch.eye, torch._sparse_csr_tensor_unsafe, torch.empty, torch._sparse_coo_tensor_unsafe, torch.blackman_window, torch.zeros_like, torch.range, torch.sparse_csr_tensor, torch.randn_like, torch.from_file, torch._cudnn_init_dropout_state, torch._empty_affine_quantized, torch.linspace, torch.hamming_window, torch.empty_quantized, torch._pin_memory, torch.load, torch.set_default_device, torch.get_device_module, torch.sparse_compressed_tensor, torch.Tensor.new_empty, torch.Tensor.new_empty_strided, torch.Tensor.new_full, torch.Tensor.new_ones, torch.Tensor.new_tensor, torch.Tensor.new_zeros, torch.Tensor.to, torch.Tensor.pin_memory, torch.nn.Module.to, torch.nn.Module.to_empty
+    *************************************************************************************************************
+    
+  warnings.warn(msg, ImportWarning)
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/contrib/transfer_to_npu.py:311: RuntimeWarning: torch.jit.script and torch.jit.script_method will be disabled by transfer_to_npu, which currently does not support them, if you need to enable them, please do not use transfer_to_npu.
+  warnings.warn(msg, RuntimeWarning)
+<frozen abc>:106: DeprecationWarning: MultiPlatformOp is deprecated; subclass sglang.kernels.fused_op.BaseFusedOp instead (RFC #29630).
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/npu/__init__.py:540: UserWarning: You can set the device capability via the environment variable TORCH_NPU_DEVICE_CAPABILITY. The return value of get_device_capability is only for compatibility with PyTorch and does not represent the actual capability of the NPU device.
+  warnings.warn(f"You can set the device capability via the environment variable TORCH_NPU_DEVICE_CAPABILITY. {warning_str}")
+Cannot detect CUDA architecture.
+Ignore import error when loading sglang.srt.models.falcon_mamba: cannot import name 'causal_conv1d_fn_triton' from 'sglang.srt.layers.attention.mamba.mamba' (/home/why/drama3-research/sglang/python/sglang/srt/layers/attention/mamba/mamba.py)
+Ignore import error when loading sglang.srt.models.inkling: No module named 'cutlass'
+[2026-10-14 09:06:21] Ignore import error when loading sglang.srt.models.mamba: cannot import name 'causal_conv1d_fn_triton' from 'sglang.srt.layers.attention.mamba.mamba' (/home/why/drama3-research/sglang/python/sglang/srt/layers/attention/mamba/mamba.py)
+[2026-10-14 09:06:21] Ignore import error when loading sglang.srt.models.mindspore: No module named 'mindspore'
+[2026-10-14 09:06:21] Failed to import torchada: No module named 'torchada'. MUSA platform compatibility will not work.
+{'max_running_requests': 1, 'disable_cuda_graph': True, 'cuda_graph_backend_prefill': 'disabled', 'cuda_graph_max_bs_prefill': 2048, 'prefill_decode_interval': 4, 'disable_overlap_schedule': True, 'disable_radix_cache': True, 'enable_mixed_chunk': False, 'chunked_prefill_size': -1, 'attention_backend': 'ascend', 'enable_torch_compile': False, 'trust_remote_code': False, 'dtype': 'bfloat16'}

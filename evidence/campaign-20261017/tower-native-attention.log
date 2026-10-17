@@ -1,0 +1,78 @@
+[W1017 01:19:04.517748745 NPUCachingAllocator.cpp:202] Warning: The current CANN and HDK(driver) versions require processing for 32 padding size, with memory allocation. (function operator())
+{
+  "status": "PASS",
+  "cases": [
+    {
+      "head_dim": 128,
+      "slots": [
+        4,
+        1,
+        3
+      ],
+      "lengths": [
+        1,
+        17,
+        65
+      ],
+      "max_abs": 0.0036329030990600586
+    },
+    {
+      "head_dim": 128,
+      "slots": [
+        3,
+        4
+      ],
+      "lengths": [
+        66,
+        2
+      ],
+      "max_abs": 0.007648944854736328
+    },
+    {
+      "head_dim": 128,
+      "slots": [
+        1
+      ],
+      "lengths": [
+        96
+      ],
+      "max_abs": 0.0018464326858520508
+    },
+    {
+      "head_dim": 256,
+      "slots": [
+        4,
+        1,
+        3
+      ],
+      "lengths": [
+        1,
+        17,
+        65
+      ],
+      "max_abs": 0.003659486770629883
+    },
+    {
+      "head_dim": 256,
+      "slots": [
+        3,
+        4
+      ],
+      "lengths": [
+        66,
+        2
+      ],
+      "max_abs": 0.007697343826293945
+    },
+    {
+      "head_dim": 256,
+      "slots": [
+        1
+      ],
+      "lengths": [
+        96
+      ],
+      "max_abs": 0.0021294355392456055
+    }
+  ]
+}

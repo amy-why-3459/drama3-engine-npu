@@ -1,0 +1,54 @@
+[
+  {
+    "request_id": "batched-20261017-c4-smoke-warmup-000000",
+    "sent_s": 5780440.774436462,
+    "first_audio_s": 5780488.244695048,
+    "last_audio_s": 5780488.244695048,
+    "terminal_s": 5780488.472741146,
+    "audio_samples": 4096,
+    "sample_rate": 44100,
+    "generated_frames": null,
+    "success": false,
+    "error": "ClientPayloadError: Response payload is not completed: <TransferEncodingError: 400, message='Not enough data to satisfy transfer length header.'>",
+    "server_request_id": "batched-20261017-c4-smoke-warmup-000000"
+  },
+  {
+    "request_id": "batched-20261017-c4-smoke-warmup-000001",
+    "sent_s": 5780440.775433368,
+    "first_audio_s": 5780488.244964335,
+    "last_audio_s": 5780488.244964335,
+    "terminal_s": 5780488.473006843,
+    "audio_samples": 4096,
+    "sample_rate": 44100,
+    "generated_frames": null,
+    "success": false,
+    "error": "ClientPayloadError: Response payload is not completed: <TransferEncodingError: 400, message='Not enough data to satisfy transfer length header.'>",
+    "server_request_id": "batched-20261017-c4-smoke-warmup-000001"
+  },
+  {
+    "request_id": "batched-20261017-c4-smoke-warmup-000002",
+    "sent_s": 5780440.776103745,
+    "first_audio_s": 5780488.245181821,
+    "last_audio_s": 5780488.245181821,
+    "terminal_s": 5780488.47327955,
+    "audio_samples": 4096,
+    "sample_rate": 44100,
+    "generated_frames": null,
+    "success": false,
+    "error": "ClientPayloadError: Response payload is not completed: <TransferEncodingError: 400, message='Not enough data to satisfy transfer length header.'>",
+    "server_request_id": "batched-20261017-c4-smoke-warmup-000002"
+  },
+  {
+    "request_id": "batched-20261017-c4-smoke-warmup-000003",
+    "sent_s": 5780440.776798143,
+    "first_audio_s": 5780488.245402567,
+    "last_audio_s": 5780488.245402567,
+    "terminal_s": 5780488.473627479,
+    "audio_samples": 4096,
+    "sample_rate": 44100,
+    "generated_frames": null,
+    "success": false,
+    "error": "ClientPayloadError: Response payload is not completed: <TransferEncodingError: 400, message='Not enough data to satisfy transfer length header.'>",
+    "server_request_id": "batched-20261017-c4-smoke-warmup-000003"
+  }
+]

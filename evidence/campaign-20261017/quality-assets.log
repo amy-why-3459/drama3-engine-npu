@@ -1,0 +1,4 @@
+Downloading popsoda2002/seedtts-wavlm-sim@508f5410742122c7fb0d94e288152debd92cf629/wavlm_large_finetune.pth
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Downloading s3prl/converted_ckpts@8cad0b370e7e35f8d56951d95d2be036ea85510c/wavlm_large.pt
+QUALITY_ASSETS_DOWNLOADED

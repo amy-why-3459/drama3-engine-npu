@@ -1,0 +1,35 @@
+test_matches_reference_with_mixed_lengths_and_arrivals (tests.test_batching.BatchedGenerationTest.test_matches_reference_with_mixed_lengths_and_arrivals) ... [transformers] The fast path is not available because one of the required library is not installed. Falling back to torch implementation. To install follow https://github.com/fla-org/flash-linear-attention#installation and https://github.com/Dao-AILab/causal-conv1d
+[W1017 01:55:09.022215285 NPUCachingAllocator.cpp:202] Warning: The current CANN and HDK(driver) versions require processing for 32 padding size, with memory allocation. (function operator())
+Loaded backbone.model.layers.0.mlp.experts.down_proj on npu:0
+Loaded backbone.model.layers.1.mlp.experts.down_proj on npu:0
+Loaded backbone.model.layers.2.mlp.experts.down_proj on npu:1
+Loaded backbone.model.layers.3.mlp.experts.down_proj on npu:1
+ok
+
+----------------------------------------------------------------------
+Ran 1 test in 4.464s
+
+OK
+CAPTURED_GDN_BUCKETS [[1, 2], [1, 2]]
+[W1017 01:55:13.360430175 NPUGraph.cpp:340] Warning: NPU warning, error code is 107004[Error]: 
+[Error]: The model is not in the current context.
+        Check whether the loaded model is consistent with the current context.
+[PID: 1180476] 2026-10-17-01:55:13.464.306 Execution_Error_Invalid_Context(EE1010): ModelDestroy execution failed because model does not belong to the current context. Extended information: model_id=48, model_ctx=0xaaab1d3ef3e0, cur_ctx=0xaaab309b0930.
+TraceBack (most recent call last):
+        rtModelDestroy execution failed, reason=model not in current ctx[FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:69]
+ (function reset)
+[W1017 01:55:13.360840455 NPUGraph.cpp:340] Warning: NPU warning, error code is 107004[Error]: 
+[Error]: The model is not in the current context.
+        Check whether the loaded model is consistent with the current context.
+[PID: 1180476] 2026-10-17-01:55:13.465.372 Execution_Error_Invalid_Context(EE1010): ModelDestroy execution failed because model does not belong to the current context. Extended information: model_id=46, model_ctx=0xaaab1d3ef3e0, cur_ctx=0xaaab309b0930.
+TraceBack (most recent call last):
+        rtModelDestroy execution failed, reason=model not in current ctx[FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:69]
+ (function reset)
+NPU_TINY_BATCHED_GENERATION_PASS
+[transformers] The fast path is not available because one of the required library is not installed. Falling back to torch implementation. To install follow https://github.com/fla-org/flash-linear-attention#installation and https://github.com/Dao-AILab/causal-conv1d
+[W1017 01:55:36.965943874 NPUCachingAllocator.cpp:202] Warning: The current CANN and HDK(driver) versions require processing for 32 padding size, with memory allocation. (function operator())
+Loaded backbone.model.layers.0.mlp.experts.down_proj on npu:0
+Loaded backbone.model.layers.1.mlp.experts.down_proj on npu:0
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/utils/storage.py:55: UserWarning: TypedStorage is deprecated. It will be removed in the future and UntypedStorage will be the only storage class. This should only matter to you if you are using storages directly.  To access UntypedStorage directly, use tensor.untyped_storage() instead of tensor.storage()
+  if self.device.type != 'cpu':
+{"status": "PASS", "whole_layer": true, "scope": "GDN graph prototype only", "steps": [{"step": 0, "max_abs": 0.0}, {"step": 1, "max_abs": 0.0}, {"step": 2, "max_abs": 0.0}, {"step": 3, "max_abs": 0.0}]}

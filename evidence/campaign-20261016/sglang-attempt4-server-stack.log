@@ -1,0 +1,42 @@
+Process 1054851: /home/why/drama3-research/venv-sglang/bin/python /home/why/drama3-research/venv-sglang/bin/sgl-omni serve --config /home/why/drama3-engine/evidence/campaign-20261016/sglang-npu-smoke.yaml --host 127.0.0.1 --port 8094
+Python v3.12.13 (/usr/local/python3.12.13/bin/python3.12)
+
+Thread 1054851 (idle): "MainThread"
+    select (selectors.py:468)
+    _run_once (asyncio/base_events.py:1961)
+    run_forever (asyncio/base_events.py:645)
+    run_until_complete (asyncio/base_events.py:678)
+    run (asyncio/runners.py:118)
+    run (asyncio/runners.py:195)
+    launch_server (sglang_omni/serve/launcher.py:859)
+    launch_server (sglang_omni/cli/serve.py:37)
+    serve (sglang_omni/cli/serve.py:522)
+    wrapper (typer/main.py:1524)
+    invoke (typer/_click/core.py:483)
+    invoke (typer/_click/core.py:741)
+    invoke (typer/core.py:1119)
+    _main (typer/core.py:187)
+    main (typer/core.py:1197)
+    __call__ (typer/_click/core.py:802)
+    __call__ (typer/main.py:1137)
+    <module> (sgl-omni:8)
+Thread 1056338 (idle): "asyncio_0"
+    _worker (concurrent/futures/thread.py:90)
+    run (threading.py:1012)
+    _bootstrap_inner (threading.py:1075)
+    _bootstrap (threading.py:1032)
+Thread 1056339 (idle): "asyncio_1"
+    _worker (concurrent/futures/thread.py:90)
+    run (threading.py:1012)
+    _bootstrap_inner (threading.py:1075)
+    _bootstrap (threading.py:1032)
+Thread 1056340 (idle): "asyncio_2"
+    _worker (concurrent/futures/thread.py:90)
+    run (threading.py:1012)
+    _bootstrap_inner (threading.py:1075)
+    _bootstrap (threading.py:1032)
+Thread 1056341 (idle): "asyncio_3"
+    _worker (concurrent/futures/thread.py:90)
+    run (threading.py:1012)
+    _bootstrap_inner (threading.py:1075)
+    _bootstrap (threading.py:1032)

@@ -1,0 +1,49 @@
+diff --git a/drama3/model/backbone.py b/drama3/model/backbone.py
+index 36c7103..d27686b 100644
+--- a/drama3/model/backbone.py
++++ b/drama3/model/backbone.py
+@@ -59,7 +59,8 @@ class Drama3Model(nn.Module):
+ 
+     @classmethod
+     def load(
+-        cls, directory: str | Path, devices: list[str], cache_slots=1, max_length=1024
++        cls, directory: str | Path, devices: list[str], cache_slots=1, max_length=1024,
++        use_npu_moe=False,
+     ):
+         if not devices or cache_slots < 1 or max_length < 1:
+             raise ValueError("Nonempty devices and positive cache bounds are required")
+@@ -144,6 +145,12 @@ class Drama3Model(nn.Module):
+             * model.tower.codebook_size
+         )
+         for layer, device in zip(model.backbone.model.layers, layer_devices):
++            if use_npu_moe:
++                from drama3.model.npu_experts import NpuExperts
++
++                if model.backbone.config.hidden_act != "silu":
++                    raise ValueError("NPU grouped MoE currently supports SiLU only")
++                layer.mlp.experts = NpuExperts(layer.mlp.experts)
+             model.layer_hooks.append(
+                 layer.register_forward_pre_hook(
+                     partial(move_layer_inputs, device=device), with_kwargs=True
+diff --git a/tools/generate.py b/tools/generate.py
+index ea78098..4f9f40a 100644
+--- a/tools/generate.py
++++ b/tools/generate.py
+@@ -24,6 +24,7 @@ def main():
+     parser.add_argument("--output", type=Path, required=True)
+     parser.add_argument("--max-frames", type=int, default=500)
+     parser.add_argument("--seed", type=int, default=42)
++    parser.add_argument("--npu-moe", action="store_true")
+     args = parser.parse_args()
+     torch.set_num_threads(8)
+     torch.manual_seed(args.seed)
+@@ -40,7 +41,8 @@ def main():
+         num_codebooks=config["audio_decoder_config"]["num_codebooks"],
+     )
+     model = Drama3Model.load(
+-        args.model, args.devices, max_length=len(prompt) + args.max_frames
++        args.model, args.devices, max_length=len(prompt) + args.max_frames,
++        use_npu_moe=args.npu_moe,
+     )
+     codec = AudioCodec(args.model / "codec.pth", args.devices[-1], torch.float32)
+     generator = ReferenceGenerator(model)

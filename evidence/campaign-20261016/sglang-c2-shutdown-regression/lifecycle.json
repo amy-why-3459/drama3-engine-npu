@@ -1,0 +1,15 @@
+{
+  "status": "INCONCLUSIVE",
+  "client_exit": 0,
+  "root_process_exit": 0,
+  "all_owned_processes_gone": true,
+  "tp_stopped_messages": 2,
+  "gloo_disconnect_observed": false,
+  "heap_corruption_observed": false,
+  "forced_termination_observed": false,
+  "worker_exit_codes": "NOT_INSTRUMENTED",
+  "shared_memory_cleanup_warning": true,
+  "performance_eligible": false,
+  "reason": "Functionality/shutdown regression on physical 0,1, not matched formal baseline; incomplete quality qualification and resource_tracker warning.",
+  "server_log": "../sglang-real-server-attempt5.log"
+}

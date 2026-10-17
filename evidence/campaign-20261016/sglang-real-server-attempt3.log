@@ -1,0 +1,405 @@
+Failed to import torchada: No module named 'torchada'. MUSA platform compatibility will not work.
+2026-10-16 17:12:59,632 [ERROR] sglang_omni.relay.nixl: Failed to import nixl: No module named 'nixl'. NixlRelay will not work.
+2026-10-16 17:12:59,827 [INFO] sglang_omni.pipeline.mp_runner: CPU thread fallback plan: budget=192 processes=4 fallback_threads_per_process=48 fallback_overcommitted=false allocations={'preprocessing': {'fallback_threads': 48, 'cpus': None, 'stages': ['preprocessing']}, 'vocoder': {'fallback_threads': 48, 'cpus': None, 'stages': ['vocoder']}, 'pipeline_tp0': {'fallback_threads': 48, 'cpus': None, 'stages': ['tts_engine']}, 'pipeline_tp1': {'fallback_threads': 48, 'cpus': None, 'stages': ['tts_engine']}}
+2026-10-16 17:12:59,828 [INFO] sglang_omni.pipeline.mp_runner: Coordinator stream backlog cap: max_total_backlog_bytes=1073741824
+2026-10-16 17:12:59,929 [INFO] sglang_omni.pipeline.control_plane: Coordinator control plane started
+2026-10-16 17:12:59,929 [INFO] sglang_omni.pipeline.coordinator: Coordinator started
+2026-10-16 17:12:59,931 [INFO] torch_npu.env: get env OMP_NUM_THREADS = 1
+2026-10-16 17:12:59,931 [INFO] sglang_omni.pipeline.stage_workers: Worker spawn environment: process=preprocessing OMP_NUM_THREADS=1 source=environment_or_policy fallback_threads=48
+2026-10-16 17:12:59,933 [INFO] sglang_omni.pipeline.stage_workers: StageGroup preprocessing: spawned 1 process(es) (pids=[1039025])
+2026-10-16 17:12:59,935 [INFO] sglang_omni.pipeline.stage_workers: Worker spawn environment: process=vocoder OMP_NUM_THREADS=1 source=environment_or_policy fallback_threads=48
+2026-10-16 17:12:59,936 [INFO] sglang_omni.pipeline.stage_workers: StageGroup vocoder: spawned 1 process(es) (pids=[1039026])
+2026-10-16 17:12:59,938 [INFO] sglang_omni.pipeline.stage_workers: Worker spawn environment: process=pipeline_tp0 OMP_NUM_THREADS=1 source=environment_or_policy fallback_threads=48
+2026-10-16 17:12:59,941 [INFO] sglang_omni.pipeline.stage_workers: Worker spawn environment: process=pipeline_tp1 OMP_NUM_THREADS=1 source=environment_or_policy fallback_threads=48
+2026-10-16 17:12:59,942 [INFO] sglang_omni.pipeline.stage_workers: StageGroup tts_engine: spawned 2 process(es) (pids=[1039027, 1039028])
+Failed to import torchada: No module named 'torchada'. MUSA platform compatibility will not work.
+Failed to import torchada: No module named 'torchada'. MUSA platform compatibility will not work.
+Failed to import torchada: No module named 'torchada'. MUSA platform compatibility will not work.
+Failed to import torchada: No module named 'torchada'. MUSA platform compatibility will not work.
+Failed to import nixl: No module named 'nixl'. NixlRelay will not work.
+2026-10-16 17:13:18,229 [INFO] stage_workers.preprocessing: Building scheduler for preprocessing (tp_rank=0/1) ...
+Failed to import nixl: No module named 'nixl'. NixlRelay will not work.
+Failed to import nixl: No module named 'nixl'. NixlRelay will not work.
+Failed to import nixl: No module named 'nixl'. NixlRelay will not work.
+2026-10-16 17:13:18,806 [INFO] torch_npu.env: get env TORCHINDUCTOR_CACHE_DIR = /tmp/torchinductor_root
+2026-10-16 17:13:19,368 [INFO] torch_npu.env: get env LD_LIBRARY_PATH = /usr/local/Ascend/cann-9.1.0/lib64:/usr/local/Ascend/cann-9.1.0/lib64/plugin/opskernel:/usr/local/Ascend/cann-9.1.0/lib64/plugin/nnengine:/usr/local/Ascend/cann-9.1.0/opp/built-in/op_impl/ai_core/tbe/op_tiling:/usr/local/Ascend/driver/lib64:/usr/local/Ascend/driver/lib64/common:/usr/local/Ascend/driver/lib64/driver:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/lib:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/examples:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/tests/atbopstest:/usr/local/Ascend/ascend-toolkit/latest/tools/aml/lib64:/usr/local/Ascend/ascend-toolkit/latest/tools/aml/lib64/plugin:/usr/local/Ascend/ascend-toolkit/latest/lib64:/usr/local/Ascend/ascend-toolkit/latest/lib64/plugin/opskernel:/usr/local/Ascend/ascend-toolkit/latest/lib64/plugin/nnengine:/usr/local/Ascend/ascend-toolkit/latest/opp/built-in/op_impl/ai_core/tbe/op_tiling:/usr/local/python3.12.13/lib:
+2026-10-16 17:13:19,714 [INFO] stage_workers.vocoder: Set current device to 1 for stage vocoder
+2026-10-16 17:13:19,714 [INFO] stage_workers.vocoder: Building scheduler for vocoder (tp_rank=0/1) ...
+2026-10-16 17:13:19,757 [INFO] stage_workers.pipeline_tp1: Set current device to 1 for stage tts_engine
+2026-10-16 17:13:19,758 [INFO] stage_workers.pipeline_tp1: Building scheduler for tts_engine (tp_rank=1/2) ...
+2026-10-16 17:13:19,761 [INFO] stage_workers.pipeline_tp0: Set current device to 0 for stage tts_engine
+2026-10-16 17:13:19,761 [INFO] stage_workers.pipeline_tp0: Building scheduler for tts_engine (tp_rank=0/2) ...
+2026-10-16 17:13:20,250 [INFO] torch_npu.env: get env TORCHINDUCTOR_CACHE_DIR = /tmp/torchinductor_root
+2026-10-16 17:13:20,295 [INFO] torch_npu.env: get env TORCHINDUCTOR_CACHE_DIR = /tmp/torchinductor_root
+2026-10-16 17:13:20,309 [INFO] torch_npu.env: get env TORCHINDUCTOR_CACHE_DIR = /tmp/torchinductor_root
+2026-10-16 17:13:20,774 [INFO] torch_npu.env: get env LD_LIBRARY_PATH = /usr/local/Ascend/cann-9.1.0/lib64:/usr/local/Ascend/cann-9.1.0/lib64/plugin/opskernel:/usr/local/Ascend/cann-9.1.0/lib64/plugin/nnengine:/usr/local/Ascend/cann-9.1.0/opp/built-in/op_impl/ai_core/tbe/op_tiling:/usr/local/Ascend/driver/lib64:/usr/local/Ascend/driver/lib64/common:/usr/local/Ascend/driver/lib64/driver:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/lib:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/examples:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/tests/atbopstest:/usr/local/Ascend/ascend-toolkit/latest/tools/aml/lib64:/usr/local/Ascend/ascend-toolkit/latest/tools/aml/lib64/plugin:/usr/local/Ascend/ascend-toolkit/latest/lib64:/usr/local/Ascend/ascend-toolkit/latest/lib64/plugin/opskernel:/usr/local/Ascend/ascend-toolkit/latest/lib64/plugin/nnengine:/usr/local/Ascend/ascend-toolkit/latest/opp/built-in/op_impl/ai_core/tbe/op_tiling:/usr/local/python3.12.13/lib:
+2026-10-16 17:13:20,819 [INFO] torch_npu.env: get env LD_LIBRARY_PATH = /usr/local/Ascend/cann-9.1.0/lib64:/usr/local/Ascend/cann-9.1.0/lib64/plugin/opskernel:/usr/local/Ascend/cann-9.1.0/lib64/plugin/nnengine:/usr/local/Ascend/cann-9.1.0/opp/built-in/op_impl/ai_core/tbe/op_tiling:/usr/local/Ascend/driver/lib64:/usr/local/Ascend/driver/lib64/common:/usr/local/Ascend/driver/lib64/driver:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/lib:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/examples:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/tests/atbopstest:/usr/local/Ascend/ascend-toolkit/latest/tools/aml/lib64:/usr/local/Ascend/ascend-toolkit/latest/tools/aml/lib64/plugin:/usr/local/Ascend/ascend-toolkit/latest/lib64:/usr/local/Ascend/ascend-toolkit/latest/lib64/plugin/opskernel:/usr/local/Ascend/ascend-toolkit/latest/lib64/plugin/nnengine:/usr/local/Ascend/ascend-toolkit/latest/opp/built-in/op_impl/ai_core/tbe/op_tiling:/usr/local/python3.12.13/lib:
+2026-10-16 17:13:20,842 [INFO] torch_npu.env: get env LD_LIBRARY_PATH = /usr/local/Ascend/cann-9.1.0/lib64:/usr/local/Ascend/cann-9.1.0/lib64/plugin/opskernel:/usr/local/Ascend/cann-9.1.0/lib64/plugin/nnengine:/usr/local/Ascend/cann-9.1.0/opp/built-in/op_impl/ai_core/tbe/op_tiling:/usr/local/Ascend/driver/lib64:/usr/local/Ascend/driver/lib64/common:/usr/local/Ascend/driver/lib64/driver:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/lib:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/examples:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/tests/atbopstest:/usr/local/Ascend/ascend-toolkit/latest/tools/aml/lib64:/usr/local/Ascend/ascend-toolkit/latest/tools/aml/lib64/plugin:/usr/local/Ascend/ascend-toolkit/latest/lib64:/usr/local/Ascend/ascend-toolkit/latest/lib64/plugin/opskernel:/usr/local/Ascend/ascend-toolkit/latest/lib64/plugin/nnengine:/usr/local/Ascend/ascend-toolkit/latest/opp/built-in/op_impl/ai_core/tbe/op_tiling:/usr/local/python3.12.13/lib:
+2026-10-16 17:13:23,281 [INFO] torch_npu.env: get env ASCEND_CUSTOM_OPP_PATH = /usr/local/python3.12.13/lib/python3.12/site-packages/fla_npu/opp/vendors/fla_npu_transformer:/usr/local/python3.12.13/lib/python3.12/site-packages/fla_npu/opp/vendors/fla_npu_transformer/op_api/lib
+2026-10-16 17:13:23,658 [INFO] vllm.plugins: Available plugins for group vllm.platform_plugins:
+2026-10-16 17:13:23,658 [INFO] vllm.plugins: - ascend -> vllm_ascend:register
+2026-10-16 17:13:23,658 [INFO] vllm.plugins: All plugins in this group will be loaded. Set `VLLM_PLUGINS` to control which plugins to load.
+2026-10-16 17:13:23,682 [INFO] vllm.platforms: Platform plugin ascend is activated
+2026-10-16 17:13:23,753 [INFO] vllm.logger: Breakable CUDAGraph on Ascend is opt-in; using VLLM_USE_BREAKABLE_CUDAGRAPH=0.
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/contrib/transfer_to_npu.py:390: ImportWarning: 
+    *************************************************************************************************************
+    The torch.Tensor.cuda and torch.nn.Module.cuda are replaced with torch.Tensor.npu and torch.nn.Module.npu now..
+    The torch.cuda.DoubleTensor is replaced with torch.npu.FloatTensor cause the double type is not supported now..
+    The backend in torch.distributed.init_process_group set to hccl now..
+    The torch.cuda.* and torch.cuda.amp.* are replaced with torch.npu.* and torch.npu.amp.* now..
+    The device parameters have been replaced with npu in the function below:
+    torch.logspace, torch.randint, torch.hann_window, torch.rand, torch.full_like, torch.ones_like, torch.rand_like, torch.randperm, torch.arange, torch.frombuffer, torch.normal, torch._empty_per_channel_affine_quantized, torch.empty_strided, torch.empty_like, torch.scalar_tensor, torch.tril_indices, torch.bartlett_window, torch.ones, torch.sparse_coo_tensor, torch.randn, torch.kaiser_window, torch.tensor, torch.triu_indices, torch.as_tensor, torch.zeros, torch.randint_like, torch.full, torch.eye, torch._sparse_csr_tensor_unsafe, torch.empty, torch._sparse_coo_tensor_unsafe, torch.blackman_window, torch.zeros_like, torch.range, torch.sparse_csr_tensor, torch.randn_like, torch.from_file, torch._cudnn_init_dropout_state, torch._empty_affine_quantized, torch.linspace, torch.hamming_window, torch.empty_quantized, torch._pin_memory, torch.load, torch.set_default_device, torch.get_device_module, torch.sparse_compressed_tensor, torch.Tensor.new_empty, torch.Tensor.new_empty_strided, torch.Tensor.new_full, torch.Tensor.new_ones, torch.Tensor.new_tensor, torch.Tensor.new_zeros, torch.Tensor.to, torch.Tensor.pin_memory, torch.nn.Module.to, torch.nn.Module.to_empty
+    *************************************************************************************************************
+    
+  warnings.warn(msg, ImportWarning)
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/contrib/transfer_to_npu.py:311: RuntimeWarning: torch.jit.script and torch.jit.script_method will be disabled by transfer_to_npu, which currently does not support them, if you need to enable them, please do not use transfer_to_npu.
+  warnings.warn(msg, RuntimeWarning)
+2026-10-16 17:13:24,645 [INFO] torch_npu.env: get env ASCEND_CUSTOM_OPP_PATH = /usr/local/python3.12.13/lib/python3.12/site-packages/fla_npu/opp/vendors/fla_npu_transformer:/usr/local/python3.12.13/lib/python3.12/site-packages/fla_npu/opp/vendors/fla_npu_transformer/op_api/lib
+2026-10-16 17:13:24,647 [INFO] torch_npu.env: get env ASCEND_CUSTOM_OPP_PATH = /usr/local/python3.12.13/lib/python3.12/site-packages/fla_npu/opp/vendors/fla_npu_transformer:/usr/local/python3.12.13/lib/python3.12/site-packages/fla_npu/opp/vendors/fla_npu_transformer/op_api/lib
+2026-10-16 17:13:24,755 [INFO] torch_npu.env: get env ASCEND_CUSTOM_OPP_PATH = /usr/local/python3.12.13/lib/python3.12/site-packages/fla_npu/opp/vendors/fla_npu_transformer:/usr/local/python3.12.13/lib/python3.12/site-packages/fla_npu/opp/vendors/fla_npu_transformer/op_api/lib
+<frozen abc>:106: DeprecationWarning: MultiPlatformOp is deprecated; subclass sglang.kernels.fused_op.BaseFusedOp instead (RFC #29630).
+2026-10-16 17:13:25,007 [INFO] vllm.plugins: Available plugins for group vllm.platform_plugins:
+2026-10-16 17:13:25,007 [INFO] vllm.plugins: Available plugins for group vllm.platform_plugins:
+2026-10-16 17:13:25,007 [INFO] vllm.plugins: - ascend -> vllm_ascend:register
+2026-10-16 17:13:25,007 [INFO] vllm.plugins: - ascend -> vllm_ascend:register
+2026-10-16 17:13:25,007 [INFO] vllm.plugins: All plugins in this group will be loaded. Set `VLLM_PLUGINS` to control which plugins to load.
+2026-10-16 17:13:25,007 [INFO] vllm.plugins: All plugins in this group will be loaded. Set `VLLM_PLUGINS` to control which plugins to load.
+2026-10-16 17:13:25,030 [INFO] vllm.platforms: Platform plugin ascend is activated
+2026-10-16 17:13:25,030 [INFO] vllm.platforms: Platform plugin ascend is activated
+2026-10-16 17:13:25,099 [INFO] vllm.logger: Breakable CUDAGraph on Ascend is opt-in; using VLLM_USE_BREAKABLE_CUDAGRAPH=0.
+2026-10-16 17:13:25,100 [INFO] vllm.logger: Breakable CUDAGraph on Ascend is opt-in; using VLLM_USE_BREAKABLE_CUDAGRAPH=0.
+2026-10-16 17:13:25,130 [INFO] vllm.plugins: Available plugins for group vllm.platform_plugins:
+2026-10-16 17:13:25,130 [INFO] vllm.plugins: - ascend -> vllm_ascend:register
+2026-10-16 17:13:25,130 [INFO] vllm.plugins: All plugins in this group will be loaded. Set `VLLM_PLUGINS` to control which plugins to load.
+2026-10-16 17:13:25,155 [INFO] vllm.platforms: Platform plugin ascend is activated
+2026-10-16 17:13:25,229 [INFO] vllm.logger: Breakable CUDAGraph on Ascend is opt-in; using VLLM_USE_BREAKABLE_CUDAGRAPH=0.
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/contrib/transfer_to_npu.py:390: ImportWarning: 
+    *************************************************************************************************************
+    The torch.Tensor.cuda and torch.nn.Module.cuda are replaced with torch.Tensor.npu and torch.nn.Module.npu now..
+    The torch.cuda.DoubleTensor is replaced with torch.npu.FloatTensor cause the double type is not supported now..
+    The backend in torch.distributed.init_process_group set to hccl now..
+    The torch.cuda.* and torch.cuda.amp.* are replaced with torch.npu.* and torch.npu.amp.* now..
+    The device parameters have been replaced with npu in the function below:
+    torch.logspace, torch.randint, torch.hann_window, torch.rand, torch.full_like, torch.ones_like, torch.rand_like, torch.randperm, torch.arange, torch.frombuffer, torch.normal, torch._empty_per_channel_affine_quantized, torch.empty_strided, torch.empty_like, torch.scalar_tensor, torch.tril_indices, torch.bartlett_window, torch.ones, torch.sparse_coo_tensor, torch.randn, torch.kaiser_window, torch.tensor, torch.triu_indices, torch.as_tensor, torch.zeros, torch.randint_like, torch.full, torch.eye, torch._sparse_csr_tensor_unsafe, torch.empty, torch._sparse_coo_tensor_unsafe, torch.blackman_window, torch.zeros_like, torch.range, torch.sparse_csr_tensor, torch.randn_like, torch.from_file, torch._cudnn_init_dropout_state, torch._empty_affine_quantized, torch.linspace, torch.hamming_window, torch.empty_quantized, torch._pin_memory, torch.load, torch.set_default_device, torch.get_device_module, torch.sparse_compressed_tensor, torch.Tensor.new_empty, torch.Tensor.new_empty_strided, torch.Tensor.new_full, torch.Tensor.new_ones, torch.Tensor.new_tensor, torch.Tensor.new_zeros, torch.Tensor.to, torch.Tensor.pin_memory, torch.nn.Module.to, torch.nn.Module.to_empty
+    *************************************************************************************************************
+    
+  warnings.warn(msg, ImportWarning)
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/contrib/transfer_to_npu.py:311: RuntimeWarning: torch.jit.script and torch.jit.script_method will be disabled by transfer_to_npu, which currently does not support them, if you need to enable them, please do not use transfer_to_npu.
+  warnings.warn(msg, RuntimeWarning)
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/contrib/transfer_to_npu.py:390: ImportWarning: 
+    *************************************************************************************************************
+    The torch.Tensor.cuda and torch.nn.Module.cuda are replaced with torch.Tensor.npu and torch.nn.Module.npu now..
+    The torch.cuda.DoubleTensor is replaced with torch.npu.FloatTensor cause the double type is not supported now..
+    The backend in torch.distributed.init_process_group set to hccl now..
+    The torch.cuda.* and torch.cuda.amp.* are replaced with torch.npu.* and torch.npu.amp.* now..
+    The device parameters have been replaced with npu in the function below:
+    torch.logspace, torch.randint, torch.hann_window, torch.rand, torch.full_like, torch.ones_like, torch.rand_like, torch.randperm, torch.arange, torch.frombuffer, torch.normal, torch._empty_per_channel_affine_quantized, torch.empty_strided, torch.empty_like, torch.scalar_tensor, torch.tril_indices, torch.bartlett_window, torch.ones, torch.sparse_coo_tensor, torch.randn, torch.kaiser_window, torch.tensor, torch.triu_indices, torch.as_tensor, torch.zeros, torch.randint_like, torch.full, torch.eye, torch._sparse_csr_tensor_unsafe, torch.empty, torch._sparse_coo_tensor_unsafe, torch.blackman_window, torch.zeros_like, torch.range, torch.sparse_csr_tensor, torch.randn_like, torch.from_file, torch._cudnn_init_dropout_state, torch._empty_affine_quantized, torch.linspace, torch.hamming_window, torch.empty_quantized, torch._pin_memory, torch.load, torch.set_default_device, torch.get_device_module, torch.sparse_compressed_tensor, torch.Tensor.new_empty, torch.Tensor.new_empty_strided, torch.Tensor.new_full, torch.Tensor.new_ones, torch.Tensor.new_tensor, torch.Tensor.new_zeros, torch.Tensor.to, torch.Tensor.pin_memory, torch.nn.Module.to, torch.nn.Module.to_empty
+    *************************************************************************************************************
+    
+  warnings.warn(msg, ImportWarning)
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/contrib/transfer_to_npu.py:311: RuntimeWarning: torch.jit.script and torch.jit.script_method will be disabled by transfer_to_npu, which currently does not support them, if you need to enable them, please do not use transfer_to_npu.
+  warnings.warn(msg, RuntimeWarning)
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/npu/__init__.py:540: UserWarning: You can set the device capability via the environment variable TORCH_NPU_DEVICE_CAPABILITY. The return value of get_device_capability is only for compatibility with PyTorch and does not represent the actual capability of the NPU device.
+  warnings.warn(f"You can set the device capability via the environment variable TORCH_NPU_DEVICE_CAPABILITY. {warning_str}")
+2026-10-16 17:13:26,014 [WARNING] sglang.kernels.jit.utils.arch: Cannot detect CUDA architecture.
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/contrib/transfer_to_npu.py:390: ImportWarning: 
+    *************************************************************************************************************
+    The torch.Tensor.cuda and torch.nn.Module.cuda are replaced with torch.Tensor.npu and torch.nn.Module.npu now..
+    The torch.cuda.DoubleTensor is replaced with torch.npu.FloatTensor cause the double type is not supported now..
+    The backend in torch.distributed.init_process_group set to hccl now..
+    The torch.cuda.* and torch.cuda.amp.* are replaced with torch.npu.* and torch.npu.amp.* now..
+    The device parameters have been replaced with npu in the function below:
+    torch.logspace, torch.randint, torch.hann_window, torch.rand, torch.full_like, torch.ones_like, torch.rand_like, torch.randperm, torch.arange, torch.frombuffer, torch.normal, torch._empty_per_channel_affine_quantized, torch.empty_strided, torch.empty_like, torch.scalar_tensor, torch.tril_indices, torch.bartlett_window, torch.ones, torch.sparse_coo_tensor, torch.randn, torch.kaiser_window, torch.tensor, torch.triu_indices, torch.as_tensor, torch.zeros, torch.randint_like, torch.full, torch.eye, torch._sparse_csr_tensor_unsafe, torch.empty, torch._sparse_coo_tensor_unsafe, torch.blackman_window, torch.zeros_like, torch.range, torch.sparse_csr_tensor, torch.randn_like, torch.from_file, torch._cudnn_init_dropout_state, torch._empty_affine_quantized, torch.linspace, torch.hamming_window, torch.empty_quantized, torch._pin_memory, torch.load, torch.set_default_device, torch.get_device_module, torch.sparse_compressed_tensor, torch.Tensor.new_empty, torch.Tensor.new_empty_strided, torch.Tensor.new_full, torch.Tensor.new_ones, torch.Tensor.new_tensor, torch.Tensor.new_zeros, torch.Tensor.to, torch.Tensor.pin_memory, torch.nn.Module.to, torch.nn.Module.to_empty
+    *************************************************************************************************************
+    
+  warnings.warn(msg, ImportWarning)
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/contrib/transfer_to_npu.py:311: RuntimeWarning: torch.jit.script and torch.jit.script_method will be disabled by transfer_to_npu, which currently does not support them, if you need to enable them, please do not use transfer_to_npu.
+  warnings.warn(msg, RuntimeWarning)
+<frozen abc>:106: DeprecationWarning: MultiPlatformOp is deprecated; subclass sglang.kernels.fused_op.BaseFusedOp instead (RFC #29630).
+<frozen abc>:106: DeprecationWarning: MultiPlatformOp is deprecated; subclass sglang.kernels.fused_op.BaseFusedOp instead (RFC #29630).
+<frozen abc>:106: DeprecationWarning: MultiPlatformOp is deprecated; subclass sglang.kernels.fused_op.BaseFusedOp instead (RFC #29630).
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/npu/__init__.py:540: UserWarning: You can set the device capability via the environment variable TORCH_NPU_DEVICE_CAPABILITY. The return value of get_device_capability is only for compatibility with PyTorch and does not represent the actual capability of the NPU device.
+  warnings.warn(f"You can set the device capability via the environment variable TORCH_NPU_DEVICE_CAPABILITY. {warning_str}")
+2026-10-16 17:13:26,512 [WARNING] sglang.kernels.jit.utils.arch: Cannot detect CUDA architecture.
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/npu/__init__.py:540: UserWarning: You can set the device capability via the environment variable TORCH_NPU_DEVICE_CAPABILITY. The return value of get_device_capability is only for compatibility with PyTorch and does not represent the actual capability of the NPU device.
+  warnings.warn(f"You can set the device capability via the environment variable TORCH_NPU_DEVICE_CAPABILITY. {warning_str}")
+2026-10-16 17:13:26,524 [WARNING] sglang.kernels.jit.utils.arch: Cannot detect CUDA architecture.
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/npu/__init__.py:540: UserWarning: You can set the device capability via the environment variable TORCH_NPU_DEVICE_CAPABILITY. The return value of get_device_capability is only for compatibility with PyTorch and does not represent the actual capability of the NPU device.
+  warnings.warn(f"You can set the device capability via the environment variable TORCH_NPU_DEVICE_CAPABILITY. {warning_str}")
+2026-10-16 17:13:26,668 [WARNING] sglang.kernels.jit.utils.arch: Cannot detect CUDA architecture.
+2026-10-16 17:13:26,888 [WARNING] sglang.srt.models.registry: Ignore import error when loading sglang.srt.models.falcon_mamba: cannot import name 'causal_conv1d_fn_triton' from 'sglang.srt.layers.attention.mamba.mamba' (/home/why/drama3-research/sglang/python/sglang/srt/layers/attention/mamba/mamba.py)
+2026-10-16 17:13:26,911 [WARNING] sglang.srt.models.registry: Ignore import error when loading sglang.srt.models.falcon_mamba: cannot import name 'causal_conv1d_fn_triton' from 'sglang.srt.layers.attention.mamba.mamba' (/home/why/drama3-research/sglang/python/sglang/srt/layers/attention/mamba/mamba.py)
+2026-10-16 17:13:26,998 [WARNING] sglang.srt.models.registry: Ignore import error when loading sglang.srt.models.falcon_mamba: cannot import name 'causal_conv1d_fn_triton' from 'sglang.srt.layers.attention.mamba.mamba' (/home/why/drama3-research/sglang/python/sglang/srt/layers/attention/mamba/mamba.py)
+2026-10-16 17:13:27,052 [WARNING] sglang.srt.models.registry: Ignore import error when loading sglang.srt.models.falcon_mamba: cannot import name 'causal_conv1d_fn_triton' from 'sglang.srt.layers.attention.mamba.mamba' (/home/why/drama3-research/sglang/python/sglang/srt/layers/attention/mamba/mamba.py)
+2026-10-16 17:13:27,277 [WARNING] sglang.srt.models.registry: Ignore import error when loading sglang.srt.models.inkling: No module named 'cutlass'
+2026-10-16 17:13:27,301 [INFO] torch_npu.env: get env TRITON_CACHE_DIR = /root/.cache/sglang/triton
+2026-10-16 17:13:27,749 [WARNING] sglang.srt.models.registry: Ignore import error when loading sglang.srt.models.inkling: No module named 'cutlass'
+2026-10-16 17:13:27,759 [WARNING] sglang.srt.models.registry: Ignore import error when loading sglang.srt.models.mamba: cannot import name 'causal_conv1d_fn_triton' from 'sglang.srt.layers.attention.mamba.mamba' (/home/why/drama3-research/sglang/python/sglang/srt/layers/attention/mamba/mamba.py)
+2026-10-16 17:13:27,771 [INFO] torch_npu.env: get env TRITON_CACHE_DIR = /root/.cache/sglang/triton
+2026-10-16 17:13:27,808 [WARNING] sglang.srt.models.registry: Ignore import error when loading sglang.srt.models.mindspore: No module named 'mindspore'
+2026-10-16 17:13:27,866 [WARNING] sglang.srt.models.registry: Ignore import error when loading sglang.srt.models.inkling: No module named 'cutlass'
+2026-10-16 17:13:27,889 [INFO] torch_npu.env: get env TRITON_CACHE_DIR = /root/.cache/sglang/triton
+2026-10-16 17:13:27,992 [WARNING] sglang.srt.models.registry: Ignore import error when loading sglang.srt.models.inkling: No module named 'cutlass'
+2026-10-16 17:13:28,015 [INFO] torch_npu.env: get env TRITON_CACHE_DIR = /root/.cache/sglang/triton
+2026-10-16 17:13:28,190 [WARNING] sglang.srt.models.registry: Ignore import error when loading sglang.srt.models.mamba: cannot import name 'causal_conv1d_fn_triton' from 'sglang.srt.layers.attention.mamba.mamba' (/home/why/drama3-research/sglang/python/sglang/srt/layers/attention/mamba/mamba.py)
+2026-10-16 17:13:28,238 [WARNING] sglang.srt.models.registry: Ignore import error when loading sglang.srt.models.mindspore: No module named 'mindspore'
+2026-10-16 17:13:28,330 [WARNING] sglang.srt.models.registry: Ignore import error when loading sglang.srt.models.mamba: cannot import name 'causal_conv1d_fn_triton' from 'sglang.srt.layers.attention.mamba.mamba' (/home/why/drama3-research/sglang/python/sglang/srt/layers/attention/mamba/mamba.py)
+2026-10-16 17:13:28,380 [WARNING] sglang.srt.models.registry: Ignore import error when loading sglang.srt.models.mindspore: No module named 'mindspore'
+2026-10-16 17:13:28,439 [WARNING] sglang.srt.models.registry: Ignore import error when loading sglang.srt.models.mamba: cannot import name 'causal_conv1d_fn_triton' from 'sglang.srt.layers.attention.mamba.mamba' (/home/why/drama3-research/sglang/python/sglang/srt/layers/attention/mamba/mamba.py)
+2026-10-16 17:13:28,487 [WARNING] sglang.srt.models.registry: Ignore import error when loading sglang.srt.models.mindspore: No module named 'mindspore'
+2026-10-16 17:13:28,491 [ERROR] stage_workers.preprocessing: Stage process preprocessing failed
+Traceback (most recent call last):
+  File "/home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/pipeline/stage_workers.py", line 566, in stage_process_main
+    run_process(spec, ready_event, log)
+  File "/home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/pipeline/stage_workers.py", line 659, in run_process
+    construct_stage(
+  File "/home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/pipeline/stage_workers.py", line 799, in construct_stage
+    scheduler = construct_scheduler(spec, gpu_id, log)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/pipeline/stage_workers.py", line 1079, in construct_scheduler
+    return _invoke()
+           ^^^^^^^^^
+  File "/home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/pipeline/stage_workers.py", line 1072, in _invoke
+    return factory(**factory_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/models/fishaudio_drama3/stages.py", line 113, in create_preprocessing_executor
+    codec = load_codec(codec_directory, resolved_device)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/models/fishaudio_s2_pro/stages.py", line 179, in load_codec
+    from hydra.utils import instantiate
+ModuleNotFoundError: No module named 'hydra'
+
+2026-10-16 17:13:28,876 [INFO] stage_workers.pipeline_tp0: Acquired GPU startup lock for stage tts_engine: /tmp/sglang_omni_gpu_0_startup.lock
+2026-10-16 17:13:28,915 [WARNING] sglang.srt.configs.model_config: bsgemm-moe quantization is not fully optimized yet. The speed can be slower than non-quantized models.
+2026-10-16 17:13:28,933 [INFO] sglang_omni.scheduling.bootstrap: SGLang runtime configuration: gpu_id=0, sm=None, architecture=unknown, attention_backend=ascend, decode_attention_backend=ascend, prefill_attention_backend=ascend, sampling_backend=pytorch
+2026-10-16 17:13:28,935 [WARNING] sglang.srt.configs.model_config: bsgemm-moe quantization is not fully optimized yet. The speed can be slower than non-quantized models.
+2026-10-16 17:13:28,943 [INFO] sglang.srt.distributed.bootstrap: Init parallel begin.
+2026-10-16 17:13:29,037 [INFO] stage_workers.vocoder: Acquired GPU startup lock for stage vocoder: /tmp/sglang_omni_gpu_1_startup.lock
+2026-10-16 17:13:29,039 [ERROR] stage_workers.vocoder: Stage process vocoder failed
+Traceback (most recent call last):
+  File "/home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/pipeline/stage_workers.py", line 566, in stage_process_main
+    run_process(spec, ready_event, log)
+  File "/home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/pipeline/stage_workers.py", line 659, in run_process
+    construct_stage(
+  File "/home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/pipeline/stage_workers.py", line 799, in construct_stage
+    scheduler = construct_scheduler(spec, gpu_id, log)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/pipeline/stage_workers.py", line 1085, in construct_scheduler
+    return _invoke()
+           ^^^^^^^^^
+  File "/home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/pipeline/stage_workers.py", line 1072, in _invoke
+    return factory(**factory_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/models/fishaudio_drama3/stages.py", line 287, in create_vocoder_executor
+    codec = load_codec(resolve_codec_directory(codec_path), resolved_device)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/models/fishaudio_s2_pro/stages.py", line 179, in load_codec
+    from hydra.utils import instantiate
+ModuleNotFoundError: No module named 'hydra'
+
+2026-10-16 17:13:29,152 [INFO] stage_workers.pipeline_tp1: Acquired GPU startup lock for stage tts_engine: /tmp/sglang_omni_gpu_1_startup.lock
+2026-10-16 17:13:29,195 [WARNING] sglang.srt.configs.model_config: bsgemm-moe quantization is not fully optimized yet. The speed can be slower than non-quantized models.
+2026-10-16 17:13:29,216 [INFO] sglang_omni.scheduling.bootstrap: SGLang runtime configuration: gpu_id=1, sm=None, architecture=unknown, attention_backend=ascend, decode_attention_backend=ascend, prefill_attention_backend=ascend, sampling_backend=pytorch
+2026-10-16 17:13:29,220 [WARNING] sglang.srt.configs.model_config: bsgemm-moe quantization is not fully optimized yet. The speed can be slower than non-quantized models.
+2026-10-16 17:13:29,229 [INFO] sglang.srt.distributed.bootstrap: Init parallel begin.
+[rank1]:[W1016 17:13:29.142292742 NPUCachingAllocator.cpp:202] Warning: The current CANN and HDK(driver) versions require processing for 32 padding size, with memory allocation. (function operator())
+[rank0]:[W1016 17:13:29.153657154 NPUCachingAllocator.cpp:202] Warning: The current CANN and HDK(driver) versions require processing for 32 padding size, with memory allocation. (function operator())
+2026-10-16 17:13:29,756 [WARNING] stage_workers.vocoder: Reclaiming GPU memory after stage process vocoder exit after failure on gpu_ids=[1]
+[rank1]:[W1016 17:13:29.783744464 ProcessGroupGloo.cpp:511] Warning: Unable to resolve hostname to a (local) address. Using the loopback address as fallback. Manually set the network interface to bind to with GLOO_SOCKET_IFNAME. (function operator())
+[rank0]:[W1016 17:13:29.853579232 ProcessGroupGloo.cpp:511] Warning: Unable to resolve hostname to a (local) address. Using the loopback address as fallback. Manually set the network interface to bind to with GLOO_SOCKET_IFNAME. (function operator())
+[Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+2026-10-16 17:13:29,973 [INFO] torch_npu.env: get env SGLANG_ENABLE_DETERMINISTIC_INFERENCE = 0
+2026-10-16 17:13:29,973 [INFO] torch_npu.env: get env SGLANG_ENABLE_DETERMINISTIC_INFERENCE = 0
+[Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+2026-10-16 17:13:30,080 [INFO] sglang.srt.distributed.bootstrap: Init parallel ends. elapsed=1.14 s
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+2026-10-16 17:13:30,112 [INFO] sglang.srt.distributed.bootstrap: Init parallel ends. elapsed=0.88 s
+2026-10-16 17:13:30,385 [WARNING] stage_workers.vocoder: GPU memory reclaim complete after stage process vocoder exit after failure on gpu_ids=[1]
+corrupted size vs. prev_size
+2026-10-16 17:13:33,041 [WARNING] sglang_omni.model_runner.sglang_model_runner: sglang-omni: skipping model MingTTSSGLangModel (No module named 'x_transformers')
+2026-10-16 17:13:33,131 [WARNING] sglang_omni.model_runner.sglang_model_runner: sglang-omni: skipping model Qwen3ASRForConditionalGeneration ('qwen3_asr' is already used by a Transformers config, pick another name.)
+2026-10-16 17:13:33,145 [WARNING] sglang_omni.model_runner.sglang_model_runner: sglang-omni: skipping model MingTTSSGLangModel (No module named 'x_transformers')
+2026-10-16 17:13:33,236 [WARNING] sglang_omni.model_runner.sglang_model_runner: sglang-omni: skipping model Qwen3ASRForConditionalGeneration ('qwen3_asr' is already used by a Transformers config, pick another name.)
+2026-10-16 17:13:33,286 [INFO] sglang.srt.distributed.bootstrap: Memory baseline taken. mem usage=0.00 GB
+2026-10-16 17:13:33,286 [INFO] sglang.srt.distributed.bootstrap: Memory baseline taken. mem usage=0.00 GB
+2026-10-16 17:13:33,316 [INFO] sglang.srt.model_executor.model_runner: Load weight begin. avail mem=60.57 GB
+2026-10-16 17:13:33,318 [INFO] sglang.srt.model_executor.model_runner: Load weight begin. avail mem=60.56 GB
+2026-10-16 17:13:33,321 [INFO] sglang.srt.layers.quantization.fp8: Detected fp8 checkpoint.
+2026-10-16 17:13:33,400 [WARNING] sglang.srt.models.qwen3_5: using attn output gate!
+2026-10-16 17:13:33,422 [WARNING] sglang.srt.models.qwen3_5: using attn output gate!
+Multi-thread loading shards:   0% Completed | 0/8 [00:00<?, ?it/s]corrupted size vs. prev_size
+Multi-thread loading shards:  12% Completed | 1/8 [00:10<01:12, 10.41s/it]Multi-thread loading shards:  25% Completed | 2/8 [00:14<00:38,  6.40s/it]2026-10-16 17:13:55,493 [INFO] sglang_omni.pipeline.coordinator: Coordinator completion loop cancelled
+2026-10-16 17:13:55,493 [INFO] sglang_omni.pipeline.coordinator: Coordinator stopped
+╭───────────────────── Traceback (most recent call last) ──────────────────────╮
+│ /home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/cli/serve.py: │
+│ 522 in serve                                                                 │
+│                                                                              │
+│   519 │   else:                                                              │
+│   520 │   │   pass                                                           │
+│   521 │                                                                      │
+│ ❱ 522 │   launch_server(                                                     │
+│   523 │   │   merged_config,                                                 │
+│   524 │   │   host=host,                                                     │
+│   525 │   │   port=port,                                                     │
+│                                                                              │
+│ /home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/cli/serve.py: │
+│ 37 in launch_server                                                          │
+│                                                                              │
+│    34 def launch_server(*args: object, **kwargs: object) -> NoReturn:        │
+│    35 │   from sglang_omni.serve.launcher import launch_server as            │
+│       _launch_server                                                         │
+│    36 │                                                                      │
+│ ❱  37 │   _launch_server(*args, **kwargs)                                    │
+│    38 │   # note (Richard Wang): the launcher has stopped the pipeline and   │
+│       joined                                                                 │
+│    39 │   # every stage by now. Tearing down the modules and objects the CLI │
+│    40 │   # imported took about a second more, and the server's stop waited  │
+│       for it.                                                                │
+│                                                                              │
+│ /home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/serve/launche │
+│ r.py:859 in launch_server                                                    │
+│                                                                              │
+│   856 │   │   │   signal.signal(signal.SIGTERM, previous_handler)            │
+│   857 │                                                                      │
+│   858 │   try:                                                               │
+│ ❱ 859 │   │   asyncio.run(run_server_with_sigterm_cleanup())                 │
+│   860 │   except asyncio.CancelledError:                                     │
+│   861 │   │   if sigterm_received and not cleanup_failed:                    │
+│   862 │   │   │   signal.raise_signal(signal.SIGTERM)                        │
+│                                                                              │
+│ /usr/local/python3.12.13/lib/python3.12/asyncio/runners.py:195 in run        │
+│                                                                              │
+│   192 │   │   │   "asyncio.run() cannot be called from a running event       │
+│       loop")                                                                 │
+│   193 │                                                                      │
+│   194 │   with Runner(debug=debug, loop_factory=loop_factory) as runner:     │
+│ ❱ 195 │   │   return runner.run(main)                                        │
+│   196                                                                        │
+│   197                                                                        │
+│   198 def _cancel_all_tasks(loop):                                           │
+│                                                                              │
+│ /usr/local/python3.12.13/lib/python3.12/asyncio/runners.py:118 in run        │
+│                                                                              │
+│   115 │   │                                                                  │
+│   116 │   │   self._interrupt_count = 0                                      │
+│   117 │   │   try:                                                           │
+│ ❱ 118 │   │   │   return self._loop.run_until_complete(task)                 │
+│   119 │   │   except exceptions.CancelledError:                              │
+│   120 │   │   │   if self._interrupt_count > 0:                              │
+│   121 │   │   │   │   uncancel = getattr(task, "uncancel", None)             │
+│                                                                              │
+│ /usr/local/python3.12.13/lib/python3.12/asyncio/base_events.py:691 in        │
+│ run_until_complete                                                           │
+│                                                                              │
+│    688 │   │   if not future.done():                                         │
+│    689 │   │   │   raise RuntimeError('Event loop stopped before Future      │
+│        completed.')                                                          │
+│    690 │   │                                                                 │
+│ ❱  691 │   │   return future.result()                                        │
+│    692 │                                                                     │
+│    693 │   def stop(self):                                                   │
+│    694 │   │   """Stop running the event loop.                               │
+│                                                                              │
+│ /home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/serve/launche │
+│ r.py:850 in run_server_with_sigterm_cleanup                                  │
+│                                                                              │
+│   847 │   │                                                                  │
+│   848 │   │   signal.signal(signal.SIGTERM, handle_sigterm)                  │
+│   849 │   │   try:                                                           │
+│ ❱ 850 │   │   │   await server_run                                           │
+│   851 │   │   except asyncio.CancelledError as cancelled:                    │
+│   852 │   │   │   # note (Richard Wang): Python 3.10 drops the cause outside │
+│       asyncio.run                                                            │
+│   853 │   │   │   cleanup_failed = cancelled.__cause__ is not None           │
+│                                                                              │
+│ /home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/serve/launche │
+│ r.py:583 in run_server                                                       │
+│                                                                              │
+│   580 │                                                                      │
+│   581 │   mp_runner = MultiProcessPipelineRunner(pipeline_config)            │
+│   582 │   startup_timeout =                                                  │
+│       float(os.environ.get("SGLANG_OMNI_STARTUP_TIMEOUT", "600"))            │
+│ ❱ 583 │   await mp_runner.start(timeout=startup_timeout)                     │
+│   584 │   coordinator = mp_runner.coordinator                                │
+│   585 │                                                                      │
+│   586 │   # Plans are resolved once inside ``mp_runner.start()`` (which      │
+│       applies                                                                │
+│                                                                              │
+│ /home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/pipeline/mp_r │
+│ unner.py:801 in start                                                        │
+│                                                                              │
+│    798 │   │   │   │   │   │   │   process_env_overrides=env_by_process,     │
+│    799 │   │   │   │   │   │   )                                             │
+│    800 │   │   │   │                                                         │
+│ ❱  801 │   │   │   │   await asyncio.gather(*(g.wait_ready(timeout) for g in │
+│        wave))                                                                │
+│    802 │   │   │   │                                                         │
+│    803 │   │   │   │   for group in wave:                                    │
+│    804 │   │   │   │   │   if group.any_dead():                              │
+│                                                                              │
+│ /home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/pipeline/stag │
+│ e_workers.py:451 in wait_ready                                               │
+│                                                                              │
+│    448 │   │   │   │   │   │   pass                                          │
+│    449 │   │   │   │   │   else:                                             │
+│    450 │   │   │   │   │   │   details = f"\nStartup failure                 │
+│        detail:\n{traceback_text}"                                            │
+│ ❱  451 │   │   │   │   │   raise RuntimeError(                               │
+│    452 │   │   │   │   │   │   f"Process {process_label} died during startup │
+│        "                                                                     │
+│    453 │   │   │   │   │   │   f"(exit code {proc.exitcode}){details}"       │
+│    454 │   │   │   │   │   )                                                 │
+╰──────────────────────────────────────────────────────────────────────────────╯
+RuntimeError: Process preprocessing died during startup (exit code -6)
+Startup failure detail:
+Traceback (most recent call last):
+  File 
+"/home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/pipeline/stage_w
+orkers.py", line 566, in stage_process_main
+    run_process(spec, ready_event, log)
+  File 
+"/home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/pipeline/stage_w
+orkers.py", line 659, in run_process
+    construct_stage(
+  File 
+"/home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/pipeline/stage_w
+orkers.py", line 799, in construct_stage
+    scheduler = construct_scheduler(spec, gpu_id, log)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File 
+"/home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/pipeline/stage_w
+orkers.py", line 1079, in construct_scheduler
+    return _invoke()
+           ^^^^^^^^^
+  File 
+"/home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/pipeline/stage_w
+orkers.py", line 1072, in _invoke
+    return factory(**factory_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File 
+"/home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/models/fishaudio
+_drama3/stages.py", line 113, in create_preprocessing_executor
+    codec = load_codec(codec_directory, resolved_device)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File 
+"/home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/models/fishaudio
+_s2_pro/stages.py", line 179, in load_codec
+    from hydra.utils import instantiate
+ModuleNotFoundError: No module named 'hydra'
+
+/usr/local/python3.12.13/lib/python3.12/multiprocessing/resource_tracker.py:279: UserWarning: resource_tracker: There appear to be 2 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '
+/usr/local/python3.12.13/lib/python3.12/multiprocessing/resource_tracker.py:279: UserWarning: resource_tracker: There appear to be 1 leaked shared_memory objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '
+corrupted size vs. prev_size

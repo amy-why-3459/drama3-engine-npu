@@ -1,0 +1,59 @@
+diff --git a/tests/model_executor/models/fish_omni/test_fish_omni_quantization.py b/tests/model_executor/models/fish_omni/test_fish_omni_quantization.py
+index 1a2bae0..de7c461 100644
+--- a/tests/model_executor/models/fish_omni/test_fish_omni_quantization.py
++++ b/tests/model_executor/models/fish_omni/test_fish_omni_quantization.py
+@@ -2,12 +2,14 @@
+ # SPDX-FileCopyrightText: Copyright contributors to the vLLM-Omni project
+ """CPU tests for the Drama 3 ``bsgemm-moe`` quantization config."""
+ 
++from types import SimpleNamespace
+ from unittest.mock import MagicMock
+ 
+ import pytest
+ from vllm.model_executor.layers.linear import LinearBase, UnquantizedLinearMethod
+ from vllm.model_executor.layers.quantization import fp8, get_quantization_config
+ 
++from vllm_omni.model_executor.models.fish_omni import quantization
+ from vllm_omni.model_executor.models.fish_omni.quantization import QUANTIZATION_METHOD, ExpertFp8Config
+ 
+ pytestmark = [pytest.mark.core_model, pytest.mark.cpu]
+@@ -52,6 +54,7 @@ def test_linear_layers_stay_unquantized():
+ 
+ 
+ def test_routed_experts_use_fp8_moe(monkeypatch):
++    monkeypatch.setattr(quantization, "current_platform", SimpleNamespace(device_type="cuda"))
+     sentinel = object()
+     created = []
+ 
+diff --git a/vllm_omni/model_executor/models/fish_omni/quantization.py b/vllm_omni/model_executor/models/fish_omni/quantization.py
+index b0590c9..55ef5ff 100644
+--- a/vllm_omni/model_executor/models/fish_omni/quantization.py
++++ b/vllm_omni/model_executor/models/fish_omni/quantization.py
+@@ -11,6 +11,7 @@ from vllm.model_executor.layers.linear import LinearBase, UnquantizedLinearMetho
+ from vllm.model_executor.layers.quantization import register_quantization_config
+ from vllm.model_executor.layers.quantization.base_config import QuantizeMethodBase
+ from vllm.model_executor.layers.quantization.fp8 import Fp8Config
++from vllm.platforms import current_platform
+ 
+ QUANTIZATION_METHOD = "bsgemm-moe"
+ 
+@@ -39,7 +40,18 @@ class ExpertFp8Config(Fp8Config):
+             raise ValueError(f"{QUANTIZATION_METHOD} needs a 2-int weight_block_size, got {block!r}")
+         return cls(weight_block_size=[int(b) for b in block])
+ 
+-    def get_quant_method(self, layer: torch.nn.Module, prefix: str) -> QuantizeMethodBase | None:
++    def get_quant_method(
++        self, layer: torch.nn.Module, prefix: str, tid2eid: torch.Tensor | None = None
++    ) -> QuantizeMethodBase | None:
+         if isinstance(layer, LinearBase):
+             return UnquantizedLinearMethod()
++        if current_platform.device_type == "npu":
++            from vllm_ascend.quantization.configs.fp8_config import AscendFp8Config
++
++            npu_config = AscendFp8Config(
++                is_checkpoint_fp8_serialized=self.is_checkpoint_fp8_serialized,
++                activation_scheme=self.activation_scheme,
++                weight_block_size=self.weight_block_size,
++            )
++            return npu_config.get_quant_method(layer, prefix, tid2eid=tid2eid)
+         return super().get_quant_method(layer, prefix)

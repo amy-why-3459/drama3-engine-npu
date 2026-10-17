@@ -1,0 +1,3 @@
+engine,concurrency,requests,scope,devices,throughput_frames_s,ttfa_p50_ms,ttfa_p95_ms,rtf_mean,lifecycle,quality,comparison
+sglang-omni,1,128,single_round_sweep,"0,1",3.1663205902921314,897.2448757849634,1109.079932514578,6.838633281087816,PENDING,PENDING,INCOMPARABLE: cohort_size_concurrency_devices_and_shared_host_activity
+drama3-engine,4,4,functional_smoke,"6,7",5.74139703367014,2957.651502918452,2958.226612675935,8.619579948262142,exit_0,4_samples_WER_0_SIM_59.9359,INCOMPARABLE: cohort_size_concurrency_devices_and_shared_host_activity

@@ -1,0 +1,23 @@
+{
+  "status": "INCONCLUSIVE",
+  "main_revision": "6d29fde51c08b2512eafa8778315c2eda745bebe",
+  "npu_quant_revision": "0eb6f3c40521a3ef102228c186c38a3dfb416a1f",
+  "main_quant_probe_exit": 2,
+  "adapted_quant_probe_exit": 0,
+  "main_tests": {
+    "assertions_passed": 8,
+    "process_exit": 134
+  },
+  "adapted_tests": {
+    "assertions_passed": 8,
+    "process_exit": 134
+  },
+  "precommit_exit": 0,
+  "real_weight_inference": "NOT_RUN",
+  "remaining": [
+    "TP1 restriction",
+    "real weight loading and NPU execution",
+    "heap corruption on both main and adapted test process exit",
+    "matched concurrency and quality comparison"
+  ]
+}

@@ -1,0 +1,28 @@
+[
+  {
+    "request_id": "sglang-shutdown-c2-ready-warmup-000000",
+    "sent_s": 5752179.996409941,
+    "first_audio_s": 5752183.776636147,
+    "last_audio_s": 5752196.321532514,
+    "terminal_s": 5752196.321859732,
+    "audio_samples": 88064,
+    "sample_rate": 44100,
+    "generated_frames": null,
+    "success": true,
+    "error": null,
+    "server_request_id": "speech-7a33e161-9bf0-4a58-8fad-419399de3001"
+  },
+  {
+    "request_id": "sglang-shutdown-c2-ready-warmup-000001",
+    "sent_s": 5752179.997324345,
+    "first_audio_s": 5752185.390113229,
+    "last_audio_s": 5752203.897731572,
+    "terminal_s": 5752203.898136192,
+    "audio_samples": 135168,
+    "sample_rate": 44100,
+    "generated_frames": null,
+    "success": true,
+    "error": null,
+    "server_request_id": "speech-05a7a64b-191c-4cad-9e79-d9af5dae4f54"
+  }
+]

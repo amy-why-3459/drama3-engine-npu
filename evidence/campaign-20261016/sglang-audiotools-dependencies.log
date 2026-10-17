@@ -1,0 +1,47 @@
+Collecting ffmpy
+  Downloading ffmpy-1.0.0-py3-none-any.whl.metadata (3.0 kB)
+Collecting flatten-dict
+  Downloading flatten_dict-0.5.0-py3-none-any.whl.metadata (8.9 kB)
+Collecting importlib-resources
+  Downloading importlib_resources-7.1.0-py3-none-any.whl.metadata (4.0 kB)
+Collecting julius
+  Downloading julius-0.2.8-py3-none-any.whl.metadata (7.6 kB)
+Collecting markdown2
+  Downloading markdown2-2.5.5-py3-none-any.whl.metadata (2.1 kB)
+Collecting matplotlib
+  Downloading matplotlib-3.11.2-cp312-cp312-manylinux_2_26_aarch64.manylinux_2_28_aarch64.whl.metadata (80 kB)
+Collecting pyloudnorm
+  Downloading pyloudnorm-0.2.0-py3-none-any.whl.metadata (6.6 kB)
+Collecting pystoi
+  Downloading pystoi-0.4.1-py2.py3-none-any.whl.metadata (4.0 kB)
+Collecting randomname
+  Downloading randomname-0.2.1.tar.gz (64 kB)
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Collecting tensorboard
+  Downloading tensorboard-2.21.0-py3-none-any.whl.metadata (1.8 kB)
+Collecting torch-stoi
+  Downloading torch_stoi-0.2.3-py3-none-any.whl.metadata (3.6 kB)
+Downloading ffmpy-1.0.0-py3-none-any.whl (5.6 kB)
+Downloading flatten_dict-0.5.0-py3-none-any.whl (9.9 kB)
+Downloading importlib_resources-7.1.0-py3-none-any.whl (37 kB)
+Downloading julius-0.2.8-py3-none-any.whl (21 kB)
+Downloading markdown2-2.5.5-py3-none-any.whl (56 kB)
+Downloading matplotlib-3.11.2-cp312-cp312-manylinux_2_26_aarch64.manylinux_2_28_aarch64.whl (10.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 10.7/10.7 MB 394.9 kB/s eta 0:00:00
+Downloading pyloudnorm-0.2.0-py3-none-any.whl (10 kB)
+Downloading pystoi-0.4.1-py2.py3-none-any.whl (8.2 kB)
+Downloading tensorboard-2.21.0-py3-none-any.whl (5.5 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.5/5.5 MB 235.3 kB/s eta 0:00:00
+Downloading torch_stoi-0.2.3-py3-none-any.whl (8.1 kB)
+Building wheels for collected packages: randomname
+  Building wheel for randomname (setup.py): started
+  Building wheel for randomname (setup.py): finished with status 'done'
+  Created wheel for randomname: filename=randomname-0.2.1-py3-none-any.whl size=89285 sha256=5c6d2180faa0b0952f6a52d0d5a1b74e52a9118e895c950e62f79f3bff970ae8
+  Stored in directory: /root/.cache/pip/wheels/05/6e/37/1db72aaa77a57f2dcbc97fd96a47f14091130a1dde562124c0
+Successfully built randomname
+Installing collected packages: torch-stoi, randomname, pystoi, tensorboard, pyloudnorm, matplotlib, markdown2, julius, importlib-resources, flatten-dict, ffmpy
+Successfully installed ffmpy-1.0.0 flatten-dict-0.5.0 importlib-resources-7.1.0 julius-0.2.8 markdown2-2.5.5 matplotlib-3.11.2 pyloudnorm-0.2.0 pystoi-0.4.1 randomname-0.2.1 tensorboard-2.21.0 torch-stoi-0.2.3
+
+[notice] A new release of pip is available: 25.0.1 -> 26.2.1
+[notice] To update, run: python -m pip install --upgrade pip

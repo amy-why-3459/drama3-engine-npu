@@ -1,0 +1,21 @@
+test_matches_reference_with_mixed_lengths_and_arrivals (tests.test_batching.BatchedGenerationTest.test_matches_reference_with_mixed_lengths_and_arrivals) ... [transformers] The fast path is not available because one of the required library is not installed. Falling back to torch implementation. To install follow https://github.com/fla-org/flash-linear-attention#installation and https://github.com/Dao-AILab/causal-conv1d
+[W1017 01:51:01.795437021 NPUCachingAllocator.cpp:202] Warning: The current CANN and HDK(driver) versions require processing for 32 padding size, with memory allocation. (function operator())
+Loaded backbone.model.layers.0.mlp.experts.down_proj on npu:0
+Loaded backbone.model.layers.1.mlp.experts.down_proj on npu:0
+Loaded backbone.model.layers.2.mlp.experts.down_proj on npu:1
+Loaded backbone.model.layers.3.mlp.experts.down_proj on npu:1
+ok
+
+----------------------------------------------------------------------
+Ran 1 test in 4.714s
+
+OK
+CAPTURED_GDN_BUCKETS [[], []]
+Traceback (most recent call last):
+  File "/home/why/drama3-engine/tools/probe_batched_generation_npu.py", line 57, in <module>
+    main()
+  File "/home/why/drama3-engine/tools/probe_batched_generation_npu.py", line 50, in main
+    assert wrappers and all(entries for entries in buckets), 'Graph path was not exercised'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Graph path was not exercised
+[ERROR] 2026-10-17-01:51:07 (PID:1180318, Device:0, RankID:-1) ERR99999 UNKNOWN applicaiton exception

@@ -1,0 +1,156 @@
+[W1017 01:38:12.166967626 NPUCachingAllocator.cpp:202] Warning: The current CANN and HDK(driver) versions require processing for 32 padding size, with memory allocation. (function operator())
+{
+  "status": "PASS",
+  "cases": [
+    {
+      "shape": [
+        1,
+        128
+      ],
+      "residual": false,
+      "max_abs": 0.0
+    },
+    {
+      "shape": [
+        1,
+        128
+      ],
+      "residual": true,
+      "max_abs": 0.0
+    },
+    {
+      "shape": [
+        4,
+        128
+      ],
+      "residual": false,
+      "max_abs": 0.0
+    },
+    {
+      "shape": [
+        4,
+        128
+      ],
+      "residual": true,
+      "max_abs": 0.0
+    },
+    {
+      "shape": [
+        2,
+        7,
+        128
+      ],
+      "residual": false,
+      "max_abs": 0.0
+    },
+    {
+      "shape": [
+        2,
+        7,
+        128
+      ],
+      "residual": true,
+      "max_abs": 0.0
+    },
+    {
+      "shape": [
+        1,
+        256
+      ],
+      "residual": false,
+      "max_abs": 0.0
+    },
+    {
+      "shape": [
+        1,
+        256
+      ],
+      "residual": true,
+      "max_abs": 0.0
+    },
+    {
+      "shape": [
+        4,
+        256
+      ],
+      "residual": false,
+      "max_abs": 0.0
+    },
+    {
+      "shape": [
+        4,
+        256
+      ],
+      "residual": true,
+      "max_abs": 0.0
+    },
+    {
+      "shape": [
+        2,
+        7,
+        256
+      ],
+      "residual": false,
+      "max_abs": 0.0
+    },
+    {
+      "shape": [
+        2,
+        7,
+        256
+      ],
+      "residual": true,
+      "max_abs": 0.0
+    },
+    {
+      "shape": [
+        1,
+        2048
+      ],
+      "residual": false,
+      "max_abs": 0.0
+    },
+    {
+      "shape": [
+        1,
+        2048
+      ],
+      "residual": true,
+      "max_abs": 0.0
+    },
+    {
+      "shape": [
+        4,
+        2048
+      ],
+      "residual": false,
+      "max_abs": 0.0
+    },
+    {
+      "shape": [
+        4,
+        2048
+      ],
+      "residual": true,
+      "max_abs": 0.0
+    },
+    {
+      "shape": [
+        2,
+        7,
+        2048
+      ],
+      "residual": false,
+      "max_abs": 0.0
+    },
+    {
+      "shape": [
+        2,
+        7,
+        2048
+      ],
+      "residual": true,
+      "max_abs": 0.0
+    }
+  ]
+}

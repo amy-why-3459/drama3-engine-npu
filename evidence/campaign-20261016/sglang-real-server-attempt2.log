@@ -1,0 +1,325 @@
+Failed to import torchada: No module named 'torchada'. MUSA platform compatibility will not work.
+2026-10-16 17:05:02,394 [ERROR] sglang_omni.relay.nixl: Failed to import nixl: No module named 'nixl'. NixlRelay will not work.
+2026-10-16 17:05:02,680 [INFO] sglang_omni.pipeline.mp_runner: CPU thread fallback plan: budget=192 processes=4 fallback_threads_per_process=48 fallback_overcommitted=false allocations={'preprocessing': {'fallback_threads': 48, 'cpus': None, 'stages': ['preprocessing']}, 'vocoder': {'fallback_threads': 48, 'cpus': None, 'stages': ['vocoder']}, 'pipeline_tp0': {'fallback_threads': 48, 'cpus': None, 'stages': ['tts_engine']}, 'pipeline_tp1': {'fallback_threads': 48, 'cpus': None, 'stages': ['tts_engine']}}
+2026-10-16 17:05:02,680 [INFO] sglang_omni.pipeline.mp_runner: Coordinator stream backlog cap: max_total_backlog_bytes=1073741824
+2026-10-16 17:05:02,782 [INFO] sglang_omni.pipeline.control_plane: Coordinator control plane started
+2026-10-16 17:05:02,782 [INFO] sglang_omni.pipeline.coordinator: Coordinator started
+2026-10-16 17:05:02,784 [INFO] torch_npu.env: get env OMP_NUM_THREADS = 1
+2026-10-16 17:05:02,784 [INFO] sglang_omni.pipeline.stage_workers: Worker spawn environment: process=preprocessing OMP_NUM_THREADS=1 source=environment_or_policy fallback_threads=48
+2026-10-16 17:05:02,786 [INFO] sglang_omni.pipeline.stage_workers: StageGroup preprocessing: spawned 1 process(es) (pids=[974670])
+2026-10-16 17:05:02,787 [INFO] sglang_omni.pipeline.stage_workers: Worker spawn environment: process=vocoder OMP_NUM_THREADS=1 source=environment_or_policy fallback_threads=48
+2026-10-16 17:05:02,788 [INFO] sglang_omni.pipeline.stage_workers: StageGroup vocoder: spawned 1 process(es) (pids=[974671])
+2026-10-16 17:05:02,790 [INFO] sglang_omni.pipeline.stage_workers: Worker spawn environment: process=pipeline_tp0 OMP_NUM_THREADS=1 source=environment_or_policy fallback_threads=48
+2026-10-16 17:05:02,793 [INFO] sglang_omni.pipeline.stage_workers: Worker spawn environment: process=pipeline_tp1 OMP_NUM_THREADS=1 source=environment_or_policy fallback_threads=48
+2026-10-16 17:05:02,794 [INFO] sglang_omni.pipeline.stage_workers: StageGroup tts_engine: spawned 2 process(es) (pids=[974672, 974673])
+Failed to import torchada: No module named 'torchada'. MUSA platform compatibility will not work.
+Failed to import torchada: No module named 'torchada'. MUSA platform compatibility will not work.
+Failed to import torchada: No module named 'torchada'. MUSA platform compatibility will not work.
+Failed to import torchada: No module named 'torchada'. MUSA platform compatibility will not work.
+Failed to import nixl: No module named 'nixl'. NixlRelay will not work.
+2026-10-16 17:05:21,404 [INFO] stage_workers.preprocessing: Building scheduler for preprocessing (tp_rank=0/1) ...
+2026-10-16 17:05:21,415 [ERROR] stage_workers.preprocessing: Stage process preprocessing failed
+Traceback (most recent call last):
+  File "/home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/pipeline/stage_workers.py", line 566, in stage_process_main
+    run_process(spec, ready_event, log)
+  File "/home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/pipeline/stage_workers.py", line 659, in run_process
+    construct_stage(
+  File "/home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/pipeline/stage_workers.py", line 799, in construct_stage
+    scheduler = construct_scheduler(spec, gpu_id, log)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/pipeline/stage_workers.py", line 1054, in construct_scheduler
+    factory = import_string(spec.factory)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/utils/imports.py", line 21, in import_string
+    module = importlib.import_module(module_path)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.12.13/lib/python3.12/importlib/__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/models/fishaudio_drama3/stages.py", line 17, in <module>
+    from sglang_omni.models.fishaudio_drama3.channels_last_decoder import (
+  File "/home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/models/fishaudio_drama3/channels_last_decoder.py", line 6, in <module>
+    from dac.nn.layers import Snake1d
+ModuleNotFoundError: No module named 'dac'
+
+Failed to import nixl: No module named 'nixl'. NixlRelay will not work.
+Failed to import nixl: No module named 'nixl'. NixlRelay will not work.
+Failed to import nixl: No module named 'nixl'. NixlRelay will not work.
+2026-10-16 17:05:22,798 [INFO] stage_workers.pipeline_tp1: Set current device to 1 for stage tts_engine
+2026-10-16 17:05:22,799 [INFO] stage_workers.pipeline_tp1: Building scheduler for tts_engine (tp_rank=1/2) ...
+2026-10-16 17:05:22,804 [ERROR] stage_workers.pipeline_tp1: Stage process pipeline_tp1 failed
+Traceback (most recent call last):
+  File "/home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/pipeline/stage_workers.py", line 566, in stage_process_main
+    run_process(spec, ready_event, log)
+  File "/home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/pipeline/stage_workers.py", line 659, in run_process
+    construct_stage(
+  File "/home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/pipeline/stage_workers.py", line 799, in construct_stage
+    scheduler = construct_scheduler(spec, gpu_id, log)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/pipeline/stage_workers.py", line 1054, in construct_scheduler
+    factory = import_string(spec.factory)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/utils/imports.py", line 21, in import_string
+    module = importlib.import_module(module_path)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.12.13/lib/python3.12/importlib/__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/models/fishaudio_drama3/stages.py", line 17, in <module>
+    from sglang_omni.models.fishaudio_drama3.channels_last_decoder import (
+  File "/home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/models/fishaudio_drama3/channels_last_decoder.py", line 6, in <module>
+    from dac.nn.layers import Snake1d
+ModuleNotFoundError: No module named 'dac'
+
+2026-10-16 17:05:23,251 [WARNING] stage_workers.pipeline_tp1: Reclaiming GPU memory after stage process pipeline_tp1 exit after failure on gpu_ids=[1]
+corrupted size vs. prev_size
+2026-10-16 17:05:23,649 [WARNING] stage_workers.pipeline_tp1: GPU memory reclaim complete after stage process pipeline_tp1 exit after failure on gpu_ids=[1]
+2026-10-16 17:05:23,770 [INFO] stage_workers.vocoder: Set current device to 1 for stage vocoder
+2026-10-16 17:05:23,770 [INFO] stage_workers.vocoder: Building scheduler for vocoder (tp_rank=0/1) ...
+2026-10-16 17:05:23,777 [ERROR] stage_workers.vocoder: Stage process vocoder failed
+Traceback (most recent call last):
+  File "/home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/pipeline/stage_workers.py", line 566, in stage_process_main
+    run_process(spec, ready_event, log)
+  File "/home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/pipeline/stage_workers.py", line 659, in run_process
+    construct_stage(
+  File "/home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/pipeline/stage_workers.py", line 799, in construct_stage
+    scheduler = construct_scheduler(spec, gpu_id, log)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/pipeline/stage_workers.py", line 1054, in construct_scheduler
+    factory = import_string(spec.factory)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/utils/imports.py", line 21, in import_string
+    module = importlib.import_module(module_path)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.12.13/lib/python3.12/importlib/__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/models/fishaudio_drama3/stages.py", line 17, in <module>
+    from sglang_omni.models.fishaudio_drama3.channels_last_decoder import (
+  File "/home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/models/fishaudio_drama3/channels_last_decoder.py", line 6, in <module>
+    from dac.nn.layers import Snake1d
+ModuleNotFoundError: No module named 'dac'
+
+2026-10-16 17:05:23,818 [INFO] stage_workers.pipeline_tp0: Set current device to 0 for stage tts_engine
+2026-10-16 17:05:23,818 [INFO] stage_workers.pipeline_tp0: Building scheduler for tts_engine (tp_rank=0/2) ...
+2026-10-16 17:05:23,823 [ERROR] stage_workers.pipeline_tp0: Stage process pipeline_tp0 failed
+Traceback (most recent call last):
+  File "/home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/pipeline/stage_workers.py", line 566, in stage_process_main
+    run_process(spec, ready_event, log)
+  File "/home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/pipeline/stage_workers.py", line 659, in run_process
+    construct_stage(
+  File "/home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/pipeline/stage_workers.py", line 799, in construct_stage
+    scheduler = construct_scheduler(spec, gpu_id, log)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/pipeline/stage_workers.py", line 1054, in construct_scheduler
+    factory = import_string(spec.factory)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/utils/imports.py", line 21, in import_string
+    module = importlib.import_module(module_path)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.12.13/lib/python3.12/importlib/__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/models/fishaudio_drama3/stages.py", line 17, in <module>
+    from sglang_omni.models.fishaudio_drama3.channels_last_decoder import (
+  File "/home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/models/fishaudio_drama3/channels_last_decoder.py", line 6, in <module>
+    from dac.nn.layers import Snake1d
+ModuleNotFoundError: No module named 'dac'
+
+2026-10-16 17:05:24,260 [WARNING] stage_workers.vocoder: Reclaiming GPU memory after stage process vocoder exit after failure on gpu_ids=[1]
+2026-10-16 17:05:24,260 [WARNING] stage_workers.pipeline_tp0: Reclaiming GPU memory after stage process pipeline_tp0 exit after failure on gpu_ids=[0]
+2026-10-16 17:05:24,644 [WARNING] stage_workers.vocoder: GPU memory reclaim complete after stage process vocoder exit after failure on gpu_ids=[1]
+2026-10-16 17:05:24,681 [WARNING] stage_workers.pipeline_tp0: GPU memory reclaim complete after stage process pipeline_tp0 exit after failure on gpu_ids=[0]
+2026-10-16 17:05:28,114 [INFO] sglang_omni.pipeline.coordinator: Coordinator completion loop cancelled
+2026-10-16 17:05:28,115 [INFO] sglang_omni.pipeline.coordinator: Coordinator stopped
+╭───────────────────── Traceback (most recent call last) ──────────────────────╮
+│ /home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/cli/serve.py: │
+│ 522 in serve                                                                 │
+│                                                                              │
+│   519 │   else:                                                              │
+│   520 │   │   pass                                                           │
+│   521 │                                                                      │
+│ ❱ 522 │   launch_server(                                                     │
+│   523 │   │   merged_config,                                                 │
+│   524 │   │   host=host,                                                     │
+│   525 │   │   port=port,                                                     │
+│                                                                              │
+│ /home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/cli/serve.py: │
+│ 37 in launch_server                                                          │
+│                                                                              │
+│    34 def launch_server(*args: object, **kwargs: object) -> NoReturn:        │
+│    35 │   from sglang_omni.serve.launcher import launch_server as            │
+│       _launch_server                                                         │
+│    36 │                                                                      │
+│ ❱  37 │   _launch_server(*args, **kwargs)                                    │
+│    38 │   # note (Richard Wang): the launcher has stopped the pipeline and   │
+│       joined                                                                 │
+│    39 │   # every stage by now. Tearing down the modules and objects the CLI │
+│    40 │   # imported took about a second more, and the server's stop waited  │
+│       for it.                                                                │
+│                                                                              │
+│ /home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/serve/launche │
+│ r.py:859 in launch_server                                                    │
+│                                                                              │
+│   856 │   │   │   signal.signal(signal.SIGTERM, previous_handler)            │
+│   857 │                                                                      │
+│   858 │   try:                                                               │
+│ ❱ 859 │   │   asyncio.run(run_server_with_sigterm_cleanup())                 │
+│   860 │   except asyncio.CancelledError:                                     │
+│   861 │   │   if sigterm_received and not cleanup_failed:                    │
+│   862 │   │   │   signal.raise_signal(signal.SIGTERM)                        │
+│                                                                              │
+│ /usr/local/python3.12.13/lib/python3.12/asyncio/runners.py:195 in run        │
+│                                                                              │
+│   192 │   │   │   "asyncio.run() cannot be called from a running event       │
+│       loop")                                                                 │
+│   193 │                                                                      │
+│   194 │   with Runner(debug=debug, loop_factory=loop_factory) as runner:     │
+│ ❱ 195 │   │   return runner.run(main)                                        │
+│   196                                                                        │
+│   197                                                                        │
+│   198 def _cancel_all_tasks(loop):                                           │
+│                                                                              │
+│ /usr/local/python3.12.13/lib/python3.12/asyncio/runners.py:118 in run        │
+│                                                                              │
+│   115 │   │                                                                  │
+│   116 │   │   self._interrupt_count = 0                                      │
+│   117 │   │   try:                                                           │
+│ ❱ 118 │   │   │   return self._loop.run_until_complete(task)                 │
+│   119 │   │   except exceptions.CancelledError:                              │
+│   120 │   │   │   if self._interrupt_count > 0:                              │
+│   121 │   │   │   │   uncancel = getattr(task, "uncancel", None)             │
+│                                                                              │
+│ /usr/local/python3.12.13/lib/python3.12/asyncio/base_events.py:691 in        │
+│ run_until_complete                                                           │
+│                                                                              │
+│    688 │   │   if not future.done():                                         │
+│    689 │   │   │   raise RuntimeError('Event loop stopped before Future      │
+│        completed.')                                                          │
+│    690 │   │                                                                 │
+│ ❱  691 │   │   return future.result()                                        │
+│    692 │                                                                     │
+│    693 │   def stop(self):                                                   │
+│    694 │   │   """Stop running the event loop.                               │
+│                                                                              │
+│ /home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/serve/launche │
+│ r.py:850 in run_server_with_sigterm_cleanup                                  │
+│                                                                              │
+│   847 │   │                                                                  │
+│   848 │   │   signal.signal(signal.SIGTERM, handle_sigterm)                  │
+│   849 │   │   try:                                                           │
+│ ❱ 850 │   │   │   await server_run                                           │
+│   851 │   │   except asyncio.CancelledError as cancelled:                    │
+│   852 │   │   │   # note (Richard Wang): Python 3.10 drops the cause outside │
+│       asyncio.run                                                            │
+│   853 │   │   │   cleanup_failed = cancelled.__cause__ is not None           │
+│                                                                              │
+│ /home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/serve/launche │
+│ r.py:583 in run_server                                                       │
+│                                                                              │
+│   580 │                                                                      │
+│   581 │   mp_runner = MultiProcessPipelineRunner(pipeline_config)            │
+│   582 │   startup_timeout =                                                  │
+│       float(os.environ.get("SGLANG_OMNI_STARTUP_TIMEOUT", "600"))            │
+│ ❱ 583 │   await mp_runner.start(timeout=startup_timeout)                     │
+│   584 │   coordinator = mp_runner.coordinator                                │
+│   585 │                                                                      │
+│   586 │   # Plans are resolved once inside ``mp_runner.start()`` (which      │
+│       applies                                                                │
+│                                                                              │
+│ /home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/pipeline/mp_r │
+│ unner.py:801 in start                                                        │
+│                                                                              │
+│    798 │   │   │   │   │   │   │   process_env_overrides=env_by_process,     │
+│    799 │   │   │   │   │   │   )                                             │
+│    800 │   │   │   │                                                         │
+│ ❱  801 │   │   │   │   await asyncio.gather(*(g.wait_ready(timeout) for g in │
+│        wave))                                                                │
+│    802 │   │   │   │                                                         │
+│    803 │   │   │   │   for group in wave:                                    │
+│    804 │   │   │   │   │   if group.any_dead():                              │
+│                                                                              │
+│ /home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/pipeline/stag │
+│ e_workers.py:451 in wait_ready                                               │
+│                                                                              │
+│    448 │   │   │   │   │   │   pass                                          │
+│    449 │   │   │   │   │   else:                                             │
+│    450 │   │   │   │   │   │   details = f"\nStartup failure                 │
+│        detail:\n{traceback_text}"                                            │
+│ ❱  451 │   │   │   │   │   raise RuntimeError(                               │
+│    452 │   │   │   │   │   │   f"Process {process_label} died during startup │
+│        "                                                                     │
+│    453 │   │   │   │   │   │   f"(exit code {proc.exitcode}){details}"       │
+│    454 │   │   │   │   │   )                                                 │
+╰──────────────────────────────────────────────────────────────────────────────╯
+RuntimeError: Process preprocessing died during startup (exit code -6)
+Startup failure detail:
+Traceback (most recent call last):
+  File 
+"/home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/pipeline/stage_w
+orkers.py", line 566, in stage_process_main
+    run_process(spec, ready_event, log)
+  File 
+"/home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/pipeline/stage_w
+orkers.py", line 659, in run_process
+    construct_stage(
+  File 
+"/home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/pipeline/stage_w
+orkers.py", line 799, in construct_stage
+    scheduler = construct_scheduler(spec, gpu_id, log)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File 
+"/home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/pipeline/stage_w
+orkers.py", line 1054, in construct_scheduler
+    factory = import_string(spec.factory)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File 
+"/home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/utils/imports.py
+", line 21, in import_string
+    module = importlib.import_module(module_path)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.12.13/lib/python3.12/importlib/__init__.py", line 90,
+in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File 
+"/home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/models/fishaudio
+_drama3/stages.py", line 17, in <module>
+    from sglang_omni.models.fishaudio_drama3.channels_last_decoder import (
+  File 
+"/home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/models/fishaudio
+_drama3/channels_last_decoder.py", line 6, in <module>
+    from dac.nn.layers import Snake1d
+ModuleNotFoundError: No module named 'dac'
+
+corrupted size vs. prev_size

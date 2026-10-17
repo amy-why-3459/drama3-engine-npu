@@ -1,0 +1,16 @@
+Collecting s3prl==0.4.18
+  Downloading s3prl-0.4.18.tar.gz (648 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 648.9/648.9 kB 545.0 kB/s eta 0:00:00
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Building wheels for collected packages: s3prl
+  Building wheel for s3prl (setup.py): started
+  Building wheel for s3prl (setup.py): finished with status 'done'
+  Created wheel for s3prl: filename=s3prl-0.4.18-py3-none-any.whl size=879929 sha256=99bd0bdda1722c70b47ac4e00b2c915661a547fdd81ff88cc9ea04651ab42d0d
+  Stored in directory: /root/.cache/pip/wheels/91/f6/5a/c06ca16996164f70e8198c7c67c9cdf278572a5a9324c65172
+Successfully built s3prl
+Installing collected packages: s3prl
+Successfully installed s3prl-0.4.18
+
+[notice] A new release of pip is available: 25.0.1 -> 26.2.1
+[notice] To update, run: python -m pip install --upgrade pip

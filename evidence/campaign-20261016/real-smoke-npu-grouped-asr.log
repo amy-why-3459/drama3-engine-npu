@@ -1,0 +1,16 @@
+Loading weights:   0%|          | 0/1259 [00:00<?, ?it/s]Loading weights:  15%|█▍        | 183/1259 [00:00<00:00, 1801.47it/s]Loading weights:  31%|███       | 393/1259 [00:00<00:00, 1954.22it/s]Loading weights:  47%|████▋     | 589/1259 [00:00<00:00, 1926.65it/s]Loading weights:  62%|██████▏   | 782/1259 [00:00<00:00, 1850.85it/s]Loading weights:  77%|███████▋  | 968/1259 [00:00<00:00, 1820.41it/s]Loading weights:  91%|█████████▏| 1151/1259 [00:00<00:00, 1791.90it/s]Loading weights: 100%|██████████| 1259/1259 [00:00<00:00, 1830.09it/s]
+[transformers] Both `max_new_tokens` (=128) and `max_length`(=448) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] A custom logits processor of type <class 'transformers.generation.logits_process.SuppressTokensLogitsProcessor'> has been passed to `.generate()`, but it was also created in `.generate()`, given its parameterization. The custom <class 'transformers.generation.logits_process.SuppressTokensLogitsProcessor'> will take precedence. Please check the docstring of <class 'transformers.generation.logits_process.SuppressTokensLogitsProcessor'> to see related `.generate()` flags.
+[transformers] A custom logits processor of type <class 'transformers.generation.logits_process.SuppressTokensAtBeginLogitsProcessor'> has been passed to `.generate()`, but it was also created in `.generate()`, given its parameterization. The custom <class 'transformers.generation.logits_process.SuppressTokensAtBeginLogitsProcessor'> will take precedence. Please check the docstring of <class 'transformers.generation.logits_process.SuppressTokensAtBeginLogitsProcessor'> to see related `.generate()` flags.
+[transformers] Ignoring clean_up_tokenization_spaces=True for BPE tokenizer WhisperTokenizer. The clean_up_tokenization post-processing step is designed for WordPiece tokenizers and is destructive for BPE (it strips spaces before punctuation). Set clean_up_tokenization_spaces=False to suppress this warning, or set clean_up_tokenization_spaces_for_bpe_even_though_it_will_corrupt_output=True to force cleanup anyway.
+{
+  "status": "DIAGNOSTIC_ONLY",
+  "audio": "evidence/campaign-20261016/real-smoke-npu-grouped.wav",
+  "asr_model": "/dataset/models/whisper-large-v3",
+  "duration_seconds": 3.5294331065759637,
+  "rms": 0.08287233114242554,
+  "peak": 0.7255859375,
+  "clipped_fraction": 0.0,
+  "transcript": " Hello, this is a speech synthesis test.",
+  "notes": "One ASR transcript does not establish WER, speaker similarity or model parity."
+}

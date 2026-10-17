@@ -1,0 +1,21 @@
+Collecting descript-audio-codec
+  Downloading descript_audio_codec-1.0.0-py3-none-any.whl.metadata (7.8 kB)
+Collecting descript-audiotools
+  Downloading descript_audiotools-0.7.2-py2.py3-none-any.whl.metadata (3.4 kB)
+Collecting argbind
+  Downloading argbind-0.3.9.tar.gz (17 kB)
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Downloading descript_audio_codec-1.0.0-py3-none-any.whl (26 kB)
+Downloading descript_audiotools-0.7.2-py2.py3-none-any.whl (106 kB)
+Building wheels for collected packages: argbind
+  Building wheel for argbind (setup.py): started
+  Building wheel for argbind (setup.py): finished with status 'done'
+  Created wheel for argbind: filename=argbind-0.3.9-py2.py3-none-any.whl size=11818 sha256=0a013df100367e7c6493dd46da2e97783ec4946ad850c0b505d5d69a2ee4ec06
+  Stored in directory: /root/.cache/pip/wheels/eb/33/cb/c5e898b01c657604d61ef1462002dee37ed67b4b05b871dc45
+Successfully built argbind
+Installing collected packages: descript-audiotools, descript-audio-codec, argbind
+Successfully installed argbind-0.3.9 descript-audio-codec-1.0.0 descript-audiotools-0.7.2
+
+[notice] A new release of pip is available: 25.0.1 -> 26.2.1
+[notice] To update, run: python -m pip install --upgrade pip

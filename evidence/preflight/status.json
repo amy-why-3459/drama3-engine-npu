@@ -1,0 +1,50 @@
+{
+  "overall_status": "INCONCLUSIVE",
+  "standalone_unit_tests": {
+    "passed": 10,
+    "process_exit": 0,
+    "log": "unit-tests.log"
+  },
+  "synthetic_model_npu": {
+    "process_exit": 0,
+    "full_model": false,
+    "log": "npu-model-smoke.log"
+  },
+  "real_codec_synthetic_indices": {
+    "process_exit": 0,
+    "speech_quality_test": false,
+    "log": "codec-smoke.log",
+    "sha256": "74fc41c5a7151c6f350af8bd7e5d6e3accfcc7f3dfbfac23afd35af07052bb2f"
+  },
+  "sglang_engine_import": {
+    "process_exit": 0,
+    "model_loaded": false,
+    "log": "sglang-engine-import.log"
+  },
+  "sglang_fp8_expansion": {
+    "process_exit": 0,
+    "scope": "CPU exact block expansion, NPU method constructor only",
+    "log": "sglang-quantization-probe.log"
+  },
+  "vllm_quantization_tests": {
+    "assertions_passed": 8,
+    "process_exit": 134,
+    "unmodified_main_same_failure": true,
+    "log": "vllm-quantization-tests.log",
+    "control_log": "vllm-main-quantization-tests.log"
+  },
+  "remaining": [
+    "Verify complete checkpoint SHA256",
+    "Complete baseline NPU topology and real model execution",
+    "Freeze identical benchmark inputs and quality gates",
+    "Implement standalone serving and batched execution",
+    "Measure all concurrency levels",
+    "Profile and optimize against stronger baseline",
+    "Validate real speech quality and 2x target"
+  ],
+  "sglang_quantization_tests": {
+    "assertions_passed": 9,
+    "process_exit": 0,
+    "log": "sglang-quantization-tests.log"
+  }
+}

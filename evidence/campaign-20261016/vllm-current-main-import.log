@@ -1,0 +1,7 @@
+/home/why/drama3-research/vllm-omni-main-20261016/vllm_omni/__init__.py:22: RuntimeWarning: Failed to import version from _version.py: No module named 'vllm_omni._version'
+This typically happens in development mode before building.
+Using fallback version 'dev'.
+  from .version import __version__, __version_tuple__  # isort:skip # noqa: F401
+Failed to import the DeepSelect extension (vllm._deepselect_C): No module named 'vllm._deepselect_C'
+<class 'vllm_omni.model_executor.models.fish_omni.fish_omni_model.FishOmniForConditionalGeneration'>
+corrupted size vs. prev_size

@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/models/fishaudio_drama3/stages.py", line 17, in <module>
+    from sglang_omni.models.fishaudio_drama3.channels_last_decoder import (
+  File "/home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/models/fishaudio_drama3/channels_last_decoder.py", line 6, in <module>
+    from dac.nn.layers import Snake1d
+  File "/home/why/drama3-research/venv-sglang/lib/python3.12/site-packages/dac/__init__.py", line 6, in <module>
+    import audiotools
+  File "/home/why/drama3-research/venv-sglang/lib/python3.12/site-packages/audiotools/__init__.py", line 2, in <module>
+    from .core import AudioSignal
+  File "/home/why/drama3-research/venv-sglang/lib/python3.12/site-packages/audiotools/core/__init__.py", line 1, in <module>
+    from . import util
+  File "/home/why/drama3-research/venv-sglang/lib/python3.12/site-packages/audiotools/core/util.py", line 17, in <module>
+    from flatten_dict import flatten
+ModuleNotFoundError: No module named 'flatten_dict'
+[ERROR] 2026-10-16-17:07:21 (PID:1001572, Device:-1, RankID:-1) ERR99999 UNKNOWN applicaiton exception

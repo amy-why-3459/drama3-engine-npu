@@ -1,0 +1,28 @@
+[
+  {
+    "request_id": "sglang-real-c2-smoke-measured-000000",
+    "sent_s": 5751384.082134602,
+    "first_audio_s": 5751384.907603701,
+    "last_audio_s": 5751405.492180801,
+    "terminal_s": 5751405.492673634,
+    "audio_samples": 86016,
+    "sample_rate": 44100,
+    "generated_frames": null,
+    "success": true,
+    "error": null,
+    "server_request_id": "speech-88a67668-415e-4dc1-ab36-e156e6968f5a"
+  },
+  {
+    "request_id": "sglang-real-c2-smoke-measured-000001",
+    "sent_s": 5751384.083140798,
+    "first_audio_s": 5751395.108345097,
+    "last_audio_s": 5751415.235965683,
+    "terminal_s": 5751415.236384044,
+    "audio_samples": 149504,
+    "sample_rate": 44100,
+    "generated_frames": null,
+    "success": true,
+    "error": null,
+    "server_request_id": "speech-2f3dcfff-f68e-4eda-a28d-ebb8f0d34fad"
+  }
+]

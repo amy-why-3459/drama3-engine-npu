@@ -1,0 +1,129 @@
+{
+  "status": "FAIL",
+  "quality": "NOT_RUN",
+  "server_lifecycle": "PENDING",
+  "source_revision": "2c23b68-npu-page16-tp-stop-worker-log",
+  "physical_devices": [
+    0,
+    1
+  ],
+  "workload_sha256": "9bdd98e981c46225cb7a85362115f2e72e53ca94e17e38154f1e507d3917c2af",
+  "requests_per_concurrency": 128,
+  "completed": [
+    {
+      "cohort": "qualification-c8",
+      "metrics": {
+        "requests": 8,
+        "successful_requests": 8,
+        "failed_requests": 0,
+        "wall_time_s": 68.85185533668846,
+        "throughput_frames_s": 10.980096270509026,
+        "audio_seconds_per_wall_second": 0.5099146748753399,
+        "ttfa_p50_ms": 6670.598719269037,
+        "ttfa_p95_ms": 6772.808573115617,
+        "rtf_mean": 8.41013344981522,
+        "eligible_for_comparison": true
+      },
+      "client_exit": 0
+    },
+    {
+      "cohort": "c1",
+      "metrics": {
+        "requests": 128,
+        "successful_requests": 128,
+        "failed_requests": 0,
+        "wall_time_s": 3343.6285739541054,
+        "throughput_frames_s": 3.1663205902921314,
+        "audio_seconds_per_wall_second": 0.14704364101855522,
+        "ttfa_p50_ms": 897.2448757849634,
+        "ttfa_p95_ms": 1109.079932514578,
+        "rtf_mean": 6.838633281087816,
+        "eligible_for_comparison": true
+      },
+      "client_exit": 0
+    },
+    {
+      "cohort": "c2",
+      "metrics": {
+        "requests": 128,
+        "successful_requests": 128,
+        "failed_requests": 0,
+        "wall_time_s": 1720.5439945813268,
+        "throughput_frames_s": 6.006821117361137,
+        "audio_seconds_per_wall_second": 0.27895622785386864,
+        "ttfa_p50_ms": 1097.5184366106987,
+        "ttfa_p95_ms": 2522.6775106508285,
+        "rtf_mean": 7.188764475693877,
+        "eligible_for_comparison": true
+      },
+      "client_exit": 0
+    },
+    {
+      "cohort": "c4",
+      "metrics": {
+        "requests": 128,
+        "successful_requests": 128,
+        "failed_requests": 0,
+        "wall_time_s": 990.2159442938864,
+        "throughput_frames_s": 11.485373534466746,
+        "audio_seconds_per_wall_second": 0.5333797051833989,
+        "ttfa_p50_ms": 1130.8982432819903,
+        "ttfa_p95_ms": 2689.9823315441618,
+        "rtf_mean": 7.491105847820994,
+        "eligible_for_comparison": true
+      },
+      "client_exit": 0
+    },
+    {
+      "cohort": "c8",
+      "metrics": {
+        "requests": 128,
+        "successful_requests": 128,
+        "failed_requests": 0,
+        "wall_time_s": 541.8892114525661,
+        "throughput_frames_s": 19.428325527609367,
+        "audio_seconds_per_wall_second": 0.9022496752957819,
+        "ttfa_p50_ms": 1259.0606594458222,
+        "ttfa_p95_ms": 2873.4444717876613,
+        "rtf_mean": 8.185728352073154,
+        "eligible_for_comparison": true
+      },
+      "client_exit": 0
+    },
+    {
+      "cohort": "c16",
+      "metrics": {
+        "requests": 128,
+        "successful_requests": 128,
+        "failed_requests": 0,
+        "wall_time_s": 440.6029099235311,
+        "throughput_frames_s": 24.81145665129017,
+        "audio_seconds_per_wall_second": 1.1522417964136569,
+        "ttfa_p50_ms": 1787.6916765235364,
+        "ttfa_p95_ms": 8733.079676842317,
+        "rtf_mean": 13.192028702189265,
+        "eligible_for_comparison": true
+      },
+      "client_exit": 0
+    },
+    {
+      "cohort": "c32",
+      "metrics": {
+        "requests": 128,
+        "successful_requests": 128,
+        "failed_requests": 0,
+        "wall_time_s": 350.1478141853586,
+        "throughput_frames_s": 31.13542212269468,
+        "audio_seconds_per_wall_second": 1.445926179303372,
+        "ttfa_p50_ms": 3682.7274756506085,
+        "ttfa_p95_ms": 7268.346738955007,
+        "rtf_mean": 14.66519255681044,
+        "eligible_for_comparison": true
+      },
+      "client_exit": 0
+    }
+  ],
+  "current": "c64",
+  "notes": "One process/one round; no speedup claim or statistical qualification.",
+  "error": "RuntimeError: c64 client exit 1; retained artifacts; sweep stopped"
+}

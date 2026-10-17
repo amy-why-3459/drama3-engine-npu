@@ -1,0 +1,23 @@
+{
+  "status": "LIFECYCLE_FAIL",
+  "phase": "await_server_lifecycle",
+  "source_revision": "9976b11",
+  "server_lifecycle": "FAIL",
+  "performance": "FUNCTIONAL_SMOKE_ONLY",
+  "client_exit": 0,
+  "metrics": {
+    "requests": 4,
+    "successful_requests": 4,
+    "failed_requests": 0,
+    "wall_time_s": 54.360144400037825,
+    "throughput_frames_s": 6.107415711717075,
+    "audio_seconds_per_wall_second": 0.2836278316915322,
+    "ttfa_p50_ms": 2813.0565895698965,
+    "ttfa_p95_ms": 2813.86600388214,
+    "rtf_mean": 8.132843695933845,
+    "eligible_for_comparison": true
+  },
+  "quality_exit": 0,
+  "server_exit": 139,
+  "quality": "MEASURED_NOT_QUALIFIED"
+}

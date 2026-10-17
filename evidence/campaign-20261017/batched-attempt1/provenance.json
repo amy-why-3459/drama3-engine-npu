@@ -1,0 +1,6 @@
+{
+  "raw_run": "runs/batched-c4-smoke-20261017",
+  "wire_requests_sha256": "841eb8995e1ca91050d33f007f6938d94dd84414f95353f156463800c0312c5a",
+  "workload": "evidence/campaign-20261016/seed-en-128/workload.jsonl",
+  "measured_requests": 0
+}

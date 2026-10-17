@@ -1,0 +1,81 @@
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/contrib/transfer_to_npu.py:390: ImportWarning: 
+    *************************************************************************************************************
+    The torch.Tensor.cuda and torch.nn.Module.cuda are replaced with torch.Tensor.npu and torch.nn.Module.npu now..
+    The torch.cuda.DoubleTensor is replaced with torch.npu.FloatTensor cause the double type is not supported now..
+    The backend in torch.distributed.init_process_group set to hccl now..
+    The torch.cuda.* and torch.cuda.amp.* are replaced with torch.npu.* and torch.npu.amp.* now..
+    The device parameters have been replaced with npu in the function below:
+    torch.logspace, torch.randint, torch.hann_window, torch.rand, torch.full_like, torch.ones_like, torch.rand_like, torch.randperm, torch.arange, torch.frombuffer, torch.normal, torch._empty_per_channel_affine_quantized, torch.empty_strided, torch.empty_like, torch.scalar_tensor, torch.tril_indices, torch.bartlett_window, torch.ones, torch.sparse_coo_tensor, torch.randn, torch.kaiser_window, torch.tensor, torch.triu_indices, torch.as_tensor, torch.zeros, torch.randint_like, torch.full, torch.eye, torch._sparse_csr_tensor_unsafe, torch.empty, torch._sparse_coo_tensor_unsafe, torch.blackman_window, torch.zeros_like, torch.range, torch.sparse_csr_tensor, torch.randn_like, torch.from_file, torch._cudnn_init_dropout_state, torch._empty_affine_quantized, torch.linspace, torch.hamming_window, torch.empty_quantized, torch._pin_memory, torch.load, torch.set_default_device, torch.get_device_module, torch.sparse_compressed_tensor, torch.Tensor.new_empty, torch.Tensor.new_empty_strided, torch.Tensor.new_full, torch.Tensor.new_ones, torch.Tensor.new_tensor, torch.Tensor.new_zeros, torch.Tensor.to, torch.Tensor.pin_memory, torch.nn.Module.to, torch.nn.Module.to_empty
+    *************************************************************************************************************
+    
+  warnings.warn(msg, ImportWarning)
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/contrib/transfer_to_npu.py:311: RuntimeWarning: torch.jit.script and torch.jit.script_method will be disabled by transfer_to_npu, which currently does not support them, if you need to enable them, please do not use transfer_to_npu.
+  warnings.warn(msg, RuntimeWarning)
+<frozen abc>:106: DeprecationWarning: MultiPlatformOp is deprecated; subclass sglang.kernels.fused_op.BaseFusedOp instead (RFC #29630).
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/npu/__init__.py:540: UserWarning: You can set the device capability via the environment variable TORCH_NPU_DEVICE_CAPABILITY. The return value of get_device_capability is only for compatibility with PyTorch and does not represent the actual capability of the NPU device.
+  warnings.warn(f"You can set the device capability via the environment variable TORCH_NPU_DEVICE_CAPABILITY. {warning_str}")
+Cannot detect CUDA architecture.
+Ignore import error when loading sglang.srt.models.falcon_mamba: cannot import name 'causal_conv1d_fn_triton' from 'sglang.srt.layers.attention.mamba.mamba' (/home/why/drama3-research/sglang/python/sglang/srt/layers/attention/mamba/mamba.py)
+Ignore import error when loading sglang.srt.models.inkling: No module named 'cutlass'
+[2026-10-16 16:23:20] Ignore import error when loading sglang.srt.models.mamba: cannot import name 'causal_conv1d_fn_triton' from 'sglang.srt.layers.attention.mamba.mamba' (/home/why/drama3-research/sglang/python/sglang/srt/layers/attention/mamba/mamba.py)
+[2026-10-16 16:23:20] Ignore import error when loading sglang.srt.models.mindspore: No module named 'mindspore'
+[2026-10-16 16:23:20] Failed to import torchada: No module named 'torchada'. MUSA platform compatibility will not work.
+[transformers] The fast path is not available because one of the required library is not installed. Falling back to torch implementation. To install follow https://github.com/fla-org/flash-linear-attention#installation and https://github.com/Dao-AILab/causal-conv1d
+WROTE_SYNTHETIC_CHECKPOINT
+[rank0]:[W1016 16:23:22.282988240 NPUCachingAllocator.cpp:202] Warning: The current CANN and HDK(driver) versions require processing for 32 padding size, with memory allocation. (function operator())
+[rank0]:[W1016 16:23:22.763944015 ProcessGroupGloo.cpp:511] Warning: Unable to resolve hostname to a (local) address. Using the loopback address as fallback. Manually set the network interface to bind to with GLOO_SOCKET_IFNAME. (function operator())
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[2026-10-16 16:23:26] sglang-omni: skipping model MingTTSSGLangModel (No module named 'x_transformers')
+[2026-10-16 16:23:26] sglang-omni: skipping model Qwen3ASRForConditionalGeneration ('qwen3_asr' is already used by a Transformers config, pick another name.)
+[2026-10-16 16:23:26] using attn output gate!
+Multi-thread loading shards:   0% Completed | 0/1 [00:00<?, ?it/s]Multi-thread loading shards: 100% Completed | 1/1 [00:00<00:00, 18.03it/s]
+/usr/local/python3.12.13/lib/python3.12/multiprocessing/popen_fork.py:66: DeprecationWarning: This process (pid=627403) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  self.pid = os.fork()
+/home/why/drama3-research/sglang/python/sglang/srt/utils/common.py:2553: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /pytorch/torch/csrc/utils/tensor_numpy.cpp:213.)
+  tensor_data = torch.ByteTensor(
+Error in sys.excepthook:
+Traceback (most recent call last):
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/utils/_error_code.py", line 121, in _excepthook
+    self._origin_excepthook(exc_type, exc, *args)
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/utils/_error_code.py", line 121, in _excepthook
+    self._origin_excepthook(exc_type, exc, *args)
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/utils/_error_code.py", line 121, in _excepthook
+    self._origin_excepthook(exc_type, exc, *args)
+  [Previous line repeated 996 more times]
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/utils/_error_code.py", line 120, in _excepthook
+    self.exception = str(exc)
+                     ^^^^^^^^
+RecursionError: maximum recursion depth exceeded while getting the str of an object
+
+Original exception was:
+Traceback (most recent call last):
+  File "/home/why/drama3-engine/tools/probe_sglang_910b_sdpa.py", line 10, in <module>
+    runpy.run_path(str(Path(__file__).with_name('probe_sglang_910b_prefill.py')), run_name='__main__')
+  File "<frozen runpy>", line 287, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/why/drama3-engine/tools/probe_sglang_910b_prefill.py", line 24, in <module>
+    runpy.run_path(str(Path(__file__).with_name('probe_sglang_engine_npu.py')), run_name='__main__')
+  File "<frozen runpy>", line 287, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/why/drama3-engine/tools/probe_sglang_engine_npu.py", line 40, in <module>
+    scheduler = builder.build(
+                ^^^^^^^^^^^^^^
+  File "/home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/scheduling/engine_factory.py", line 360, in build
+    scheduler, model_runner = self.build_runtime(
+                              ^^^^^^^^^^^^^^^^^^^
+  File "/home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/scheduling/engine_factory.py", line 498, in build_runtime
+    model_runner = self.make_model_runner(model_worker, output_proc)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/models/fishaudio_drama3/engine_builder.py", line 373, in make_model_runner
+    return Drama3ModelRunner(model_worker, output_proc)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/models/fishaudio_drama3/model_runner.py", line 96, in __init__
+    raise RuntimeError(
+RuntimeError: Drama 3 needs TorchNativeAttnBackend for full attention; got AscendAttnBackend
+[ERROR] 2026-10-16-16:23:35 (PID:627403, Device:0, RankID:-1) ERR99999 UNKNOWN applicaiton exception

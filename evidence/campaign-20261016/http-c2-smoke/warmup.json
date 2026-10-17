@@ -1,0 +1,14 @@
+[
+  {
+    "request_id": "real-http-c2-smoke-warmup-000000",
+    "sent_s": 5749466.755682752,
+    "first_audio_s": 5749470.105746149,
+    "last_audio_s": 5749484.41226839,
+    "terminal_s": 5749484.412680261,
+    "audio_samples": 88064,
+    "sample_rate": 44100,
+    "generated_frames": null,
+    "success": true,
+    "error": null
+  }
+]

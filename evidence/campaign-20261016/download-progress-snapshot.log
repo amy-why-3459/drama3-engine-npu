@@ -1,0 +1,19 @@
+Completed 0.047 GiB of scheduled ranges
+000201326592: attempt 1: URLError: <urlopen error EOF occurred in violation of protocol (_ssl.c:1143)>
+000075497472: attempt 1: timeout: The read operation timed out
+Completed 0.156 GiB of scheduled ranges
+000008388608: attempt 1: timeout: The read operation timed out
+000117440512: attempt 1: timeout: The read operation timed out
+Completed 0.250 GiB of scheduled ranges
+000226492416: attempt 1: OSError: Truncated range: 5577516/8388608
+Completed 0.336 GiB of scheduled ranges
+000251658240: attempt 1: timeout: The read operation timed out
+000176160768: attempt 1: TimeoutError: Range exceeded 120 second budget
+Completed 0.414 GiB of scheduled ranges
+000218103808: attempt 1: TimeoutError: Range exceeded 120 second budget
+000578813952: attempt 1: URLError: <urlopen error EOF occurred in violation of protocol (_ssl.c:1143)>
+000612368384: attempt 1: URLError: <urlopen error EOF occurred in violation of protocol (_ssl.c:1143)>
+Completed 0.547 GiB of scheduled ranges
+000335544320: attempt 1: TimeoutError: Range exceeded 120 second budget
+000360710144: attempt 1: TimeoutError: Range exceeded 120 second budget
+Completed 0.773 GiB of scheduled ranges

@@ -1,0 +1,126 @@
+{
+  "scope": "45-second Python sampling during functional smoke; not device kernel time",
+  "hypothesis": "Fuse zero-centered RMSNorm while preserving FP32 gain and BF16 residual addition; norm functions dominate several top leaf samples",
+  "top_leaf": [
+    {
+      "function": "forward",
+      "file": "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/nn/modules/linear.py",
+      "line": 134,
+      "sampled_seconds": 2.3469387755102025
+    },
+    {
+      "function": "_norm",
+      "file": "/usr/local/python3.12.13/lib/python3.12/site-packages/transformers/models/qwen3_5_moe/modeling_qwen3_5_moe.py",
+      "line": 827,
+      "sampled_seconds": 2.224489795918367
+    },
+    {
+      "function": "__call__",
+      "file": "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/_ops.py",
+      "line": 1209,
+      "sampled_seconds": 2.163265306122449
+    },
+    {
+      "function": "forward",
+      "file": "/home/why/drama3-engine/drama3/model/tower.py",
+      "line": 44,
+      "sampled_seconds": 2.163265306122449
+    },
+    {
+      "function": "forward",
+      "file": "/home/why/drama3-engine/drama3/model/tower.py",
+      "line": 45,
+      "sampled_seconds": 1.9795918367346956
+    },
+    {
+      "function": "move_tensors",
+      "file": "/home/why/drama3-engine/drama3/model/backbone.py",
+      "line": 29,
+      "sampled_seconds": 1.7959183673469403
+    },
+    {
+      "function": "forward",
+      "file": "/usr/local/python3.12.13/lib/python3.12/site-packages/transformers/models/qwen3_5_moe/modeling_qwen3_5_moe.py",
+      "line": 833,
+      "sampled_seconds": 1.2040816326530621
+    },
+    {
+      "function": "interleaved_rope",
+      "file": "/home/why/drama3-engine/drama3/model/tower.py",
+      "line": 62,
+      "sampled_seconds": 0.9387755102040823
+    },
+    {
+      "function": "forward",
+      "file": "/usr/local/python3.12.13/lib/python3.12/site-packages/transformers/models/qwen3_5_moe/modeling_qwen3_5_moe.py",
+      "line": 519,
+      "sampled_seconds": 0.7346938775510209
+    },
+    {
+      "function": "commit",
+      "file": "/home/why/drama3-engine/drama3/model/batch_cache.py",
+      "line": 80,
+      "sampled_seconds": 0.5918367346938779
+    },
+    {
+      "function": "recurrent_decode",
+      "file": "/home/why/drama3-engine/drama3/model/npu_recurrent.py",
+      "line": 38,
+      "sampled_seconds": 0.5510204081632656
+    },
+    {
+      "function": "get",
+      "file": "<frozen _collections_abc>",
+      "line": 804,
+      "sampled_seconds": 0.5306122448979594
+    },
+    {
+      "function": "recurrent_decode",
+      "file": "/home/why/drama3-engine/drama3/model/npu_recurrent.py",
+      "line": 39,
+      "sampled_seconds": 0.5306122448979594
+    },
+    {
+      "function": "interleaved_rope",
+      "file": "/home/why/drama3-engine/drama3/model/tower.py",
+      "line": 57,
+      "sampled_seconds": 0.4285714285714287
+    },
+    {
+      "function": "_call_impl",
+      "file": "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/nn/modules/module.py",
+      "line": 1781,
+      "sampled_seconds": 0.40816326530612257
+    },
+    {
+      "function": "pad",
+      "file": "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/nn/functional.py",
+      "line": 5418,
+      "sampled_seconds": 0.40816326530612257
+    },
+    {
+      "function": "from_pretrained",
+      "file": "/usr/local/python3.12.13/lib/python3.12/site-packages/transformers/tokenization_utils_base.py",
+      "line": 1747,
+      "sampled_seconds": 0.3877551020408164
+    },
+    {
+      "function": "silu",
+      "file": "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/nn/functional.py",
+      "line": 2395,
+      "sampled_seconds": 0.3877551020408164
+    },
+    {
+      "function": "forward",
+      "file": "/usr/local/python3.12.13/lib/python3.12/site-packages/transformers/models/qwen3_5_moe/modeling_qwen3_5_moe.py",
+      "line": 834,
+      "sampled_seconds": 0.3673469387755103
+    },
+    {
+      "function": "forward",
+      "file": "/usr/local/python3.12.13/lib/python3.12/site-packages/transformers/models/qwen3_5_moe/modeling_qwen3_5_moe.py",
+      "line": 830,
+      "sampled_seconds": 0.34693877551020413
+    }
+  ]
+}

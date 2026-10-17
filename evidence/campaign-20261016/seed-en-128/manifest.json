@@ -1,0 +1,657 @@
+{
+  "status": "PREPARED_NOT_EVALUATED",
+  "selection": "first metadata rows",
+  "count": 128,
+  "unique_references": 83,
+  "meta_sha256": "7cd29f701743e6c7033edbca764ddc0b979de8c4f4907eff5e5454682114661f",
+  "codec_sha256": "74fc41c5a7151c6f350af8bd7e5d6e3accfcc7f3dfbfac23afd35af07052bb2f",
+  "workload_sha256": "9bdd98e981c46225cb7a85362115f2e72e53ca94e17e38154f1e507d3917c2af",
+  "reference_precision": "float32 CPU",
+  "required_server_sampling": {
+    "temperature": 1.0,
+    "top_p": 0.9,
+    "top_k": 30
+  },
+  "samples": [
+    {
+      "sample_id": "common_voice_en_10119832-common_voice_en_10119840",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_10119832.wav",
+      "audio_sha256": "af3ac928e98cdb171c9abdc611813f2cc40c52b71167790b785628104f81f389"
+    },
+    {
+      "sample_id": "common_voice_en_10119832-common_voice_en_10119847",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_10119832.wav",
+      "audio_sha256": "af3ac928e98cdb171c9abdc611813f2cc40c52b71167790b785628104f81f389"
+    },
+    {
+      "sample_id": "common_voice_en_103675-common_voice_en_103676",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_103675.wav",
+      "audio_sha256": "1559628954a0117c81775b1a730ee46dd1c40ce099baaf1cc958bac6dd210330"
+    },
+    {
+      "sample_id": "common_voice_en_103675-common_voice_en_103677",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_103675.wav",
+      "audio_sha256": "1559628954a0117c81775b1a730ee46dd1c40ce099baaf1cc958bac6dd210330"
+    },
+    {
+      "sample_id": "common_voice_en_10933823-common_voice_en_10933822",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_10933823.wav",
+      "audio_sha256": "0750ca1cccec0515e69bca3907adcfb95335e35e2bb74358e88071426e9accf2"
+    },
+    {
+      "sample_id": "common_voice_en_10933823-common_voice_en_10933825",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_10933823.wav",
+      "audio_sha256": "0750ca1cccec0515e69bca3907adcfb95335e35e2bb74358e88071426e9accf2"
+    },
+    {
+      "sample_id": "common_voice_en_120405-common_voice_en_120402",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_120405.wav",
+      "audio_sha256": "1ea6c705b6d9cf2564395a8f6c89f39b10585a67e9c0fa81ffe3a202e2e51bba"
+    },
+    {
+      "sample_id": "common_voice_en_120405-common_voice_en_120406",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_120405.wav",
+      "audio_sha256": "1ea6c705b6d9cf2564395a8f6c89f39b10585a67e9c0fa81ffe3a202e2e51bba"
+    },
+    {
+      "sample_id": "common_voice_en_1205005-common_voice_en_1205007",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_1205005.wav",
+      "audio_sha256": "17e740dd04c5072c440d6ee717f3105eb307f07309fb9db48f4032f7865cfca1"
+    },
+    {
+      "sample_id": "common_voice_en_1205005-common_voice_en_1205008",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_1205005.wav",
+      "audio_sha256": "17e740dd04c5072c440d6ee717f3105eb307f07309fb9db48f4032f7865cfca1"
+    },
+    {
+      "sample_id": "common_voice_en_123125-common_voice_en_123126",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_123125.wav",
+      "audio_sha256": "7b83861f73dc8f8e90e5d859117941656dfee0e1915e5f19ce45e7f5da312a01"
+    },
+    {
+      "sample_id": "common_voice_en_123125-common_voice_en_123127",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_123125.wav",
+      "audio_sha256": "7b83861f73dc8f8e90e5d859117941656dfee0e1915e5f19ce45e7f5da312a01"
+    },
+    {
+      "sample_id": "common_voice_en_125386-common_voice_en_125388",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_125386.wav",
+      "audio_sha256": "148025c5844bbe3a744c5ce422882442bf93f5fdbc95b090aec3eaa20b336bab"
+    },
+    {
+      "sample_id": "common_voice_en_125386-common_voice_en_125389",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_125386.wav",
+      "audio_sha256": "148025c5844bbe3a744c5ce422882442bf93f5fdbc95b090aec3eaa20b336bab"
+    },
+    {
+      "sample_id": "common_voice_en_137148-common_voice_en_137152",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_137148.wav",
+      "audio_sha256": "f92d2c69aa3756fb12ca1d44caae8e472e57f06e8d544d0e61758d2bf63225a2"
+    },
+    {
+      "sample_id": "common_voice_en_13900-common_voice_en_13901",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_13900.wav",
+      "audio_sha256": "bb1af82bc4377c50de1b8f59d6751e04eeaef60a947e97b54a842935d753f4d3"
+    },
+    {
+      "sample_id": "common_voice_en_1416089-common_voice_en_1416090",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_1416089.wav",
+      "audio_sha256": "864870c683eb5f7fdf47b8b79497a948406c2d1ebd3d9044fbd7927ea7f1254a"
+    },
+    {
+      "sample_id": "common_voice_en_1416089-common_voice_en_1416093",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_1416089.wav",
+      "audio_sha256": "864870c683eb5f7fdf47b8b79497a948406c2d1ebd3d9044fbd7927ea7f1254a"
+    },
+    {
+      "sample_id": "common_voice_en_15265-common_voice_en_15266",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_15265.wav",
+      "audio_sha256": "e9b755e301f5659e48c3f268880a336200437f19e206bd8a21fb5e51b78d26f0"
+    },
+    {
+      "sample_id": "common_voice_en_15265-common_voice_en_15268",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_15265.wav",
+      "audio_sha256": "e9b755e301f5659e48c3f268880a336200437f19e206bd8a21fb5e51b78d26f0"
+    },
+    {
+      "sample_id": "common_voice_en_153872-common_voice_en_153873",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_153872.wav",
+      "audio_sha256": "397456ccfb55adaa36d7fd0bbc778fb4c8a5271dde438b1084b0c6d5bdf78515"
+    },
+    {
+      "sample_id": "common_voice_en_153872-common_voice_en_153874",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_153872.wav",
+      "audio_sha256": "397456ccfb55adaa36d7fd0bbc778fb4c8a5271dde438b1084b0c6d5bdf78515"
+    },
+    {
+      "sample_id": "common_voice_en_155313-common_voice_en_155315",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_155313.wav",
+      "audio_sha256": "195a6be0eca21041082091f64d8fb8be7028392a4f9b5f019af3c28a1f2390a2"
+    },
+    {
+      "sample_id": "common_voice_en_15734837-common_voice_en_15734838",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_15734837.wav",
+      "audio_sha256": "598e2ecb6da3ca7be04239ab18766bb846f094dff353f3c0e06922449ebf0eb2"
+    },
+    {
+      "sample_id": "common_voice_en_15735839-common_voice_en_15735837",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_15735839.wav",
+      "audio_sha256": "e1161bd55f4f836eb7ea59b1b2a3dec186029a8b41271222b3ed9f0b9ed4558e"
+    },
+    {
+      "sample_id": "common_voice_en_15903802-common_voice_en_15903807",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_15903802.wav",
+      "audio_sha256": "c64f042425b94ef0e43a9681037600825b9b63c655fe568b45983631cee74b9d"
+    },
+    {
+      "sample_id": "common_voice_en_15903802-common_voice_en_15903815",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_15903802.wav",
+      "audio_sha256": "c64f042425b94ef0e43a9681037600825b9b63c655fe568b45983631cee74b9d"
+    },
+    {
+      "sample_id": "common_voice_en_16666041-common_voice_en_16666040",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_16666041.wav",
+      "audio_sha256": "8b77ac4c873e6a19d24e2f5460724ff708912eb40bb5212b4a4410ce744e1d15"
+    },
+    {
+      "sample_id": "common_voice_en_167249-common_voice_en_167246",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_167249.wav",
+      "audio_sha256": "eaf17dd81aa2a6d4ac88e951172145610e31122d096e2f4935dcba1eb863c53a"
+    },
+    {
+      "sample_id": "common_voice_en_167249-common_voice_en_167247",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_167249.wav",
+      "audio_sha256": "eaf17dd81aa2a6d4ac88e951172145610e31122d096e2f4935dcba1eb863c53a"
+    },
+    {
+      "sample_id": "common_voice_en_17147545-common_voice_en_17147546",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17147545.wav",
+      "audio_sha256": "5d35921470d2fd8e47b2a4ffb1f8a6ba8d0d4c9cad8dce75dc62a31dc07cd810"
+    },
+    {
+      "sample_id": "common_voice_en_17161-common_voice_en_17159",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17161.wav",
+      "audio_sha256": "40cb5909c86bd375df206f3dbb350d3d4f8df872ae1a9b4e85a75590a1f3d77c"
+    },
+    {
+      "sample_id": "common_voice_en_17161-common_voice_en_17160",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17161.wav",
+      "audio_sha256": "40cb5909c86bd375df206f3dbb350d3d4f8df872ae1a9b4e85a75590a1f3d77c"
+    },
+    {
+      "sample_id": "common_voice_en_17249419-common_voice_en_17249428",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17249419.wav",
+      "audio_sha256": "55f5e6d4b19cb47b584d45be6d39746e0a64a0a0df12941c11e7fb3249037aa5"
+    },
+    {
+      "sample_id": "common_voice_en_17255102-common_voice_en_17255101",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17255102.wav",
+      "audio_sha256": "687921b43bb5f4bf0c955a4d6b7484901e79af24e463aad8a743902a234dec07"
+    },
+    {
+      "sample_id": "common_voice_en_17256676-common_voice_en_17256678",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17256676.wav",
+      "audio_sha256": "c9455c17d5f517df5bd2dcbb922d3a2904c7c38b6e17c2a3a7b22cd4f787127f"
+    },
+    {
+      "sample_id": "common_voice_en_17259121-common_voice_en_17259122",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17259121.wav",
+      "audio_sha256": "1d65fa8678ac9c825e2dbaa68f2fb20a9fc2336f3ae8d0fa4fd00ffd7cb31abb"
+    },
+    {
+      "sample_id": "common_voice_en_17263752-common_voice_en_17263750",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17263752.wav",
+      "audio_sha256": "01416f1fbeb4d0219e660c6a847dc13bf35ad22f49717ffe7ae128f310a5d193"
+    },
+    {
+      "sample_id": "common_voice_en_17263752-common_voice_en_17263755",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17263752.wav",
+      "audio_sha256": "01416f1fbeb4d0219e660c6a847dc13bf35ad22f49717ffe7ae128f310a5d193"
+    },
+    {
+      "sample_id": "common_voice_en_17263780-common_voice_en_17263781",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17263780.wav",
+      "audio_sha256": "ee7f361928896ea06619c4cfbab5fe562e31dcb0db74db6e53517dba71345abb"
+    },
+    {
+      "sample_id": "common_voice_en_17263780-common_voice_en_17263782",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17263780.wav",
+      "audio_sha256": "ee7f361928896ea06619c4cfbab5fe562e31dcb0db74db6e53517dba71345abb"
+    },
+    {
+      "sample_id": "common_voice_en_17267923-common_voice_en_17267922",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17267923.wav",
+      "audio_sha256": "7599a32b6541497f9703c16ff23559612680055a179f5c08b0c96e7b426c774e"
+    },
+    {
+      "sample_id": "common_voice_en_17268075-common_voice_en_17268076",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17268075.wav",
+      "audio_sha256": "9848be3146d4e1a85a0bbef553b97221a5d93edecc2f10f0260285af52ab9f3e"
+    },
+    {
+      "sample_id": "common_voice_en_17271507-common_voice_en_17271509",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17271507.wav",
+      "audio_sha256": "6412daf9a7c4348c041b94dca49fbaa63a437437c01d587e28b8f025b301860f"
+    },
+    {
+      "sample_id": "common_voice_en_17271507-common_voice_en_17271510",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17271507.wav",
+      "audio_sha256": "6412daf9a7c4348c041b94dca49fbaa63a437437c01d587e28b8f025b301860f"
+    },
+    {
+      "sample_id": "common_voice_en_17274522-common_voice_en_17274523",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17274522.wav",
+      "audio_sha256": "0824d9c792639fc5368e2ff9e9f9852225493edcae4f8313acba867694790461"
+    },
+    {
+      "sample_id": "common_voice_en_17274522-common_voice_en_17274525",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17274522.wav",
+      "audio_sha256": "0824d9c792639fc5368e2ff9e9f9852225493edcae4f8313acba867694790461"
+    },
+    {
+      "sample_id": "common_voice_en_17274533-common_voice_en_17274531",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17274533.wav",
+      "audio_sha256": "b9a2c57241e3e75bbb3dc4b78b5de649558526604f104c899f8746ab04b89b3f"
+    },
+    {
+      "sample_id": "common_voice_en_17275818-common_voice_en_17275816",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17275818.wav",
+      "audio_sha256": "8914c3f34a6922f3915ee793ef39a6717aa7969571afa60b4dc8c13ab856f354"
+    },
+    {
+      "sample_id": "common_voice_en_17275818-common_voice_en_17275817",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17275818.wav",
+      "audio_sha256": "8914c3f34a6922f3915ee793ef39a6717aa7969571afa60b4dc8c13ab856f354"
+    },
+    {
+      "sample_id": "common_voice_en_17277080-common_voice_en_17277082",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17277080.wav",
+      "audio_sha256": "8cd57705f60788fc1fbcd117d5f355d260e4008269cf6beda57a874e949a19c3"
+    },
+    {
+      "sample_id": "common_voice_en_17277080-common_voice_en_17277083",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17277080.wav",
+      "audio_sha256": "8cd57705f60788fc1fbcd117d5f355d260e4008269cf6beda57a874e949a19c3"
+    },
+    {
+      "sample_id": "common_voice_en_17278904-common_voice_en_17278905",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17278904.wav",
+      "audio_sha256": "b0bc93d6a01ccf64a001ecb89f4fbe699e5d13d1bf207bdef5f8da089783503c"
+    },
+    {
+      "sample_id": "common_voice_en_17278904-common_voice_en_17278909",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17278904.wav",
+      "audio_sha256": "b0bc93d6a01ccf64a001ecb89f4fbe699e5d13d1bf207bdef5f8da089783503c"
+    },
+    {
+      "sample_id": "common_voice_en_17281385-common_voice_en_17281386",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17281385.wav",
+      "audio_sha256": "0ffd80fbaedd5e2d100a9c0450b2926b7b7c07b2d2ed9083d6eabcd6955e5830"
+    },
+    {
+      "sample_id": "common_voice_en_17281385-common_voice_en_17281393",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17281385.wav",
+      "audio_sha256": "0ffd80fbaedd5e2d100a9c0450b2926b7b7c07b2d2ed9083d6eabcd6955e5830"
+    },
+    {
+      "sample_id": "common_voice_en_17288057-common_voice_en_17288056",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17288057.wav",
+      "audio_sha256": "ce878bc9c26b42757cd6415b277b443879f1beba58c934684ae7e8b76e0f7345"
+    },
+    {
+      "sample_id": "common_voice_en_17288057-common_voice_en_17288059",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17288057.wav",
+      "audio_sha256": "ce878bc9c26b42757cd6415b277b443879f1beba58c934684ae7e8b76e0f7345"
+    },
+    {
+      "sample_id": "common_voice_en_17324784-common_voice_en_17324785",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17324784.wav",
+      "audio_sha256": "1264cdea87ce9c8f1541cc9b71c305cede818da0887179a5084507b51657fd21"
+    },
+    {
+      "sample_id": "common_voice_en_17324784-common_voice_en_17324786",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17324784.wav",
+      "audio_sha256": "1264cdea87ce9c8f1541cc9b71c305cede818da0887179a5084507b51657fd21"
+    },
+    {
+      "sample_id": "common_voice_en_17347410-common_voice_en_17347409",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17347410.wav",
+      "audio_sha256": "a76bb569ed97cc5c662c78d390a3ab50123f2ed7bdc78b67d258b068349e4d82"
+    },
+    {
+      "sample_id": "common_voice_en_17352169-common_voice_en_17352173",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17352169.wav",
+      "audio_sha256": "ef826b4672837f55860779f0f2e199a750bbd0d86d1c4256298948cff81c0d03"
+    },
+    {
+      "sample_id": "common_voice_en_173534-common_voice_en_173537",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_173534.wav",
+      "audio_sha256": "b10aa39e4fd20c2bd1af830a53394baf000784b7df3994cd211d01bbb0d64d81"
+    },
+    {
+      "sample_id": "common_voice_en_173534-common_voice_en_173540",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_173534.wav",
+      "audio_sha256": "b10aa39e4fd20c2bd1af830a53394baf000784b7df3994cd211d01bbb0d64d81"
+    },
+    {
+      "sample_id": "common_voice_en_17369337-common_voice_en_17369336",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17369337.wav",
+      "audio_sha256": "f295952b71ca259f908e3f8c3ef636b4874811f1631bd14ab315ee561a214f03"
+    },
+    {
+      "sample_id": "common_voice_en_17369851-common_voice_en_17369849",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17369851.wav",
+      "audio_sha256": "53e4bf790fb73b53eaff25549394a9cf629895d29ed9f321731c7a5e8401737a"
+    },
+    {
+      "sample_id": "common_voice_en_17375252-common_voice_en_17375256",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17375252.wav",
+      "audio_sha256": "6a746efaa109e3e7596e9e4ecd55e76ca88cb048a63fe4e5f9fefb2fd9d408ed"
+    },
+    {
+      "sample_id": "common_voice_en_17380945-common_voice_en_17380947",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17380945.wav",
+      "audio_sha256": "bcef4fa08c03855dc603ff8f83e7862e4676291bc777ccbcbea33dab69d37fe3"
+    },
+    {
+      "sample_id": "common_voice_en_17389076-common_voice_en_17389120",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17389076.wav",
+      "audio_sha256": "1101f93042fab22ee7ded4ea5227206d7ec07ff29c91b4b9af23f01e66544422"
+    },
+    {
+      "sample_id": "common_voice_en_17389984-common_voice_en_17389987",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17389984.wav",
+      "audio_sha256": "8b9002df7250b951e28cb96736dfef9616cc7ea0aa5443d6cdc60607827a7924"
+    },
+    {
+      "sample_id": "common_voice_en_17389984-common_voice_en_17389988",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17389984.wav",
+      "audio_sha256": "8b9002df7250b951e28cb96736dfef9616cc7ea0aa5443d6cdc60607827a7924"
+    },
+    {
+      "sample_id": "common_voice_en_17401431-common_voice_en_17401433",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17401431.wav",
+      "audio_sha256": "657417d81f035633551b94d52121ef5b8737f393c9364f8f89f229bb96df17e6"
+    },
+    {
+      "sample_id": "common_voice_en_17406452-common_voice_en_17406455",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17406452.wav",
+      "audio_sha256": "7b9993cc594861f17b53fcfdd0ac8bf40f0deec052b02f222b6d7648c078121f"
+    },
+    {
+      "sample_id": "common_voice_en_17406452-common_voice_en_17406466",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17406452.wav",
+      "audio_sha256": "7b9993cc594861f17b53fcfdd0ac8bf40f0deec052b02f222b6d7648c078121f"
+    },
+    {
+      "sample_id": "common_voice_en_17406732-common_voice_en_17406734",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17406732.wav",
+      "audio_sha256": "bd82f76a60e3176b57977afad06bc0e2e3085e8c8e977eb2f13857528eac2ddc"
+    },
+    {
+      "sample_id": "common_voice_en_17406732-common_voice_en_17406735",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17406732.wav",
+      "audio_sha256": "bd82f76a60e3176b57977afad06bc0e2e3085e8c8e977eb2f13857528eac2ddc"
+    },
+    {
+      "sample_id": "common_voice_en_17429166-common_voice_en_17429168",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17429166.wav",
+      "audio_sha256": "a8c58114e81669991773d22cb7d63d45288842a413ac78608c61ea085c6a102a"
+    },
+    {
+      "sample_id": "common_voice_en_17429166-common_voice_en_17429171",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17429166.wav",
+      "audio_sha256": "a8c58114e81669991773d22cb7d63d45288842a413ac78608c61ea085c6a102a"
+    },
+    {
+      "sample_id": "common_voice_en_17442686-common_voice_en_17442688",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17442686.wav",
+      "audio_sha256": "ba68ac161ff8c81372e422c9e9cc896b8acc7c72cff67953855eb3f139d7d709"
+    },
+    {
+      "sample_id": "common_voice_en_17444666-common_voice_en_17444667",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17444666.wav",
+      "audio_sha256": "45ebc197f910d8331fd5ec79e6bb62e103b03ece14d1b44c2e71ee3025525909"
+    },
+    {
+      "sample_id": "common_voice_en_17444666-common_voice_en_17444668",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17444666.wav",
+      "audio_sha256": "45ebc197f910d8331fd5ec79e6bb62e103b03ece14d1b44c2e71ee3025525909"
+    },
+    {
+      "sample_id": "common_voice_en_17451108-common_voice_en_17451109",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17451108.wav",
+      "audio_sha256": "a4d4b2d4126e6a0ef7bff2595c5fa04e5febd53a5a8528905e014736e1d08b68"
+    },
+    {
+      "sample_id": "common_voice_en_17502-common_voice_en_17503",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17502.wav",
+      "audio_sha256": "0c584f7528b3b6de2d0e3b57cb87134c54a8187a70a1f829782d4f395f94028b"
+    },
+    {
+      "sample_id": "common_voice_en_17519982-common_voice_en_17519985",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17519982.wav",
+      "audio_sha256": "3be901f7f590ca14a9d20d55ba2cac44c1b952acacca83a40fe0513f0b6e011e"
+    },
+    {
+      "sample_id": "common_voice_en_17519982-common_voice_en_17519988",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17519982.wav",
+      "audio_sha256": "3be901f7f590ca14a9d20d55ba2cac44c1b952acacca83a40fe0513f0b6e011e"
+    },
+    {
+      "sample_id": "common_voice_en_175348-common_voice_en_175349",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_175348.wav",
+      "audio_sha256": "a679639d4845bc5c4b384ed0a9fbf98b004fe64236412621a83e319f3b16bf82"
+    },
+    {
+      "sample_id": "common_voice_en_175348-common_voice_en_175350",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_175348.wav",
+      "audio_sha256": "a679639d4845bc5c4b384ed0a9fbf98b004fe64236412621a83e319f3b16bf82"
+    },
+    {
+      "sample_id": "common_voice_en_17578783-common_voice_en_17578780",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17578783.wav",
+      "audio_sha256": "e37e71ece0c620ecb6011afeee73cc41cdbd4ab701c10055f60d634268daee82"
+    },
+    {
+      "sample_id": "common_voice_en_17578783-common_voice_en_17578781",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17578783.wav",
+      "audio_sha256": "e37e71ece0c620ecb6011afeee73cc41cdbd4ab701c10055f60d634268daee82"
+    },
+    {
+      "sample_id": "common_voice_en_17662945-common_voice_en_17662954",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17662945.wav",
+      "audio_sha256": "7d1c24f854b8d45b46da770536a7cac8d05ca14fdc724e8856a3d5492faaa7b5"
+    },
+    {
+      "sample_id": "common_voice_en_17662945-common_voice_en_17662956",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17662945.wav",
+      "audio_sha256": "7d1c24f854b8d45b46da770536a7cac8d05ca14fdc724e8856a3d5492faaa7b5"
+    },
+    {
+      "sample_id": "common_voice_en_17718576-common_voice_en_17718578",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17718576.wav",
+      "audio_sha256": "6400112fe1ae10a5ee4296c713a9e7faf85c98be8cc7e85a6a7f14c32d2b1386"
+    },
+    {
+      "sample_id": "common_voice_en_17727889-common_voice_en_17727904",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17727889.wav",
+      "audio_sha256": "02fe3c2f235428ea943188281a7a71a796295775e107c24c12f2d46688bc491d"
+    },
+    {
+      "sample_id": "common_voice_en_17727889-common_voice_en_17727905",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17727889.wav",
+      "audio_sha256": "02fe3c2f235428ea943188281a7a71a796295775e107c24c12f2d46688bc491d"
+    },
+    {
+      "sample_id": "common_voice_en_17729945-common_voice_en_17729943",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17729945.wav",
+      "audio_sha256": "07f13bfee37bee54f5bce607fc86c021f5f07cd0ce611d0154b7822fedbb9583"
+    },
+    {
+      "sample_id": "common_voice_en_17729945-common_voice_en_17729944",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17729945.wav",
+      "audio_sha256": "07f13bfee37bee54f5bce607fc86c021f5f07cd0ce611d0154b7822fedbb9583"
+    },
+    {
+      "sample_id": "common_voice_en_17736608-common_voice_en_17736610",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17736608.wav",
+      "audio_sha256": "38422a464c4b6855689f9c04fbc3560eefe3f12e3df6c1c987bab29ba0db5b8c"
+    },
+    {
+      "sample_id": "common_voice_en_17738848-common_voice_en_17744571",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17738848.wav",
+      "audio_sha256": "1aae55ff1d91d087047f8ac4a64e36570de24dd92ab4a16cd87e3629854a33bc"
+    },
+    {
+      "sample_id": "common_voice_en_17738848-common_voice_en_19083939",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17738848.wav",
+      "audio_sha256": "1aae55ff1d91d087047f8ac4a64e36570de24dd92ab4a16cd87e3629854a33bc"
+    },
+    {
+      "sample_id": "common_voice_en_17781154-common_voice_en_17781153",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17781154.wav",
+      "audio_sha256": "e7fc87165349b42f0d01959bae7ebc23474d0278844d5a58b138e42d10f3a19a"
+    },
+    {
+      "sample_id": "common_voice_en_17784-common_voice_en_17785",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17784.wav",
+      "audio_sha256": "69c7062ce403c3c1644ce645860675bf1b77e9b5aae93cf9327058400205233e"
+    },
+    {
+      "sample_id": "common_voice_en_17784-common_voice_en_17786",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17784.wav",
+      "audio_sha256": "69c7062ce403c3c1644ce645860675bf1b77e9b5aae93cf9327058400205233e"
+    },
+    {
+      "sample_id": "common_voice_en_177895-common_voice_en_177894",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_177895.wav",
+      "audio_sha256": "a50cf20c722eef6adbb6eae09156aa3a66317af4c6ab7e92bfb9608e50f8c9fc"
+    },
+    {
+      "sample_id": "common_voice_en_177895-common_voice_en_177898",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_177895.wav",
+      "audio_sha256": "a50cf20c722eef6adbb6eae09156aa3a66317af4c6ab7e92bfb9608e50f8c9fc"
+    },
+    {
+      "sample_id": "common_voice_en_17817002-common_voice_en_17817003",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17817002.wav",
+      "audio_sha256": "2dda87c585d433a39997c61c11542e0371f642d8417dc4e5516175f48a89029c"
+    },
+    {
+      "sample_id": "common_voice_en_17817002-common_voice_en_17817005",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17817002.wav",
+      "audio_sha256": "2dda87c585d433a39997c61c11542e0371f642d8417dc4e5516175f48a89029c"
+    },
+    {
+      "sample_id": "common_voice_en_17830764-common_voice_en_17830762",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17830764.wav",
+      "audio_sha256": "7fd55d8577ab95b706f481a725346537d531f55cd836e29b038262b32b489e1b"
+    },
+    {
+      "sample_id": "common_voice_en_17830764-common_voice_en_17830783",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17830764.wav",
+      "audio_sha256": "7fd55d8577ab95b706f481a725346537d531f55cd836e29b038262b32b489e1b"
+    },
+    {
+      "sample_id": "common_voice_en_17837104-common_voice_en_17837105",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17837104.wav",
+      "audio_sha256": "f398a21563c34bd50af39a9f81ac7b90579bd002e6ca05e34ed3888500572540"
+    },
+    {
+      "sample_id": "common_voice_en_17851231-common_voice_en_17851248",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17851231.wav",
+      "audio_sha256": "99ac625881e0ac0fb1e8591227fe7a07db8e6f5095c48c46a85991d61f27474f"
+    },
+    {
+      "sample_id": "common_voice_en_17851231-common_voice_en_17851256",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17851231.wav",
+      "audio_sha256": "99ac625881e0ac0fb1e8591227fe7a07db8e6f5095c48c46a85991d61f27474f"
+    },
+    {
+      "sample_id": "common_voice_en_17854896-common_voice_en_17854894",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17854896.wav",
+      "audio_sha256": "3f654d8b147717ecada931774e69dd0ab7e8ecda753197a7aa711dafc7eb6fcb"
+    },
+    {
+      "sample_id": "common_voice_en_17854896-common_voice_en_17854897",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17854896.wav",
+      "audio_sha256": "3f654d8b147717ecada931774e69dd0ab7e8ecda753197a7aa711dafc7eb6fcb"
+    },
+    {
+      "sample_id": "common_voice_en_17861335-common_voice_en_17861337",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17861335.wav",
+      "audio_sha256": "644d0601fc00543a82cd7cf1b10a5bd144d7a8f867f085184d7bbb54b48e4395"
+    },
+    {
+      "sample_id": "common_voice_en_17861489-common_voice_en_17861487",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17861489.wav",
+      "audio_sha256": "54010bd8a25a91bc99a3c0e7b8a43c8e592f734a3b05ddea17411446b8e47698"
+    },
+    {
+      "sample_id": "common_voice_en_17874600-common_voice_en_17874601",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17874600.wav",
+      "audio_sha256": "5c187d78d4bcb49e11aabe9b6b4113e121dd0209953132059bf3d4d35d60ed90"
+    },
+    {
+      "sample_id": "common_voice_en_17874600-common_voice_en_17874602",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17874600.wav",
+      "audio_sha256": "5c187d78d4bcb49e11aabe9b6b4113e121dd0209953132059bf3d4d35d60ed90"
+    },
+    {
+      "sample_id": "common_voice_en_17875915-common_voice_en_17875925",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17875915.wav",
+      "audio_sha256": "4b7ddd70dd80d4c875f8ef3b53cd86efb5b9b008be92d59576cc5291fe54eeeb"
+    },
+    {
+      "sample_id": "common_voice_en_17879420-common_voice_en_17879418",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17879420.wav",
+      "audio_sha256": "dadebba84f8429b9e5693ce951559c7d4021ffb6dbbd516ee2392fab284d1119"
+    },
+    {
+      "sample_id": "common_voice_en_17879420-common_voice_en_17879438",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17879420.wav",
+      "audio_sha256": "dadebba84f8429b9e5693ce951559c7d4021ffb6dbbd516ee2392fab284d1119"
+    },
+    {
+      "sample_id": "common_voice_en_17880926-common_voice_en_17880932",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17880926.wav",
+      "audio_sha256": "f8ae27fa91538560f163f4e7d275ef6c8ddda0c13eb0850ed1559941651a877f"
+    },
+    {
+      "sample_id": "common_voice_en_17889905-common_voice_en_17889907",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17889905.wav",
+      "audio_sha256": "99359fd79ed41705798de6c9ed5b4620241b5e5981885c076d18473bccd26a89"
+    },
+    {
+      "sample_id": "common_voice_en_17893247-common_voice_en_17893246",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17893247.wav",
+      "audio_sha256": "a0d8a86ef1ea38b1ba9b3eaca5a5075f49ed8df0ac75367db7b0218f0c8dbac8"
+    },
+    {
+      "sample_id": "common_voice_en_17893247-common_voice_en_17893250",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17893247.wav",
+      "audio_sha256": "a0d8a86ef1ea38b1ba9b3eaca5a5075f49ed8df0ac75367db7b0218f0c8dbac8"
+    },
+    {
+      "sample_id": "common_voice_en_17899910-common_voice_en_17899909",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17899910.wav",
+      "audio_sha256": "04eb37e4a549a6f264285f6de2e7ab19f28be47f20097b9249890f79b2c408f2"
+    },
+    {
+      "sample_id": "common_voice_en_17920116-common_voice_en_17920112",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17920116.wav",
+      "audio_sha256": "b436cafe73c0e0f5cd517b0b3a90be7ff9367a8cc3588ac2a868585b90497320"
+    },
+    {
+      "sample_id": "common_voice_en_17986345-common_voice_en_17986347",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_17986345.wav",
+      "audio_sha256": "329a3b383040301f576f63f36b97fcc421b122399ee03a915af6fa1fafca6e14"
+    },
+    {
+      "sample_id": "common_voice_en_18012457-common_voice_en_18012447",
+      "audio": "/dataset/models/seed-tts-eval/en/prompt-wavs/common_voice_en_18012457.wav",
+      "audio_sha256": "9831f9ed0c3419f6b5fc80d5b2615f34b698c8311d6f41212989ca3acd501e0a"
+    }
+  ]
+}

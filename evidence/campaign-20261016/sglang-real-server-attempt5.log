@@ -1,0 +1,313 @@
+Failed to import torchada: No module named 'torchada'. MUSA platform compatibility will not work.
+2026-10-16 17:31:51,602 [ERROR] sglang_omni.relay.nixl: Failed to import nixl: No module named 'nixl'. NixlRelay will not work.
+2026-10-16 17:31:51,798 [INFO] sglang_omni.pipeline.mp_runner: CPU thread fallback plan: budget=192 processes=4 fallback_threads_per_process=48 fallback_overcommitted=false allocations={'preprocessing': {'fallback_threads': 48, 'cpus': None, 'stages': ['preprocessing']}, 'vocoder': {'fallback_threads': 48, 'cpus': None, 'stages': ['vocoder']}, 'pipeline_tp0': {'fallback_threads': 48, 'cpus': None, 'stages': ['tts_engine']}, 'pipeline_tp1': {'fallback_threads': 48, 'cpus': None, 'stages': ['tts_engine']}}
+2026-10-16 17:31:51,798 [INFO] sglang_omni.pipeline.mp_runner: Coordinator stream backlog cap: max_total_backlog_bytes=1073741824
+2026-10-16 17:31:51,899 [INFO] sglang_omni.pipeline.control_plane: Coordinator control plane started
+2026-10-16 17:31:51,900 [INFO] sglang_omni.pipeline.coordinator: Coordinator started
+2026-10-16 17:31:51,901 [INFO] torch_npu.env: get env OMP_NUM_THREADS = 1
+2026-10-16 17:31:51,901 [INFO] sglang_omni.pipeline.stage_workers: Worker spawn environment: process=preprocessing OMP_NUM_THREADS=1 source=environment_or_policy fallback_threads=48
+2026-10-16 17:31:51,903 [INFO] sglang_omni.pipeline.stage_workers: StageGroup preprocessing: spawned 1 process(es) (pids=[1118573])
+2026-10-16 17:31:51,905 [INFO] sglang_omni.pipeline.stage_workers: Worker spawn environment: process=vocoder OMP_NUM_THREADS=1 source=environment_or_policy fallback_threads=48
+2026-10-16 17:31:51,906 [INFO] sglang_omni.pipeline.stage_workers: StageGroup vocoder: spawned 1 process(es) (pids=[1118574])
+2026-10-16 17:31:51,907 [INFO] sglang_omni.pipeline.stage_workers: Worker spawn environment: process=pipeline_tp0 OMP_NUM_THREADS=1 source=environment_or_policy fallback_threads=48
+2026-10-16 17:31:51,910 [INFO] sglang_omni.pipeline.stage_workers: Worker spawn environment: process=pipeline_tp1 OMP_NUM_THREADS=1 source=environment_or_policy fallback_threads=48
+2026-10-16 17:31:51,911 [INFO] sglang_omni.pipeline.stage_workers: StageGroup tts_engine: spawned 2 process(es) (pids=[1118575, 1118576])
+Failed to import torchada: No module named 'torchada'. MUSA platform compatibility will not work.
+Failed to import torchada: No module named 'torchada'. MUSA platform compatibility will not work.
+Failed to import torchada: No module named 'torchada'. MUSA platform compatibility will not work.
+Failed to import torchada: No module named 'torchada'. MUSA platform compatibility will not work.
+Failed to import nixl: No module named 'nixl'. NixlRelay will not work.
+2026-10-16 17:32:10,157 [INFO] stage_workers.preprocessing: Building scheduler for preprocessing (tp_rank=0/1) ...
+Failed to import nixl: No module named 'nixl'. NixlRelay will not work.
+Failed to import nixl: No module named 'nixl'. NixlRelay will not work.
+Failed to import nixl: No module named 'nixl'. NixlRelay will not work.
+2026-10-16 17:32:10,708 [INFO] torch_npu.env: get env TORCHINDUCTOR_CACHE_DIR = /tmp/torchinductor_root
+2026-10-16 17:32:11,253 [INFO] torch_npu.env: get env LD_LIBRARY_PATH = /usr/local/Ascend/cann-9.1.0/lib64:/usr/local/Ascend/cann-9.1.0/lib64/plugin/opskernel:/usr/local/Ascend/cann-9.1.0/lib64/plugin/nnengine:/usr/local/Ascend/cann-9.1.0/opp/built-in/op_impl/ai_core/tbe/op_tiling:/usr/local/Ascend/driver/lib64:/usr/local/Ascend/driver/lib64/common:/usr/local/Ascend/driver/lib64/driver:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/lib:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/examples:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/tests/atbopstest:/usr/local/Ascend/ascend-toolkit/latest/tools/aml/lib64:/usr/local/Ascend/ascend-toolkit/latest/tools/aml/lib64/plugin:/usr/local/Ascend/ascend-toolkit/latest/lib64:/usr/local/Ascend/ascend-toolkit/latest/lib64/plugin/opskernel:/usr/local/Ascend/ascend-toolkit/latest/lib64/plugin/nnengine:/usr/local/Ascend/ascend-toolkit/latest/opp/built-in/op_impl/ai_core/tbe/op_tiling:/usr/local/python3.12.13/lib:
+2026-10-16 17:32:11,624 [INFO] stage_workers.pipeline_tp1: Set current device to 1 for stage tts_engine
+2026-10-16 17:32:11,624 [INFO] stage_workers.pipeline_tp1: Building scheduler for tts_engine (tp_rank=1/2) ...
+2026-10-16 17:32:11,633 [INFO] stage_workers.pipeline_tp0: Set current device to 0 for stage tts_engine
+2026-10-16 17:32:11,633 [INFO] stage_workers.pipeline_tp0: Building scheduler for tts_engine (tp_rank=0/2) ...
+2026-10-16 17:32:11,976 [INFO] stage_workers.vocoder: Set current device to 1 for stage vocoder
+2026-10-16 17:32:11,976 [INFO] stage_workers.vocoder: Building scheduler for vocoder (tp_rank=0/1) ...
+2026-10-16 17:32:12,171 [INFO] torch_npu.env: get env TORCHINDUCTOR_CACHE_DIR = /tmp/torchinductor_root
+2026-10-16 17:32:12,196 [INFO] torch_npu.env: get env TORCHINDUCTOR_CACHE_DIR = /tmp/torchinductor_root
+2026-10-16 17:32:12,522 [INFO] torch_npu.env: get env TORCHINDUCTOR_CACHE_DIR = /tmp/torchinductor_root
+2026-10-16 17:32:12,706 [INFO] torch_npu.env: get env LD_LIBRARY_PATH = /usr/local/Ascend/cann-9.1.0/lib64:/usr/local/Ascend/cann-9.1.0/lib64/plugin/opskernel:/usr/local/Ascend/cann-9.1.0/lib64/plugin/nnengine:/usr/local/Ascend/cann-9.1.0/opp/built-in/op_impl/ai_core/tbe/op_tiling:/usr/local/Ascend/driver/lib64:/usr/local/Ascend/driver/lib64/common:/usr/local/Ascend/driver/lib64/driver:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/lib:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/examples:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/tests/atbopstest:/usr/local/Ascend/ascend-toolkit/latest/tools/aml/lib64:/usr/local/Ascend/ascend-toolkit/latest/tools/aml/lib64/plugin:/usr/local/Ascend/ascend-toolkit/latest/lib64:/usr/local/Ascend/ascend-toolkit/latest/lib64/plugin/opskernel:/usr/local/Ascend/ascend-toolkit/latest/lib64/plugin/nnengine:/usr/local/Ascend/ascend-toolkit/latest/opp/built-in/op_impl/ai_core/tbe/op_tiling:/usr/local/python3.12.13/lib:
+2026-10-16 17:32:12,711 [INFO] torch_npu.env: get env LD_LIBRARY_PATH = /usr/local/Ascend/cann-9.1.0/lib64:/usr/local/Ascend/cann-9.1.0/lib64/plugin/opskernel:/usr/local/Ascend/cann-9.1.0/lib64/plugin/nnengine:/usr/local/Ascend/cann-9.1.0/opp/built-in/op_impl/ai_core/tbe/op_tiling:/usr/local/Ascend/driver/lib64:/usr/local/Ascend/driver/lib64/common:/usr/local/Ascend/driver/lib64/driver:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/lib:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/examples:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/tests/atbopstest:/usr/local/Ascend/ascend-toolkit/latest/tools/aml/lib64:/usr/local/Ascend/ascend-toolkit/latest/tools/aml/lib64/plugin:/usr/local/Ascend/ascend-toolkit/latest/lib64:/usr/local/Ascend/ascend-toolkit/latest/lib64/plugin/opskernel:/usr/local/Ascend/ascend-toolkit/latest/lib64/plugin/nnengine:/usr/local/Ascend/ascend-toolkit/latest/opp/built-in/op_impl/ai_core/tbe/op_tiling:/usr/local/python3.12.13/lib:
+2026-10-16 17:32:13,087 [INFO] torch_npu.env: get env LD_LIBRARY_PATH = /usr/local/Ascend/cann-9.1.0/lib64:/usr/local/Ascend/cann-9.1.0/lib64/plugin/opskernel:/usr/local/Ascend/cann-9.1.0/lib64/plugin/nnengine:/usr/local/Ascend/cann-9.1.0/opp/built-in/op_impl/ai_core/tbe/op_tiling:/usr/local/Ascend/driver/lib64:/usr/local/Ascend/driver/lib64/common:/usr/local/Ascend/driver/lib64/driver:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/lib:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/examples:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/tests/atbopstest:/usr/local/Ascend/ascend-toolkit/latest/tools/aml/lib64:/usr/local/Ascend/ascend-toolkit/latest/tools/aml/lib64/plugin:/usr/local/Ascend/ascend-toolkit/latest/lib64:/usr/local/Ascend/ascend-toolkit/latest/lib64/plugin/opskernel:/usr/local/Ascend/ascend-toolkit/latest/lib64/plugin/nnengine:/usr/local/Ascend/ascend-toolkit/latest/opp/built-in/op_impl/ai_core/tbe/op_tiling:/usr/local/python3.12.13/lib:
+2026-10-16 17:32:15,010 [INFO] torch_npu.env: get env ASCEND_CUSTOM_OPP_PATH = /usr/local/python3.12.13/lib/python3.12/site-packages/fla_npu/opp/vendors/fla_npu_transformer:/usr/local/python3.12.13/lib/python3.12/site-packages/fla_npu/opp/vendors/fla_npu_transformer/op_api/lib
+2026-10-16 17:32:15,375 [INFO] vllm.plugins: Available plugins for group vllm.platform_plugins:
+2026-10-16 17:32:15,375 [INFO] vllm.plugins: - ascend -> vllm_ascend:register
+2026-10-16 17:32:15,375 [INFO] vllm.plugins: All plugins in this group will be loaded. Set `VLLM_PLUGINS` to control which plugins to load.
+2026-10-16 17:32:15,398 [INFO] vllm.platforms: Platform plugin ascend is activated
+2026-10-16 17:32:15,468 [INFO] vllm.logger: Breakable CUDAGraph on Ascend is opt-in; using VLLM_USE_BREAKABLE_CUDAGRAPH=0.
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/contrib/transfer_to_npu.py:390: ImportWarning: 
+    *************************************************************************************************************
+    The torch.Tensor.cuda and torch.nn.Module.cuda are replaced with torch.Tensor.npu and torch.nn.Module.npu now..
+    The torch.cuda.DoubleTensor is replaced with torch.npu.FloatTensor cause the double type is not supported now..
+    The backend in torch.distributed.init_process_group set to hccl now..
+    The torch.cuda.* and torch.cuda.amp.* are replaced with torch.npu.* and torch.npu.amp.* now..
+    The device parameters have been replaced with npu in the function below:
+    torch.logspace, torch.randint, torch.hann_window, torch.rand, torch.full_like, torch.ones_like, torch.rand_like, torch.randperm, torch.arange, torch.frombuffer, torch.normal, torch._empty_per_channel_affine_quantized, torch.empty_strided, torch.empty_like, torch.scalar_tensor, torch.tril_indices, torch.bartlett_window, torch.ones, torch.sparse_coo_tensor, torch.randn, torch.kaiser_window, torch.tensor, torch.triu_indices, torch.as_tensor, torch.zeros, torch.randint_like, torch.full, torch.eye, torch._sparse_csr_tensor_unsafe, torch.empty, torch._sparse_coo_tensor_unsafe, torch.blackman_window, torch.zeros_like, torch.range, torch.sparse_csr_tensor, torch.randn_like, torch.from_file, torch._cudnn_init_dropout_state, torch._empty_affine_quantized, torch.linspace, torch.hamming_window, torch.empty_quantized, torch._pin_memory, torch.load, torch.set_default_device, torch.get_device_module, torch.sparse_compressed_tensor, torch.Tensor.new_empty, torch.Tensor.new_empty_strided, torch.Tensor.new_full, torch.Tensor.new_ones, torch.Tensor.new_tensor, torch.Tensor.new_zeros, torch.Tensor.to, torch.Tensor.pin_memory, torch.nn.Module.to, torch.nn.Module.to_empty
+    *************************************************************************************************************
+    
+  warnings.warn(msg, ImportWarning)
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/contrib/transfer_to_npu.py:311: RuntimeWarning: torch.jit.script and torch.jit.script_method will be disabled by transfer_to_npu, which currently does not support them, if you need to enable them, please do not use transfer_to_npu.
+  warnings.warn(msg, RuntimeWarning)
+2026-10-16 17:32:16,531 [INFO] torch_npu.env: get env ASCEND_CUSTOM_OPP_PATH = /usr/local/python3.12.13/lib/python3.12/site-packages/fla_npu/opp/vendors/fla_npu_transformer:/usr/local/python3.12.13/lib/python3.12/site-packages/fla_npu/opp/vendors/fla_npu_transformer/op_api/lib
+<frozen abc>:106: DeprecationWarning: MultiPlatformOp is deprecated; subclass sglang.kernels.fused_op.BaseFusedOp instead (RFC #29630).
+2026-10-16 17:32:16,556 [INFO] torch_npu.env: get env ASCEND_CUSTOM_OPP_PATH = /usr/local/python3.12.13/lib/python3.12/site-packages/fla_npu/opp/vendors/fla_npu_transformer:/usr/local/python3.12.13/lib/python3.12/site-packages/fla_npu/opp/vendors/fla_npu_transformer/op_api/lib
+2026-10-16 17:32:16,907 [INFO] vllm.plugins: Available plugins for group vllm.platform_plugins:
+2026-10-16 17:32:16,907 [INFO] vllm.plugins: - ascend -> vllm_ascend:register
+2026-10-16 17:32:16,907 [INFO] vllm.plugins: All plugins in this group will be loaded. Set `VLLM_PLUGINS` to control which plugins to load.
+2026-10-16 17:32:16,916 [INFO] vllm.plugins: Available plugins for group vllm.platform_plugins:
+2026-10-16 17:32:16,916 [INFO] vllm.plugins: - ascend -> vllm_ascend:register
+2026-10-16 17:32:16,917 [INFO] vllm.plugins: All plugins in this group will be loaded. Set `VLLM_PLUGINS` to control which plugins to load.
+2026-10-16 17:32:16,931 [INFO] vllm.platforms: Platform plugin ascend is activated
+2026-10-16 17:32:16,942 [INFO] vllm.platforms: Platform plugin ascend is activated
+2026-10-16 17:32:17,002 [INFO] vllm.logger: Breakable CUDAGraph on Ascend is opt-in; using VLLM_USE_BREAKABLE_CUDAGRAPH=0.
+2026-10-16 17:32:17,013 [INFO] vllm.logger: Breakable CUDAGraph on Ascend is opt-in; using VLLM_USE_BREAKABLE_CUDAGRAPH=0.
+2026-10-16 17:32:17,029 [INFO] torch_npu.env: get env ASCEND_CUSTOM_OPP_PATH = /usr/local/python3.12.13/lib/python3.12/site-packages/fla_npu/opp/vendors/fla_npu_transformer:/usr/local/python3.12.13/lib/python3.12/site-packages/fla_npu/opp/vendors/fla_npu_transformer/op_api/lib
+2026-10-16 17:32:17,430 [INFO] vllm.plugins: Available plugins for group vllm.platform_plugins:
+2026-10-16 17:32:17,431 [INFO] vllm.plugins: - ascend -> vllm_ascend:register
+2026-10-16 17:32:17,431 [INFO] vllm.plugins: All plugins in this group will be loaded. Set `VLLM_PLUGINS` to control which plugins to load.
+2026-10-16 17:32:17,456 [INFO] vllm.platforms: Platform plugin ascend is activated
+2026-10-16 17:32:17,531 [INFO] vllm.logger: Breakable CUDAGraph on Ascend is opt-in; using VLLM_USE_BREAKABLE_CUDAGRAPH=0.
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/npu/__init__.py:540: UserWarning: You can set the device capability via the environment variable TORCH_NPU_DEVICE_CAPABILITY. The return value of get_device_capability is only for compatibility with PyTorch and does not represent the actual capability of the NPU device.
+  warnings.warn(f"You can set the device capability via the environment variable TORCH_NPU_DEVICE_CAPABILITY. {warning_str}")
+2026-10-16 17:32:17,698 [WARNING] sglang.kernels.jit.utils.arch: Cannot detect CUDA architecture.
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/contrib/transfer_to_npu.py:390: ImportWarning: 
+    *************************************************************************************************************
+    The torch.Tensor.cuda and torch.nn.Module.cuda are replaced with torch.Tensor.npu and torch.nn.Module.npu now..
+    The torch.cuda.DoubleTensor is replaced with torch.npu.FloatTensor cause the double type is not supported now..
+    The backend in torch.distributed.init_process_group set to hccl now..
+    The torch.cuda.* and torch.cuda.amp.* are replaced with torch.npu.* and torch.npu.amp.* now..
+    The device parameters have been replaced with npu in the function below:
+    torch.logspace, torch.randint, torch.hann_window, torch.rand, torch.full_like, torch.ones_like, torch.rand_like, torch.randperm, torch.arange, torch.frombuffer, torch.normal, torch._empty_per_channel_affine_quantized, torch.empty_strided, torch.empty_like, torch.scalar_tensor, torch.tril_indices, torch.bartlett_window, torch.ones, torch.sparse_coo_tensor, torch.randn, torch.kaiser_window, torch.tensor, torch.triu_indices, torch.as_tensor, torch.zeros, torch.randint_like, torch.full, torch.eye, torch._sparse_csr_tensor_unsafe, torch.empty, torch._sparse_coo_tensor_unsafe, torch.blackman_window, torch.zeros_like, torch.range, torch.sparse_csr_tensor, torch.randn_like, torch.from_file, torch._cudnn_init_dropout_state, torch._empty_affine_quantized, torch.linspace, torch.hamming_window, torch.empty_quantized, torch._pin_memory, torch.load, torch.set_default_device, torch.get_device_module, torch.sparse_compressed_tensor, torch.Tensor.new_empty, torch.Tensor.new_empty_strided, torch.Tensor.new_full, torch.Tensor.new_ones, torch.Tensor.new_tensor, torch.Tensor.new_zeros, torch.Tensor.to, torch.Tensor.pin_memory, torch.nn.Module.to, torch.nn.Module.to_empty
+    *************************************************************************************************************
+    
+  warnings.warn(msg, ImportWarning)
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/contrib/transfer_to_npu.py:311: RuntimeWarning: torch.jit.script and torch.jit.script_method will be disabled by transfer_to_npu, which currently does not support them, if you need to enable them, please do not use transfer_to_npu.
+  warnings.warn(msg, RuntimeWarning)
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/contrib/transfer_to_npu.py:390: ImportWarning: 
+    *************************************************************************************************************
+    The torch.Tensor.cuda and torch.nn.Module.cuda are replaced with torch.Tensor.npu and torch.nn.Module.npu now..
+    The torch.cuda.DoubleTensor is replaced with torch.npu.FloatTensor cause the double type is not supported now..
+    The backend in torch.distributed.init_process_group set to hccl now..
+    The torch.cuda.* and torch.cuda.amp.* are replaced with torch.npu.* and torch.npu.amp.* now..
+    The device parameters have been replaced with npu in the function below:
+    torch.logspace, torch.randint, torch.hann_window, torch.rand, torch.full_like, torch.ones_like, torch.rand_like, torch.randperm, torch.arange, torch.frombuffer, torch.normal, torch._empty_per_channel_affine_quantized, torch.empty_strided, torch.empty_like, torch.scalar_tensor, torch.tril_indices, torch.bartlett_window, torch.ones, torch.sparse_coo_tensor, torch.randn, torch.kaiser_window, torch.tensor, torch.triu_indices, torch.as_tensor, torch.zeros, torch.randint_like, torch.full, torch.eye, torch._sparse_csr_tensor_unsafe, torch.empty, torch._sparse_coo_tensor_unsafe, torch.blackman_window, torch.zeros_like, torch.range, torch.sparse_csr_tensor, torch.randn_like, torch.from_file, torch._cudnn_init_dropout_state, torch._empty_affine_quantized, torch.linspace, torch.hamming_window, torch.empty_quantized, torch._pin_memory, torch.load, torch.set_default_device, torch.get_device_module, torch.sparse_compressed_tensor, torch.Tensor.new_empty, torch.Tensor.new_empty_strided, torch.Tensor.new_full, torch.Tensor.new_ones, torch.Tensor.new_tensor, torch.Tensor.new_zeros, torch.Tensor.to, torch.Tensor.pin_memory, torch.nn.Module.to, torch.nn.Module.to_empty
+    *************************************************************************************************************
+    
+  warnings.warn(msg, ImportWarning)
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/contrib/transfer_to_npu.py:311: RuntimeWarning: torch.jit.script and torch.jit.script_method will be disabled by transfer_to_npu, which currently does not support them, if you need to enable them, please do not use transfer_to_npu.
+  warnings.warn(msg, RuntimeWarning)
+<frozen abc>:106: DeprecationWarning: MultiPlatformOp is deprecated; subclass sglang.kernels.fused_op.BaseFusedOp instead (RFC #29630).
+<frozen abc>:106: DeprecationWarning: MultiPlatformOp is deprecated; subclass sglang.kernels.fused_op.BaseFusedOp instead (RFC #29630).
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/contrib/transfer_to_npu.py:390: ImportWarning: 
+    *************************************************************************************************************
+    The torch.Tensor.cuda and torch.nn.Module.cuda are replaced with torch.Tensor.npu and torch.nn.Module.npu now..
+    The torch.cuda.DoubleTensor is replaced with torch.npu.FloatTensor cause the double type is not supported now..
+    The backend in torch.distributed.init_process_group set to hccl now..
+    The torch.cuda.* and torch.cuda.amp.* are replaced with torch.npu.* and torch.npu.amp.* now..
+    The device parameters have been replaced with npu in the function below:
+    torch.logspace, torch.randint, torch.hann_window, torch.rand, torch.full_like, torch.ones_like, torch.rand_like, torch.randperm, torch.arange, torch.frombuffer, torch.normal, torch._empty_per_channel_affine_quantized, torch.empty_strided, torch.empty_like, torch.scalar_tensor, torch.tril_indices, torch.bartlett_window, torch.ones, torch.sparse_coo_tensor, torch.randn, torch.kaiser_window, torch.tensor, torch.triu_indices, torch.as_tensor, torch.zeros, torch.randint_like, torch.full, torch.eye, torch._sparse_csr_tensor_unsafe, torch.empty, torch._sparse_coo_tensor_unsafe, torch.blackman_window, torch.zeros_like, torch.range, torch.sparse_csr_tensor, torch.randn_like, torch.from_file, torch._cudnn_init_dropout_state, torch._empty_affine_quantized, torch.linspace, torch.hamming_window, torch.empty_quantized, torch._pin_memory, torch.load, torch.set_default_device, torch.get_device_module, torch.sparse_compressed_tensor, torch.Tensor.new_empty, torch.Tensor.new_empty_strided, torch.Tensor.new_full, torch.Tensor.new_ones, torch.Tensor.new_tensor, torch.Tensor.new_zeros, torch.Tensor.to, torch.Tensor.pin_memory, torch.nn.Module.to, torch.nn.Module.to_empty
+    *************************************************************************************************************
+    
+  warnings.warn(msg, ImportWarning)
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/contrib/transfer_to_npu.py:311: RuntimeWarning: torch.jit.script and torch.jit.script_method will be disabled by transfer_to_npu, which currently does not support them, if you need to enable them, please do not use transfer_to_npu.
+  warnings.warn(msg, RuntimeWarning)
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/npu/__init__.py:540: UserWarning: You can set the device capability via the environment variable TORCH_NPU_DEVICE_CAPABILITY. The return value of get_device_capability is only for compatibility with PyTorch and does not represent the actual capability of the NPU device.
+  warnings.warn(f"You can set the device capability via the environment variable TORCH_NPU_DEVICE_CAPABILITY. {warning_str}")
+2026-10-16 17:32:18,419 [WARNING] sglang.kernels.jit.utils.arch: Cannot detect CUDA architecture.
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/npu/__init__.py:540: UserWarning: You can set the device capability via the environment variable TORCH_NPU_DEVICE_CAPABILITY. The return value of get_device_capability is only for compatibility with PyTorch and does not represent the actual capability of the NPU device.
+  warnings.warn(f"You can set the device capability via the environment variable TORCH_NPU_DEVICE_CAPABILITY. {warning_str}")
+2026-10-16 17:32:18,422 [WARNING] sglang.kernels.jit.utils.arch: Cannot detect CUDA architecture.
+2026-10-16 17:32:18,630 [WARNING] sglang.srt.models.registry: Ignore import error when loading sglang.srt.models.falcon_mamba: cannot import name 'causal_conv1d_fn_triton' from 'sglang.srt.layers.attention.mamba.mamba' (/home/why/drama3-research/sglang/python/sglang/srt/layers/attention/mamba/mamba.py)
+<frozen abc>:106: DeprecationWarning: MultiPlatformOp is deprecated; subclass sglang.kernels.fused_op.BaseFusedOp instead (RFC #29630).
+2026-10-16 17:32:18,795 [WARNING] sglang.srt.models.registry: Ignore import error when loading sglang.srt.models.falcon_mamba: cannot import name 'causal_conv1d_fn_triton' from 'sglang.srt.layers.attention.mamba.mamba' (/home/why/drama3-research/sglang/python/sglang/srt/layers/attention/mamba/mamba.py)
+2026-10-16 17:32:18,799 [WARNING] sglang.srt.models.registry: Ignore import error when loading sglang.srt.models.falcon_mamba: cannot import name 'causal_conv1d_fn_triton' from 'sglang.srt.layers.attention.mamba.mamba' (/home/why/drama3-research/sglang/python/sglang/srt/layers/attention/mamba/mamba.py)
+2026-10-16 17:32:18,882 [WARNING] sglang.srt.models.registry: Ignore import error when loading sglang.srt.models.inkling: No module named 'cutlass'
+2026-10-16 17:32:18,904 [INFO] torch_npu.env: get env TRITON_CACHE_DIR = /root/.cache/sglang/triton
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/npu/__init__.py:540: UserWarning: You can set the device capability via the environment variable TORCH_NPU_DEVICE_CAPABILITY. The return value of get_device_capability is only for compatibility with PyTorch and does not represent the actual capability of the NPU device.
+  warnings.warn(f"You can set the device capability via the environment variable TORCH_NPU_DEVICE_CAPABILITY. {warning_str}")
+2026-10-16 17:32:19,025 [WARNING] sglang.kernels.jit.utils.arch: Cannot detect CUDA architecture.
+2026-10-16 17:32:19,336 [WARNING] sglang.srt.models.registry: Ignore import error when loading sglang.srt.models.mamba: cannot import name 'causal_conv1d_fn_triton' from 'sglang.srt.layers.attention.mamba.mamba' (/home/why/drama3-research/sglang/python/sglang/srt/layers/attention/mamba/mamba.py)
+2026-10-16 17:32:19,384 [WARNING] sglang.srt.models.registry: Ignore import error when loading sglang.srt.models.mindspore: No module named 'mindspore'
+2026-10-16 17:32:19,409 [WARNING] sglang.srt.models.registry: Ignore import error when loading sglang.srt.models.falcon_mamba: cannot import name 'causal_conv1d_fn_triton' from 'sglang.srt.layers.attention.mamba.mamba' (/home/why/drama3-research/sglang/python/sglang/srt/layers/attention/mamba/mamba.py)
+2026-10-16 17:32:19,703 [WARNING] sglang.srt.models.registry: Ignore import error when loading sglang.srt.models.inkling: No module named 'cutlass'
+2026-10-16 17:32:19,705 [WARNING] sglang.srt.models.registry: Ignore import error when loading sglang.srt.models.inkling: No module named 'cutlass'
+2026-10-16 17:32:19,726 [INFO] torch_npu.env: get env TRITON_CACHE_DIR = /root/.cache/sglang/triton
+2026-10-16 17:32:19,730 [INFO] torch_npu.env: get env TRITON_CACHE_DIR = /root/.cache/sglang/triton
+2026-10-16 17:32:20,165 [WARNING] sglang.srt.models.registry: Ignore import error when loading sglang.srt.models.mamba: cannot import name 'causal_conv1d_fn_triton' from 'sglang.srt.layers.attention.mamba.mamba' (/home/why/drama3-research/sglang/python/sglang/srt/layers/attention/mamba/mamba.py)
+2026-10-16 17:32:20,172 [WARNING] sglang.srt.models.registry: Ignore import error when loading sglang.srt.models.mamba: cannot import name 'causal_conv1d_fn_triton' from 'sglang.srt.layers.attention.mamba.mamba' (/home/why/drama3-research/sglang/python/sglang/srt/layers/attention/mamba/mamba.py)
+2026-10-16 17:32:20,217 [WARNING] sglang.srt.models.registry: Ignore import error when loading sglang.srt.models.mindspore: No module named 'mindspore'
+2026-10-16 17:32:20,222 [WARNING] sglang.srt.models.registry: Ignore import error when loading sglang.srt.models.mindspore: No module named 'mindspore'
+2026-10-16 17:32:20,316 [WARNING] sglang.srt.models.registry: Ignore import error when loading sglang.srt.models.inkling: No module named 'cutlass'
+2026-10-16 17:32:20,340 [INFO] torch_npu.env: get env TRITON_CACHE_DIR = /root/.cache/sglang/triton
+2026-10-16 17:32:20,772 [WARNING] sglang.srt.models.registry: Ignore import error when loading sglang.srt.models.mamba: cannot import name 'causal_conv1d_fn_triton' from 'sglang.srt.layers.attention.mamba.mamba' (/home/why/drama3-research/sglang/python/sglang/srt/layers/attention/mamba/mamba.py)
+2026-10-16 17:32:20,825 [WARNING] sglang.srt.models.registry: Ignore import error when loading sglang.srt.models.mindspore: No module named 'mindspore'
+2026-10-16 17:32:20,868 [INFO] stage_workers.pipeline_tp1: Acquired GPU startup lock for stage tts_engine: /tmp/sglang_omni_gpu_1_startup.lock
+2026-10-16 17:32:20,876 [INFO] stage_workers.pipeline_tp0: Acquired GPU startup lock for stage tts_engine: /tmp/sglang_omni_gpu_0_startup.lock
+2026-10-16 17:32:20,908 [WARNING] sglang.srt.configs.model_config: bsgemm-moe quantization is not fully optimized yet. The speed can be slower than non-quantized models.
+2026-10-16 17:32:20,916 [WARNING] sglang.srt.configs.model_config: bsgemm-moe quantization is not fully optimized yet. The speed can be slower than non-quantized models.
+2026-10-16 17:32:20,927 [INFO] sglang_omni.scheduling.bootstrap: SGLang runtime configuration: gpu_id=1, sm=None, architecture=unknown, attention_backend=ascend, decode_attention_backend=ascend, prefill_attention_backend=ascend, sampling_backend=pytorch
+2026-10-16 17:32:20,929 [WARNING] sglang.srt.configs.model_config: bsgemm-moe quantization is not fully optimized yet. The speed can be slower than non-quantized models.
+2026-10-16 17:32:20,935 [INFO] sglang_omni.scheduling.bootstrap: SGLang runtime configuration: gpu_id=0, sm=None, architecture=unknown, attention_backend=ascend, decode_attention_backend=ascend, prefill_attention_backend=ascend, sampling_backend=pytorch
+2026-10-16 17:32:20,937 [INFO] sglang.srt.distributed.bootstrap: Init parallel begin.
+2026-10-16 17:32:20,937 [WARNING] sglang.srt.configs.model_config: bsgemm-moe quantization is not fully optimized yet. The speed can be slower than non-quantized models.
+2026-10-16 17:32:20,946 [INFO] sglang.srt.distributed.bootstrap: Init parallel begin.
+[rank1]:[W1016 17:32:21.596480147 NPUCachingAllocator.cpp:202] Warning: The current CANN and HDK(driver) versions require processing for 32 padding size, with memory allocation. (function operator())
+[rank0]:[W1016 17:32:21.604094493 NPUCachingAllocator.cpp:202] Warning: The current CANN and HDK(driver) versions require processing for 32 padding size, with memory allocation. (function operator())
+[rank1]:[W1016 17:32:22.152340517 ProcessGroupGloo.cpp:511] Warning: Unable to resolve hostname to a (local) address. Using the loopback address as fallback. Manually set the network interface to bind to with GLOO_SOCKET_IFNAME. (function operator())
+[rank0]:[W1016 17:32:22.152345897 ProcessGroupGloo.cpp:511] Warning: Unable to resolve hostname to a (local) address. Using the loopback address as fallback. Manually set the network interface to bind to with GLOO_SOCKET_IFNAME. (function operator())
+[Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+2026-10-16 17:32:22,271 [INFO] torch_npu.env: get env SGLANG_ENABLE_DETERMINISTIC_INFERENCE = 0
+2026-10-16 17:32:22,273 [INFO] torch_npu.env: get env SGLANG_ENABLE_DETERMINISTIC_INFERENCE = 0
+[Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+2026-10-16 17:32:22,363 [INFO] sglang.srt.distributed.bootstrap: Init parallel ends. elapsed=1.42 s
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+2026-10-16 17:32:22,416 [INFO] sglang.srt.distributed.bootstrap: Init parallel ends. elapsed=1.48 s
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch/nn/utils/weight_norm.py:144: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+2026-10-16 17:32:25,271 [WARNING] sglang_omni.model_runner.sglang_model_runner: sglang-omni: skipping model MingTTSSGLangModel (No module named 'x_transformers')
+2026-10-16 17:32:25,359 [WARNING] sglang_omni.model_runner.sglang_model_runner: sglang-omni: skipping model Qwen3ASRForConditionalGeneration ('qwen3_asr' is already used by a Transformers config, pick another name.)
+2026-10-16 17:32:25,382 [WARNING] sglang_omni.model_runner.sglang_model_runner: sglang-omni: skipping model MingTTSSGLangModel (No module named 'x_transformers')
+2026-10-16 17:32:25,467 [WARNING] sglang_omni.model_runner.sglang_model_runner: sglang-omni: skipping model Qwen3ASRForConditionalGeneration ('qwen3_asr' is already used by a Transformers config, pick another name.)
+2026-10-16 17:32:25,518 [INFO] sglang.srt.distributed.bootstrap: Memory baseline taken. mem usage=0.00 GB
+2026-10-16 17:32:25,518 [INFO] sglang.srt.distributed.bootstrap: Memory baseline taken. mem usage=0.00 GB
+2026-10-16 17:32:25,552 [INFO] sglang.srt.model_executor.model_runner: Load weight begin. avail mem=60.53 GB
+2026-10-16 17:32:25,560 [INFO] sglang.srt.model_executor.model_runner: Load weight begin. avail mem=60.50 GB
+2026-10-16 17:32:25,564 [INFO] sglang.srt.layers.quantization.fp8: Detected fp8 checkpoint.
+2026-10-16 17:32:25,638 [WARNING] sglang.srt.models.qwen3_5: using attn output gate!
+2026-10-16 17:32:25,649 [WARNING] sglang.srt.models.qwen3_5: using attn output gate!
+Multi-thread loading shards:   0% Completed | 0/8 [00:00<?, ?it/s]Multi-thread loading shards:  12% Completed | 1/8 [00:09<01:04,  9.24s/it]2026-10-16 17:32:36,860 [INFO] sglang_omni.pipeline.control_plane: Stage preprocessing control plane started
+2026-10-16 17:32:36,862 [INFO] sglang_omni.pipeline.stage.runtime: Stage preprocessing started
+2026-10-16 17:32:36,862 [INFO] stage_workers.preprocessing: Process preprocessing ready with stages=['preprocessing']
+2026-10-16 17:32:36,862 [INFO] sglang_omni.pipeline.stage_workers: Process preprocessing ready
+Multi-thread loading shards:  25% Completed | 2/8 [00:12<00:35,  5.86s/it]Multi-thread loading shards:  38% Completed | 3/8 [00:16<00:24,  4.93s/it]Multi-thread loading shards:  50% Completed | 4/8 [00:20<00:17,  4.42s/it]Multi-thread loading shards:  62% Completed | 5/8 [00:24<00:12,  4.28s/it]Multi-thread loading shards:  75% Completed | 6/8 [00:28<00:08,  4.26s/it]Multi-thread loading shards:  88% Completed | 7/8 [00:32<00:04,  4.10s/it]Multi-thread loading shards: 100% Completed | 8/8 [00:33<00:00,  3.21s/it]Multi-thread loading shards: 100% Completed | 8/8 [00:33<00:00,  4.19s/it]
+2026-10-16 17:33:06,268 [INFO] torch_npu.env: get env ASCEND_OPP_PATH = /usr/local/Ascend/cann-9.1.0/opp
+2026-10-16 17:33:07,048 [INFO] torch_npu.env: get env ASCEND_OPP_PATH = /usr/local/Ascend/cann-9.1.0/opp
+Failed to import torchada: No module named 'torchada'. MUSA platform compatibility will not work.
+Failed to import torchada: No module named 'torchada'. MUSA platform compatibility will not work.
+2026-10-16 17:33:25,039 [INFO] torch_npu.env: get env HOME = /root
+2026-10-16 17:33:25,163 [INFO] torch_npu.env: get env TE_AUTO_RESTART_COUNTER = 0
+2026-10-16 17:33:26,016 [INFO] torch_npu.env: get env HOME = /root
+2026-10-16 17:33:26,145 [INFO] torch_npu.env: get env TE_AUTO_RESTART_COUNTER = 0
+2026-10-16 17:33:27,282 [INFO] torch_npu.env: get env PYTHONPATH = /home/why/drama3-research/sglang-omni-npu-20261017:/usr/local/Ascend/ascend-toolkit/latest/python/site-packages:/usr/local/Ascend/ascend-toolkit/latest/opp/built-in/op_impl/ai_core/tbe:/usr/local/Ascend/cann-9.1.0/python/site-packages:/usr/local/Ascend/cann-9.1.0/opp/built-in/op_impl/ai_core/tbe:
+2026-10-16 17:33:28,406 [INFO] torch_npu.env: get env PYTHONPATH = /home/why/drama3-research/sglang-omni-npu-20261017:/usr/local/Ascend/ascend-toolkit/latest/python/site-packages:/usr/local/Ascend/ascend-toolkit/latest/opp/built-in/op_impl/ai_core/tbe:/usr/local/Ascend/cann-9.1.0/python/site-packages:/usr/local/Ascend/cann-9.1.0/opp/built-in/op_impl/ai_core/tbe:
+2026-10-16 17:35:32,534 [INFO] sglang.srt.model_executor.model_runner: Load weight end. elapsed=186.97 s, type=Drama3ForCausalLM, quant=bsgemm-moe, avail mem=22.80 GB, mem usage=37.70 GB.
+2026-10-16 17:35:34,526 [INFO] sglang.srt.model_executor.model_runner: Load weight end. elapsed=188.97 s, type=Drama3ForCausalLM, quant=bsgemm-moe, avail mem=22.83 GB, mem usage=37.70 GB.
+/home/why/drama3-research/sglang/python/sglang/srt/utils/common.py:2553: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /pytorch/torch/csrc/utils/tensor_numpy.cpp:213.)
+  tensor_data = torch.ByteTensor(
+2026-10-16 17:35:34,546 [INFO] sglang_omni.model_runner.sglang_model_runner: SGLang AR memory profile: gpu_mem_accounting=stage_load_fallback gpu_id=0 total_gpu_memory_fraction=0.800 mem_fraction_static=0.800 total=60.96GiB stage_load_used=37.71GiB available_for_kv=11.06GiB
+2026-10-16 17:35:34,546 [INFO] sglang_omni.model_runner.sglang_model_runner: SGLang AR memory profile: gpu_mem_accounting=stage_load_fallback gpu_id=1 total_gpu_memory_fraction=0.800 mem_fraction_static=0.800 total=60.96GiB stage_load_used=37.71GiB available_for_kv=11.06GiB
+2026-10-16 17:35:34,547 [INFO] torch_npu.env: get env SGLANG_MAMBA_SSM_DTYPE = float32
+2026-10-16 17:35:34,547 [INFO] torch_npu.env: get env SGLANG_MAMBA_SSM_DTYPE = float32
+2026-10-16 17:35:34,547 [INFO] sglang_omni.model_runner.sglang_model_runner: SGLang AR memory profile: hybrid_state=0.09GiB available_for_kv=10.97GiB
+2026-10-16 17:35:34,547 [INFO] sglang_omni.model_runner.sglang_model_runner: SGLang AR memory profile: hybrid_state=0.09GiB available_for_kv=10.97GiB
+2026-10-16 17:35:34,554 [INFO] sglang.srt.mem_cache.memory_pool: Mamba Cache is allocated. max_mamba_cache_size: 2, conv_state size: 0.00GB, ssm_state size: 0.09GB 
+2026-10-16 17:35:34,554 [INFO] sglang.srt.mem_cache.memory_pool: Mamba Cache is allocated. max_mamba_cache_size: 2, conv_state size: 0.00GB, ssm_state size: 0.09GB 
+2026-10-16 17:35:34,556 [INFO] sglang.srt.mem_cache.memory_pool: KV Cache is allocated. dtype: torch.bfloat16, #tokens: 1024, K size: 0.01 GB, V size: 0.01 GB
+2026-10-16 17:35:34,557 [INFO] sglang.srt.mem_cache.memory_pool: KV Cache is allocated. dtype: torch.bfloat16, #tokens: 1024, K size: 0.01 GB, V size: 0.01 GB
+2026-10-16 17:35:34,558 [INFO] sglang.srt.mem_cache.kv_cache_configurator: Memory pool end. avail mem=22.83 GB
+2026-10-16 17:35:34,558 [INFO] sglang.srt.mem_cache.kv_cache_configurator: Memory pool end. avail mem=22.80 GB
+2026-10-16 17:35:34,729 [INFO] sglang.srt.utils.common: Linear attention kernel backend: decode=triton, prefill=triton, verify=triton
+2026-10-16 17:35:34,730 [INFO] sglang.srt.layers.attention.attention_registry: Using hybrid linear attention backend for hybrid GDN models.
+2026-10-16 17:35:34,730 [INFO] sglang.srt.utils.common: GDN kernel dispatcher: decode=TritonGDNKernel, extend=TritonGDNKernel, verify=TritonGDNKernel packed_decode=False
+2026-10-16 17:35:34,730 [INFO] sglang.srt.layers.attention.attention_registry: Using hybrid linear attention backend for hybrid GDN models.
+2026-10-16 17:35:34,734 [INFO] sglang.srt.model_executor.model_runner_components.cuda_graph_setup: Disable prefill CUDA graph because cuda_graph_config resolved prefill.backend='disabled' (e.g. via --cuda-graph-backend-prefill=disabled or auto-disable rules).
+2026-10-16 17:35:34,734 [INFO] sglang.srt.model_executor.model_runner_components.cuda_graph_setup: Disable prefill CUDA graph because cuda_graph_config resolved prefill.backend='disabled' (e.g. via --cuda-graph-backend-prefill=disabled or auto-disable rules).
+2026-10-16 17:35:34,745 [INFO] sglang_omni.models.fishaudio_drama3.engine_builder: Drama 3 codebook sampling: PyTorch, tts_engine.factory.triton_sampling is false
+2026-10-16 17:35:34,745 [INFO] sglang_omni.models.fishaudio_drama3.engine_builder: Drama 3 codebook sampling: PyTorch, tts_engine.factory.triton_sampling is false
+2026-10-16 17:35:34,746 [INFO] sglang_omni.models.fishaudio_drama3.engine_builder: Drama 3 tower fused layers: off, tts_engine.factory.tower_fused_layers is false
+2026-10-16 17:35:34,746 [INFO] sglang_omni.models.fishaudio_drama3.engine_builder: Drama 3 first-frame CUDA graphs: off, CUDA graphs are disabled
+2026-10-16 17:35:34,746 [INFO] sglang_omni.models.fishaudio_drama3.engine_builder: Drama 3 async decode: off, tts_engine.factory.enable_async_decode is false
+2026-10-16 17:35:34,746 [INFO] sglang_omni.models.fishaudio_drama3.engine_builder: Drama 3 tower fused layers: off, tts_engine.factory.tower_fused_layers is false
+2026-10-16 17:35:34,746 [INFO] sglang_omni.models.fishaudio_drama3.engine_builder: Drama 3 first-frame CUDA graphs: off, CUDA graphs are disabled
+2026-10-16 17:35:34,746 [INFO] sglang_omni.models.fishaudio_drama3.engine_builder: Drama 3 async decode: off, tts_engine.factory.enable_async_decode is false
+2026-10-16 17:35:34,750 [INFO] stage_workers.vocoder: Acquired GPU startup lock for stage vocoder: /tmp/sglang_omni_gpu_1_startup.lock
+2026-10-16 17:35:34,751 [INFO] sglang_omni.pipeline.control_plane: Stage tts_engine control plane started
+2026-10-16 17:35:34,751 [INFO] sglang_omni.pipeline.tp_control: TP follower control plane started for stage tts_engine
+2026-10-16 17:35:34,753 [INFO] sglang_omni.pipeline.stage.runtime: Scheduler thread for stage tts_engine set npu device to 0
+2026-10-16 17:35:34,754 [INFO] sglang_omni.pipeline.stage.runtime: Scheduler thread for stage tts_engine set npu device to 1
+2026-10-16 17:35:34,755 [INFO] sglang_omni.pipeline.stage.runtime: Stage tts_engine started
+2026-10-16 17:35:34,755 [INFO] stage_workers.pipeline_tp0: Process pipeline_tp0 ready with stages=['tts_engine']
+2026-10-16 17:35:34,755 [INFO] sglang_omni.pipeline.stage.runtime: Stage tts_engine started
+2026-10-16 17:35:34,755 [INFO] sglang_omni.pipeline.stage_workers: Process pipeline_tp0 ready
+2026-10-16 17:35:34,756 [INFO] stage_workers.pipeline_tp1: Process pipeline_tp1 ready with stages=['tts_engine']
+2026-10-16 17:35:34,756 [INFO] sglang_omni.pipeline.stage_workers: Process pipeline_tp1 ready
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch/nn/utils/weight_norm.py:144: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+[W1016 17:35:50.233067391 NPUCachingAllocator.cpp:202] Warning: The current CANN and HDK(driver) versions require processing for 32 padding size, with memory allocation. (function operator())
+2026-10-16 17:35:53,299 [INFO] torch_npu.env: get env ASCEND_OPP_PATH = /usr/local/Ascend/cann-9.1.0/opp
+Failed to import torchada: No module named 'torchada'. MUSA platform compatibility will not work.
+2026-10-16 17:36:12,377 [INFO] torch_npu.env: get env HOME = /root
+2026-10-16 17:36:12,488 [INFO] torch_npu.env: get env TE_AUTO_RESTART_COUNTER = 0
+2026-10-16 17:36:15,911 [INFO] torch_npu.env: get env PYTHONPATH = /home/why/drama3-research/sglang-omni-npu-20261017:/usr/local/Ascend/ascend-toolkit/latest/python/site-packages:/usr/local/Ascend/ascend-toolkit/latest/opp/built-in/op_impl/ai_core/tbe:/usr/local/Ascend/cann-9.1.0/python/site-packages:/usr/local/Ascend/cann-9.1.0/opp/built-in/op_impl/ai_core/tbe:
+.2026-10-16 17:36:26,975 [INFO] sglang_omni.models.fishaudio_drama3.stages: Drama 3 vocoder: a non-streaming decode takes up to 1142 padded frames of 3948720 bytes each; share 6.10 GiB, held 1.89 GiB
+2026-10-16 17:36:26,977 [INFO] sglang_omni.pipeline.control_plane: Stage vocoder control plane started
+2026-10-16 17:36:26,978 [INFO] sglang_omni.pipeline.stage.runtime: Scheduler thread for stage vocoder set npu device to 1
+2026-10-16 17:36:26,979 [INFO] sglang_omni.pipeline.stage.runtime: Stage vocoder started
+2026-10-16 17:36:26,979 [INFO] stage_workers.vocoder: Process vocoder ready with stages=['vocoder']
+2026-10-16 17:36:26,980 [INFO] sglang_omni.pipeline.stage_workers: Process vocoder ready
+2026-10-16 17:36:26,980 [INFO] sglang_omni.pipeline.coordinator: Coordinator registered stage: preprocessing at ipc:///tmp/sglang_omni/dataset-models-drama-3-xtzd1vdl/stage_preprocessing.sock
+2026-10-16 17:36:26,980 [INFO] sglang_omni.pipeline.coordinator: Coordinator registered stage: vocoder at ipc:///tmp/sglang_omni/dataset-models-drama-3-xtzd1vdl/stage_vocoder.sock
+2026-10-16 17:36:26,980 [INFO] sglang_omni.pipeline.coordinator: Coordinator registered stage: tts_engine at ipc:///tmp/sglang_omni/dataset-models-drama-3-xtzd1vdl/stage_tts_engine.sock
+2026-10-16 17:36:26,980 [INFO] sglang_omni.pipeline.mp_runner: MultiProcessPipelineRunner started: 3 stage(s), 4 process(es)
+2026-10-16 17:36:27,846 [INFO] sglang_omni.serve.launcher: Resolved placement/topology plan: placement={'topology': 'Drama3PipelineConfig', 'pipeline': '/dataset/models/drama-3', 'process_groups': {'preprocessing': {'stages': ['preprocessing'], 'gpu': None}, 'vocoder': {'stages': ['vocoder'], 'gpu': 1}}, 'tp_process_groups': {'tts_engine': ['pipeline_tp0', 'pipeline_tp1']}, 'stage_runtime': {'tts_engine': {'gpu': [0, 1], 'total_gpu_memory_fraction': 0.8, 'kv_cache_bytes': None, 'total_reserve_bytes': None, 'mem_fraction_static': None}, 'vocoder': {'gpu': 1, 'total_gpu_memory_fraction': 0.1, 'kv_cache_bytes': None, 'total_reserve_bytes': None, 'mem_fraction_static': None}}, 'gpus': {0: {'hardware': {'device_id': 0, 'name': 'Ascend910B1', 'total_memory': '60.96GiB'}, 'stages': ['tts_engine'], 'total_gpu_memory_fraction': 0.8, 'missing_fraction_stages': [], 'total_kv_cache_bytes': 0, 'total_reserve_bytes': 0}, 1: {'hardware': {'device_id': 1, 'name': 'Ascend910B1', 'total_memory': '60.96GiB'}, 'stages': ['tts_engine', 'vocoder'], 'total_gpu_memory_fraction': 0.9, 'missing_fraction_stages': [], 'total_kv_cache_bytes': 0, 'total_reserve_bytes': 0}}}
+2026-10-16 17:36:27,846 [INFO] sglang_omni.serve.launcher: Model capabilities: {"architecture": "FishOmniModel", "batch_vocoder": true, "breakable_prefill_cuda_graph": true, "cuda_graph": true, "full_prefill_cuda_graph": false, "reference_audio": true, "streaming_vocoder": true, "torch_compile": false}
+2026-10-16 17:36:27,846 [INFO] sglang_omni.serve.launcher: Pipeline '/dataset/models/drama-3' started (2 GPU(s))
+INFO:     Started server process [1118538]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8094 (Press CTRL+C to quit)
+INFO:     127.0.0.1:40934 - "GET /health HTTP/1.1" 200 OK
+Warning: since the loaded file is not a zipfile, only "torch.device" and "str" type parameters are currently supported for parameter types of map_location. If parameter types of map_location is "Callable[[torch.Tensor, str], torch.Tensor]" or "Dict[str, str]", which is only support for zipfile, all tensors are currently loaded onto the CPU, which may introduce problems.
+2026-10-16 17:36:39,333 [WARNING] sglang.srt.distributed.device_communicators.triton_symm_mem_ag: multimem all-gather disabled (SymmetricMemory does not support device type cuda)
+Warning: since the loaded file is not a zipfile, only "torch.device" and "str" type parameters are currently supported for parameter types of map_location. If parameter types of map_location is "Callable[[torch.Tensor, str], torch.Tensor]" or "Dict[str, str]", which is only support for zipfile, all tensors are currently loaded onto the CPU, which may introduce problems.
+('Warning: torch.save with "_use_new_zipfile_serialization = False" is not recommended for npu tensor, which may bring unexpected errors and hopefully set "_use_new_zipfile_serialization = True"', 'if it is necessary to use this, please convert the npu tensor to cpu tensor for saving')
+2026-10-16 17:36:39,333 [WARNING] sglang.srt.distributed.device_communicators.triton_symm_mem_ag: multimem all-gather disabled (SymmetricMemory does not support device type cuda)
+2026-10-16 17:36:39,487 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 1, #new-token: 150, #cached-token: 0, full token usage: 0.16, mamba usage: 0.50, #running-req: 0, #queue-req: 0, #pending-token: 0, npu graph: False, input throughput (token/s): 2.32
+INFO:     127.0.0.1:40948 - "POST /v1/audio/speech HTTP/1.1" 200 OK
+2026-10-16 17:36:41,151 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 1, #new-token: 150, #cached-token: 0, full token usage: 0.31, mamba usage: 1.00, #running-req: 1, #queue-req: 0, #pending-token: 0, npu graph: False, input throughput (token/s): 90.13
+INFO:     127.0.0.1:40960 - "POST /v1/audio/speech HTTP/1.1" 200 OK
+2026-10-16 17:36:51,408 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Decode batch, #running-req: 2, #full token: 384, full token usage: 0.38, mamba num: 2, mamba usage: 1.00, npu graph: False, gen throughput (token/s): 0.99, #queue-req: 0
+2026-10-16 17:36:52,286 [INFO] torch_npu.env: get env DRAMA3_FRAME_TELEMETRY = /home/why/drama3-engine/runs/sglang-real-frames-attempt5.jsonl
+2026-10-16 17:36:52,287 [INFO] torch_npu.env: get env DRAMA3_FRAME_TELEMETRY = /home/why/drama3-engine/runs/sglang-real-frames-attempt5.jsonl
+2026-10-16 17:37:00,497 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 1, #new-token: 150, #cached-token: 0, full token usage: 0.16, mamba usage: 0.50, #running-req: 0, #queue-req: 0, #pending-token: 0, npu graph: False, input throughput (token/s): 7.75
+INFO:     127.0.0.1:40960 - "POST /v1/audio/speech HTTP/1.1" 200 OK
+2026-10-16 17:37:02,098 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Prefill batch, #new-seq: 1, #new-token: 150, #cached-token: 0, full token usage: 0.31, mamba usage: 1.00, #running-req: 1, #queue-req: 0, #pending-token: 0, npu graph: False, input throughput (token/s): 93.69
+INFO:     127.0.0.1:40948 - "POST /v1/audio/speech HTTP/1.1" 200 OK
+2026-10-16 17:37:03,810 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Decode batch, #running-req: 2, #full token: 320, full token usage: 0.31, mamba num: 2, mamba usage: 1.00, npu graph: False, gen throughput (token/s): 3.95, #queue-req: 0
+2026-10-16 17:37:15,270 [INFO] sglang.srt.managers.scheduler_components.metrics_reporter: Decode batch, #running-req: 1, #full token: 208, full token usage: 0.20, mamba num: 1, mamba usage: 0.50, npu graph: False, gen throughput (token/s): 6.81, #queue-req: 0
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [1118538]
+2026-10-16 17:37:23,673 [INFO] sglang_omni.serve.launcher: Shutting down pipeline …
+2026-10-16 17:37:23,674 [INFO] sglang_omni.pipeline.coordinator: Sent shutdown to stage: preprocessing
+2026-10-16 17:37:23,674 [INFO] sglang_omni.pipeline.coordinator: Sent shutdown to stage: vocoder
+2026-10-16 17:37:23,674 [INFO] sglang_omni.pipeline.coordinator: Sent shutdown to stage: tts_engine
+2026-10-16 17:37:23,678 [INFO] sglang_omni.pipeline.stage.runtime: Stage tts_engine stopped
+2026-10-16 17:37:23,678 [INFO] sglang_omni.pipeline.stage.runtime: Stage tts_engine stopped
+Warning: since the loaded file is not a zipfile, only "torch.device" and "str" type parameters are currently supported for parameter types of map_location. If parameter types of map_location is "Callable[[torch.Tensor, str], torch.Tensor]" or "Dict[str, str]", which is only support for zipfile, all tensors are currently loaded onto the CPU, which may introduce problems.
+2026-10-16 17:37:23,728 [INFO] sglang_omni.pipeline.stage.runtime: Stage vocoder stopped
+('Warning: torch.save with "_use_new_zipfile_serialization = False" is not recommended for npu tensor, which may bring unexpected errors and hopefully set "_use_new_zipfile_serialization = True"', 'if it is necessary to use this, please convert the npu tensor to cpu tensor for saving')
+2026-10-16 17:37:23,734 [INFO] sglang_omni.pipeline.stage.runtime: Stage preprocessing stopped
+2026-10-16 17:37:27,308 [INFO] sglang_omni.pipeline.coordinator: Coordinator completion loop cancelled
+2026-10-16 17:37:27,308 [INFO] sglang_omni.pipeline.coordinator: Coordinator stopped
+2026-10-16 17:37:27,309 [INFO] sglang_omni.serve.launcher: Pipeline stopped.
+/usr/local/python3.12.13/lib/python3.12/multiprocessing/resource_tracker.py:279: UserWarning: resource_tracker: There appear to be 1 leaked shared_memory objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '
