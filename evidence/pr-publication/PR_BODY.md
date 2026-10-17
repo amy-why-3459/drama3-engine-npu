@@ -89,4 +89,3 @@ Throughput 单位 frames/s；TTFA 单位 ms；RTF 为 mean，越低越好。`—
 ## 公开发布范围
 
 本 PR 为本地 `fc12301` 的源码快照。上述历史提交号用于本地实验溯源，不属于新公开仓的 Git 历史。未发布模型权重、生成音频、tensor 文件或 SeedTTS 参考音频编码 workload；历史证据中对这些文件的引用仅指本地保留材料。详见 `PUBLICATION.md`。
-
