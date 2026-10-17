@@ -1,0 +1,7 @@
+[transformers] The fast path is not available because one of the required library is not installed. Falling back to torch implementation. To install follow https://github.com/fla-org/flash-linear-attention#installation and https://github.com/Dao-AILab/causal-conv1d
+[W1017 01:47:00.227386463 NPUCachingAllocator.cpp:202] Warning: The current CANN and HDK(driver) versions require processing for 32 padding size, with memory allocation. (function operator())
+Loaded backbone.model.layers.0.mlp.experts.down_proj on npu:0
+Loaded backbone.model.layers.1.mlp.experts.down_proj on npu:0
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/utils/storage.py:55: UserWarning: TypedStorage is deprecated. It will be removed in the future and UntypedStorage will be the only storage class. This should only matter to you if you are using storages directly.  To access UntypedStorage directly, use tensor.untyped_storage() instead of tensor.storage()
+  if self.device.type != 'cpu':
+{"status": "PASS", "scope": "GDN graph prototype only", "steps": [{"step": 0, "max_abs": 0.0}, {"step": 1, "max_abs": 0.0}, {"step": 2, "max_abs": 0.0}, {"step": 3, "max_abs": 0.0}]}

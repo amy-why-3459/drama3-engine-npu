@@ -1,0 +1,9 @@
+Collecting silero-vad==6.2.3
+  Using cached silero_vad-6.2.3-py3-none-any.whl.metadata (11 kB)
+Downloading silero_vad-6.2.3-py3-none-any.whl (11.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 11.3/11.3 MB 12.0 MB/s eta 0:00:00
+Installing collected packages: silero-vad
+Successfully installed silero-vad-6.2.3
+
+[notice] A new release of pip is available: 25.0.1 -> 26.2.1
+[notice] To update, run: python -m pip install --upgrade pip

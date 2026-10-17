@@ -1,0 +1,10 @@
+{
+  "status": "INCONCLUSIVE",
+  "root_process_exit": 0,
+  "client_exit": 0,
+  "worker_shutdown": "FAIL",
+  "failure": "Gloo peer disconnect in TP follower scheduler, followed by heap corruption",
+  "performance_eligible": false,
+  "reason": "Two-request functionality smoke; incomplete concurrency warmup, no full quality evaluation, failed worker lifecycle.",
+  "server_log": "../sglang-real-server-attempt4.log"
+}

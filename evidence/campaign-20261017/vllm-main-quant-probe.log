@@ -1,0 +1,7 @@
+platform: NPUPlatform
+supported quantization: ['ascend', 'compressed-tensors', 'fp8', 'deepseek_v4_fp8', 'modelopt_mxfp8', 'mxfp8', 'bsgemm-moe']
+quant config: <drama3_baseline_quant.ExpertFp8Config object at 0xffff15aa8950>
+platform verification passed
+selected MoE method: Fp8MoEMethod
+backend: Fp8MoeBackend.NONE None
+BLOCKED: registered Drama3 quantization selected no executable MoE experts backend

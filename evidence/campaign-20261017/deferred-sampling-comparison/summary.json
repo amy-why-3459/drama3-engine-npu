@@ -1,0 +1,46 @@
+{
+  "status": "INCONCLUSIVE",
+  "checks": {
+    "comparable": "unknown",
+    "correctness": "pass",
+    "lifecycle": "pass"
+  },
+  "metrics": [
+    {
+      "name": "Nine codebook samples",
+      "unit": "ms",
+      "direction": "lower",
+      "scenario": "batch 1",
+      "before": {
+        "mean": 11.189108528196812,
+        "std": null,
+        "n": 1
+      },
+      "after": {
+        "mean": 10.414061835035682,
+        "std": null,
+        "n": 1
+      },
+      "improvement_pct": 6.926795742556205,
+      "observation": "single trial"
+    },
+    {
+      "name": "Nine codebook samples",
+      "unit": "ms",
+      "direction": "lower",
+      "scenario": "batch 64",
+      "before": {
+        "mean": 11.090396996587515,
+        "std": null,
+        "n": 1
+      },
+      "after": {
+        "mean": 10.53603459149599,
+        "std": null,
+        "n": 1
+      },
+      "improvement_pct": 4.998580350749391,
+      "observation": "single trial"
+    }
+  ]
+}

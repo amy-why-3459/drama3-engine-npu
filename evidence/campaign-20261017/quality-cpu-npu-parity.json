@@ -1,0 +1,32 @@
+{
+  "status": "PASS",
+  "scope": "four retained attempt-2 outputs only; CPU versus NPU FP32 Whisper, identical CPU WavLM",
+  "cpu_exit": 0,
+  "npu_exit": 0,
+  "samples": [
+    {
+      "sample_id": "common_voice_en_10119832-common_voice_en_10119840",
+      "transcript_match": true,
+      "wer_match": true,
+      "sim_delta": 0.0
+    },
+    {
+      "sample_id": "common_voice_en_10119832-common_voice_en_10119847",
+      "transcript_match": true,
+      "wer_match": true,
+      "sim_delta": 0.0
+    },
+    {
+      "sample_id": "common_voice_en_103675-common_voice_en_103676",
+      "transcript_match": true,
+      "wer_match": true,
+      "sim_delta": 0.0
+    },
+    {
+      "sample_id": "common_voice_en_103675-common_voice_en_103677",
+      "transcript_match": true,
+      "wer_match": true,
+      "sim_delta": 0.0
+    }
+  ]
+}

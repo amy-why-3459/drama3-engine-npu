@@ -1,0 +1,10 @@
+test_join_uses_ids_and_rejects_ambiguous_counts (tests.test_benchmark.FrameJoinTests.test_join_uses_ids_and_rejects_ambiguous_counts) ... ok
+test_reference_adapter_preserves_codes_and_rejects_ignored_sampling (tests.test_benchmark.FrameJoinTests.test_reference_adapter_preserves_codes_and_rejects_ignored_sampling) ... ok
+test_server_assigned_id_joins_without_changing_client_artifact_id (tests.test_benchmark.FrameJoinTests.test_server_assigned_id_joins_without_changing_client_artifact_id) ... ok
+test_http_error_json_and_partial_sample_remain_failed_requests (tests.test_benchmark.StreamingTests.test_http_error_json_and_partial_sample_remain_failed_requests) ... ok
+test_pcm_split_sample_is_retained_without_inventing_frames (tests.test_benchmark.StreamingTests.test_pcm_split_sample_is_retained_without_inventing_frames) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.068s
+
+OK

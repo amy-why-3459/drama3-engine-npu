@@ -1,0 +1,119 @@
+{
+  "revision": "4bd2b40",
+  "status": "MEASURED_NOT_QUALIFIED",
+  "targets": {
+    "c1": 0.1,
+    "c64": 1
+  },
+  "target_met": false,
+  "previous_graph_exit": 0,
+  "graphs_enabled": true,
+  "physical_devices": [
+    6,
+    7
+  ],
+  "codec_precision": "strict FP32",
+  "server_pid": 1198098,
+  "worker_process": true,
+  "c1_client_exit": 0,
+  "c64_client_exit": 0,
+  "server_exit": 0,
+  "c1_quality_exit": 0,
+  "c64_quality_exit": 0,
+  "metrics": {
+    "1": {
+      "requests": 8,
+      "successful_requests": 8,
+      "failed_requests": 0,
+      "wall_time_s": 81.72799991443753,
+      "throughput_frames_s": 8.57723180224512,
+      "audio_seconds_per_wall_second": 0.39832586691605454,
+      "ttfa_p50_ms": 659.4501389190555,
+      "ttfa_p95_ms": 694.1950439009815,
+      "rtf_mean": 2.5425903022216527,
+      "eligible_for_comparison": true
+    },
+    "64": {
+      "requests": 64,
+      "successful_requests": 64,
+      "failed_requests": 0,
+      "wall_time_s": 135.86935970187187,
+      "throughput_frames_s": 44.67526757555164,
+      "audio_seconds_per_wall_second": 2.074715374030154,
+      "ttfa_p50_ms": 14727.06351801753,
+      "ttfa_p95_ms": 14742.130993399769,
+      "rtf_mean": 16.94142069130256,
+      "eligible_for_comparison": true
+    }
+  },
+  "thresholds_observed": false,
+  "quality": {
+    "1": {
+      "status": "MEASURED_NOT_QUALIFIED",
+      "samples": 8,
+      "wer_corpus": 0.0,
+      "sim_percent_mean": 62.55360460281372,
+      "asr_model": "/dataset/models/whisper-large-v3",
+      "asr_device": "npu:0",
+      "asr_precision": "float32",
+      "normalizer": "whisper.normalizers.EnglishTextNormalizer",
+      "speaker_assets": {
+        "wavlm_large_finetune.pth": {
+          "repository": "popsoda2002/seedtts-wavlm-sim",
+          "revision": "508f5410742122c7fb0d94e288152debd92cf629",
+          "filename": "wavlm_large_finetune.pth",
+          "path": "/home/why/drama3-research/quality-assets/popsoda2002--seedtts-wavlm-sim/wavlm_large_finetune.pth",
+          "size": 1301926579,
+          "sha256": "51f07e3b94d9e0262a6a675ef5a087be3dd09e8c62e9d886827f44f82fe7f94b"
+        },
+        "wavlm_large.pt": {
+          "repository": "s3prl/converted_ckpts",
+          "revision": "8cad0b370e7e35f8d56951d95d2be036ea85510c",
+          "filename": "wavlm_large.pt",
+          "path": "/home/why/drama3-research/quality-assets/s3prl--converted_ckpts/wavlm_large.pt",
+          "size": 1261965425,
+          "sha256": "6fb4b3c3e6aa567f0a997b30855859cb81528ee8078802af439f7b2da0bf100f"
+        }
+      },
+      "workload_sha256": "9bdd98e981c46225cb7a85362115f2e72e53ca94e17e38154f1e507d3917c2af",
+      "speaker_scorer_sha256": "18528106c718384e6e096b79031c78fbc90890344d80ba6ae3d4cbadc0d2545e",
+      "notes": "Observed quality only; matched baseline/candidate quality comparison remains required."
+    },
+    "64": {
+      "status": "MEASURED_NOT_QUALIFIED",
+      "samples": 64,
+      "wer_corpus": 0.025604551920341393,
+      "sim_percent_mean": 62.16945171356201,
+      "asr_model": "/dataset/models/whisper-large-v3",
+      "asr_device": "npu:0",
+      "asr_precision": "float32",
+      "normalizer": "whisper.normalizers.EnglishTextNormalizer",
+      "speaker_assets": {
+        "wavlm_large_finetune.pth": {
+          "repository": "popsoda2002/seedtts-wavlm-sim",
+          "revision": "508f5410742122c7fb0d94e288152debd92cf629",
+          "filename": "wavlm_large_finetune.pth",
+          "path": "/home/why/drama3-research/quality-assets/popsoda2002--seedtts-wavlm-sim/wavlm_large_finetune.pth",
+          "size": 1301926579,
+          "sha256": "51f07e3b94d9e0262a6a675ef5a087be3dd09e8c62e9d886827f44f82fe7f94b"
+        },
+        "wavlm_large.pt": {
+          "repository": "s3prl/converted_ckpts",
+          "revision": "8cad0b370e7e35f8d56951d95d2be036ea85510c",
+          "filename": "wavlm_large.pt",
+          "path": "/home/why/drama3-research/quality-assets/s3prl--converted_ckpts/wavlm_large.pt",
+          "size": 1261965425,
+          "sha256": "6fb4b3c3e6aa567f0a997b30855859cb81528ee8078802af439f7b2da0bf100f"
+        }
+      },
+      "workload_sha256": "9bdd98e981c46225cb7a85362115f2e72e53ca94e17e38154f1e507d3917c2af",
+      "speaker_scorer_sha256": "18528106c718384e6e096b79031c78fbc90890344d80ba6ae3d4cbadc0d2545e",
+      "notes": "Observed quality only; matched baseline/candidate quality comparison remains required."
+    }
+  },
+  "notes": [
+    "Exploratory shared-host single round; not matched A/B.",
+    "One C64 measured request reached the 500-frame limit.",
+    "RTF targets and 2x faster-than-best-framework target remain unverified/unmet."
+  ]
+}

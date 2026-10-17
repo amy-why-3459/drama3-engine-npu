@@ -1,0 +1,18 @@
+{
+  "status": "INCONCLUSIVE",
+  "target_2x": "NOT_VERIFIED",
+  "concurrencies": [
+    1,
+    8,
+    16,
+    32,
+    64
+  ],
+  "missing": [
+    "standalone requested concurrency measurements",
+    "vllm full benchmark",
+    "sglang C64 success",
+    "matched isolated repeated runs",
+    "full quality and clean lifecycle"
+  ]
+}

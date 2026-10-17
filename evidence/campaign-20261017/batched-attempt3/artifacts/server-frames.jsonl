@@ -1,0 +1,8 @@
+{"request_id": "batched-20261017-attempt3-c4-warmup-000000", "generated_frames": 42, "emitted_frames": 42, "status": "complete"}
+{"request_id": "batched-20261017-attempt3-c4-warmup-000003", "generated_frames": 57, "emitted_frames": 57, "status": "complete"}
+{"request_id": "batched-20261017-attempt3-c4-warmup-000001", "generated_frames": 64, "emitted_frames": 64, "status": "complete"}
+{"request_id": "batched-20261017-attempt3-c4-warmup-000002", "generated_frames": 145, "emitted_frames": 145, "status": "complete"}
+{"request_id": "batched-20261017-attempt3-c4-measured-000000", "generated_frames": 53, "emitted_frames": 53, "status": "complete"}
+{"request_id": "batched-20261017-attempt3-c4-measured-000003", "generated_frames": 52, "emitted_frames": 52, "status": "complete"}
+{"request_id": "batched-20261017-attempt3-c4-measured-000001", "generated_frames": 59, "emitted_frames": 59, "status": "complete"}
+{"request_id": "batched-20261017-attempt3-c4-measured-000002", "generated_frames": 145, "emitted_frames": 145, "status": "complete"}

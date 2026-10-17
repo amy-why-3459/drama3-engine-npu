@@ -1,0 +1,28 @@
+test_matches_reference_with_mixed_lengths_and_arrivals (tests.test_batching.BatchedGenerationTest.test_matches_reference_with_mixed_lengths_and_arrivals) ... [transformers] The fast path is not available because one of the required library is not installed. Falling back to torch implementation. To install follow https://github.com/fla-org/flash-linear-attention#installation and https://github.com/Dao-AILab/causal-conv1d
+[W1017 01:53:17.485107890 NPUCachingAllocator.cpp:202] Warning: The current CANN and HDK(driver) versions require processing for 32 padding size, with memory allocation. (function operator())
+Loaded backbone.model.layers.0.mlp.experts.down_proj on npu:0
+Loaded backbone.model.layers.1.mlp.experts.down_proj on npu:0
+Loaded backbone.model.layers.2.mlp.experts.down_proj on npu:1
+Loaded backbone.model.layers.3.mlp.experts.down_proj on npu:1
+ok
+
+----------------------------------------------------------------------
+Ran 1 test in 4.455s
+
+OK
+CAPTURED_GDN_BUCKETS [[1, 2], [1, 2]]
+[W1017 01:53:21.820015149 NPUGraph.cpp:340] Warning: NPU warning, error code is 107004[Error]: 
+[Error]: The model is not in the current context.
+        Check whether the loaded model is consistent with the current context.
+[PID: 1180414] 2026-10-17-01:53:21.923.706 Execution_Error_Invalid_Context(EE1010): ModelDestroy execution failed because model does not belong to the current context. Extended information: model_id=48, model_ctx=0xaaaaeba56dc0, cur_ctx=0xaaaafef02e00.
+TraceBack (most recent call last):
+        rtModelDestroy execution failed, reason=model not in current ctx[FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:69]
+ (function reset)
+[W1017 01:53:21.820468531 NPUGraph.cpp:340] Warning: NPU warning, error code is 107004[Error]: 
+[Error]: The model is not in the current context.
+        Check whether the loaded model is consistent with the current context.
+[PID: 1180414] 2026-10-17-01:53:21.924.960 Execution_Error_Invalid_Context(EE1010): ModelDestroy execution failed because model does not belong to the current context. Extended information: model_id=46, model_ctx=0xaaaaeba56dc0, cur_ctx=0xaaaafef02e00.
+TraceBack (most recent call last):
+        rtModelDestroy execution failed, reason=model not in current ctx[FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:69]
+ (function reset)
+NPU_TINY_BATCHED_GENERATION_PASS

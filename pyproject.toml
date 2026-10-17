@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "drama3-engine"
+version = "0.1.0"
+description = "Ascend DRAMA-3 inference research and reproducible evaluation"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+benchmark = ["aiohttp>=3.10"]
+
+[tool.setuptools.packages.find]
+include = ["drama3*"]

@@ -1,0 +1,3 @@
+Public source snapshot of local revision 7bca349a3ac55462dad8250769117c81fad2fdff. Historical experiment revision IDs refer to the original local development repository, not this public Git history.
+
+Generated audio, tensor artifacts, model weights and encoded SeedTTS workload are not distributed here. Historical evidence may reference those locally retained files; summaries do not establish a qualified speedup. Latest BF16 C1/C64 quality and exit checks completed; RTF targets remain unmet. Experimental W8A8 is opt-in and has no accepted speech-quality/performance result. See evidence/pr-publication/PR_BODY.md.

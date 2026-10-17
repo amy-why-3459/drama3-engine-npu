@@ -1,0 +1,12 @@
+{
+  "requests": 2,
+  "successful_requests": 2,
+  "failed_requests": 0,
+  "wall_time_s": 31.154249442741275,
+  "throughput_frames_s": 3.6913102404010636,
+  "audio_seconds_per_wall_second": 0.17142411275150518,
+  "ttfa_p50_ms": 5925.336699001491,
+  "ttfa_p95_ms": 10515.217539016157,
+  "rtf_mean": 10.083073424848159,
+  "eligible_for_comparison": true
+}

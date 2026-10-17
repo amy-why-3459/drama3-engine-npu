@@ -1,0 +1,30 @@
+{
+  "status": "FUNCTIONAL_SMOKE_COMPLETE",
+  "phase": "quality_and_performance_optimization",
+  "source_revision": "5a74c2e",
+  "physical_devices": [
+    6,
+    7
+  ],
+  "model": "/dataset/models/drama-3",
+  "features": [
+    "continuous_batched_decode",
+    "grouped_bf16_moe",
+    "native_tower_attention",
+    "fp32_gdn_prefill",
+    "fused_fp32_gdn_decode"
+  ],
+  "component_correctness": "PASS",
+  "full_weight_batch_correctness": "4 warmup and 4 measured requests complete with verified frame accounting",
+  "quality": {
+    "samples": 4,
+    "wer": 0.0,
+    "sim_percent": 59.93590450286865,
+    "evaluator_exit": 0,
+    "qualification": "SMALL_SAMPLE_ONLY"
+  },
+  "lifecycle": "PASS: server and client exit 0",
+  "fair_performance_comparison": "NOT_RUN",
+  "two_times_target": "NOT_VERIFIED",
+  "shared_host_activity": "shared-host-activity.jsonl"
+}

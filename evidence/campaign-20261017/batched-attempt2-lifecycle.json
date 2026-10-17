@@ -1,0 +1,9 @@
+{
+  "server_exit": 139,
+  "client_exit": 0,
+  "requests_successful": 4,
+  "warmup_successful": 4,
+  "lifecycle": "FAIL",
+  "shutdown": "SIGTERM after all requests complete",
+  "root_cause": "NOT_IDENTIFIED; explicit worker-thread synchronization and resource release proposed; requires validation"
+}

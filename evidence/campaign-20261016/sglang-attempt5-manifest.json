@@ -1,0 +1,15 @@
+{
+  "purpose": "Real-weight TP shutdown regression, not performance comparison",
+  "physical_devices": [
+    0,
+    1
+  ],
+  "container": "why_vllm_omni_v0.31.0",
+  "main_revision": "2c23b68f4f763c14cfb845eadb4883a5e791b701",
+  "experimental_port": "sglang-page16-npu-wip.patch",
+  "config": "sglang-npu-smoke.yaml",
+  "server_log": "sglang-real-server-attempt5.log",
+  "frame_telemetry": "/home/why/drama3-engine/runs/sglang-real-frames-attempt5.jsonl",
+  "server_command": "sgl-omni serve --config /home/why/drama3-engine/evidence/campaign-20261016/sglang-npu-smoke.yaml --port 8094",
+  "hardware_cohort_matches_attempt4": false
+}

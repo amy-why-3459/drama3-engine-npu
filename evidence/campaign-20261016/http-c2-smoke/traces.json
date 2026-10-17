@@ -1,0 +1,26 @@
+[
+  {
+    "request_id": "real-http-c2-smoke-measured-000000",
+    "sent_s": 5749484.413322237,
+    "first_audio_s": 5749485.846282558,
+    "last_audio_s": 5749515.43459622,
+    "terminal_s": 5749515.4349881,
+    "audio_samples": 88064,
+    "sample_rate": 44100,
+    "generated_frames": null,
+    "success": true,
+    "error": null
+  },
+  {
+    "request_id": "real-http-c2-smoke-measured-000001",
+    "sent_s": 5749484.414124218,
+    "first_audio_s": 5749487.620674144,
+    "last_audio_s": 5749522.309632383,
+    "terminal_s": 5749522.309936001,
+    "audio_samples": 124928,
+    "sample_rate": 44100,
+    "generated_frames": null,
+    "success": true,
+    "error": null
+  }
+]

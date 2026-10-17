@@ -1,0 +1,54 @@
+[
+  {
+    "request_id": "batched-20261017-attempt3-c4-warmup-000000",
+    "sent_s": 5781414.375337548,
+    "first_audio_s": 5781420.028707572,
+    "last_audio_s": 5781435.292580574,
+    "terminal_s": 5781435.293429876,
+    "audio_samples": 86016,
+    "sample_rate": 44100,
+    "generated_frames": null,
+    "success": true,
+    "error": null,
+    "server_request_id": "batched-20261017-attempt3-c4-warmup-000000"
+  },
+  {
+    "request_id": "batched-20261017-attempt3-c4-warmup-000001",
+    "sent_s": 5781414.376520998,
+    "first_audio_s": 5781420.028967239,
+    "last_audio_s": 5781443.449556711,
+    "terminal_s": 5781443.450140996,
+    "audio_samples": 131072,
+    "sample_rate": 44100,
+    "generated_frames": null,
+    "success": true,
+    "error": null,
+    "server_request_id": "batched-20261017-attempt3-c4-warmup-000001"
+  },
+  {
+    "request_id": "batched-20261017-attempt3-c4-warmup-000002",
+    "sent_s": 5781414.377232626,
+    "first_audio_s": 5781420.029140644,
+    "last_audio_s": 5781472.274300424,
+    "terminal_s": 5781472.27495403,
+    "audio_samples": 296960,
+    "sample_rate": 44100,
+    "generated_frames": null,
+    "success": true,
+    "error": null,
+    "server_request_id": "batched-20261017-attempt3-c4-warmup-000002"
+  },
+  {
+    "request_id": "batched-20261017-attempt3-c4-warmup-000003",
+    "sent_s": 5781414.377934164,
+    "first_audio_s": 5781420.029302928,
+    "last_audio_s": 5781440.91154314,
+    "terminal_s": 5781440.912058543,
+    "audio_samples": 116736,
+    "sample_rate": 44100,
+    "generated_frames": null,
+    "success": true,
+    "error": null,
+    "server_request_id": "batched-20261017-attempt3-c4-warmup-000003"
+  }
+]

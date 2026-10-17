@@ -1,0 +1,50 @@
+[transformers] The fast path is not available because one of the required library is not installed. Falling back to torch implementation. To install follow https://github.com/fla-org/flash-linear-attention#installation and https://github.com/Dao-AILab/causal-conv1d
+[W1017 01:41:22.500675413 NPUCachingAllocator.cpp:202] Warning: The current CANN and HDK(driver) versions require processing for 32 padding size, with memory allocation. (function operator())
+Loaded backbone.model.layers.0.mlp.experts.down_proj on npu:0
+Loaded backbone.model.layers.1.mlp.experts.down_proj on npu:0
+Loaded backbone.model.layers.2.mlp.experts.down_proj on npu:0
+Loaded backbone.model.layers.3.mlp.experts.down_proj on npu:0
+Loaded backbone.model.layers.4.mlp.experts.down_proj on npu:0
+Loaded backbone.model.layers.5.mlp.experts.down_proj on npu:0
+Loaded backbone.model.layers.6.mlp.experts.down_proj on npu:0
+Loaded backbone.model.layers.7.mlp.experts.down_proj on npu:0
+Loaded backbone.model.layers.8.mlp.experts.down_proj on npu:0
+Loaded backbone.model.layers.9.mlp.experts.down_proj on npu:0
+Loaded backbone.model.layers.10.mlp.experts.down_proj on npu:0
+Loaded backbone.model.layers.11.mlp.experts.down_proj on npu:0
+Loaded backbone.model.layers.12.mlp.experts.down_proj on npu:0
+Loaded backbone.model.layers.13.mlp.experts.down_proj on npu:0
+Loaded backbone.model.layers.14.mlp.experts.down_proj on npu:0
+Loaded backbone.model.layers.15.mlp.experts.down_proj on npu:0
+Loaded backbone.model.layers.16.mlp.experts.down_proj on npu:0
+Loaded backbone.model.layers.17.mlp.experts.down_proj on npu:0
+Loaded backbone.model.layers.18.mlp.experts.down_proj on npu:0
+Loaded backbone.model.layers.19.mlp.experts.down_proj on npu:0
+Loaded backbone.model.layers.20.mlp.experts.down_proj on npu:1
+Loaded backbone.model.layers.21.mlp.experts.down_proj on npu:1
+Loaded backbone.model.layers.22.mlp.experts.down_proj on npu:1
+Loaded backbone.model.layers.23.mlp.experts.down_proj on npu:1
+Loaded backbone.model.layers.24.mlp.experts.down_proj on npu:1
+Loaded backbone.model.layers.25.mlp.experts.down_proj on npu:1
+Loaded backbone.model.layers.26.mlp.experts.down_proj on npu:1
+Loaded backbone.model.layers.27.mlp.experts.down_proj on npu:1
+Loaded backbone.model.layers.28.mlp.experts.down_proj on npu:1
+Loaded backbone.model.layers.29.mlp.experts.down_proj on npu:1
+Loaded backbone.model.layers.30.mlp.experts.down_proj on npu:1
+Loaded backbone.model.layers.31.mlp.experts.down_proj on npu:1
+Loaded backbone.model.layers.32.mlp.experts.down_proj on npu:1
+Loaded backbone.model.layers.33.mlp.experts.down_proj on npu:1
+Loaded backbone.model.layers.34.mlp.experts.down_proj on npu:1
+Loaded backbone.model.layers.35.mlp.experts.down_proj on npu:1
+Loaded backbone.model.layers.36.mlp.experts.down_proj on npu:1
+Loaded backbone.model.layers.37.mlp.experts.down_proj on npu:1
+Loaded backbone.model.layers.38.mlp.experts.down_proj on npu:1
+Loaded backbone.model.layers.39.mlp.experts.down_proj on npu:1
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch/nn/utils/weight_norm.py:144: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+[transformers] You are using a model of type `fish_omni` to instantiate a model of type ``. This may be expected if you are loading a checkpoint that shares a subset of the architecture (e.g., loading a `sam2_video` checkpoint into `Sam2Model`), but is otherwise not supported and can yield errors. Please verify that the checkpoint is compatible with the model you are instantiating.
+======== Running on http://127.0.0.1:8096 ========
+(Press CTRL+C to quit)
+/home/why/drama3-engine/drama3/serving.py:121: UserWarning: Cannot create tensor with interal format while allow_internel_format=False, tensor will be created with base format. (Triggered internally at ../torch_npu/csrc/aten/common/TensorFactories.cpp:423.)
+  indices = torch.stack(session.codes).T.unsqueeze(0).to(self.model.devices[-1])
+STANDALONE_BACKEND_SHUTDOWN_COMPLETE

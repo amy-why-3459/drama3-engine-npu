@@ -1,0 +1,40 @@
+autoflake.....................................................................Passed
+check for broken symlinks.....................................................Passed
+detect destroyed symlinks.....................................................Passed
+trim trailing whitespace......................................................Passed
+fix end of files..............................................................Passed
+check yaml....................................................................Passed
+check toml....................................................................Passed
+check python ast..............................................................Passed
+check for added large files...................................................Passed
+check for merge conflicts.....................................................Passed
+check that scripts with shebangs are executable...............................Passed
+detect private key............................................................Passed
+debug statements (python).....................................................Passed
+don't commit to branch........................................................Passed
+isort.........................................................................Passed
+ruff (legacy alias)...........................................................Passed
+ruff check....................................................................Passed
+black-jupyter.................................................................Failed
+- hook id: black-jupyter
+- files were modified by this hook
+
+reformatted sglang_omni/models/fishaudio_drama3/npu_attention.py
+
+All done! ✨ 🍰 ✨
+1 file reformatted, 1669 files left unchanged.
+
+clang-format..................................................................Passed
+nbstripout................................................(no files to check)Skipped
+sort CI_PERMISSIONS.json......................................................Passed
+rustfmt sglang-omni-router....................................................Passed
+leading-underscore class, function, and attribute names.......................Passed
+if statements must have else..................................................Failed
+- hook id: if-else-required
+- exit code: 1
+
+sglang_omni/models/fishaudio_drama3/npu_quantization.py:17:4: if without else. At least use `else: pass` to fix this lint
+sglang_omni/models/fishaudio_drama3/npu_quantization.py:36:8: if without else. At least use `else: pass` to fix this lint
+2 if statement(s) without else in sglang_omni/. At least use `else: pass` to fix this lint, or run `python scripts/check_if_else.py --fix`.
+
+document heading structure (one H1, max H3)...................................Passed

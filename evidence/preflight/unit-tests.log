@@ -1,0 +1,20 @@
+test_partial_blocks_and_float32_scales (test_checkpoint.BlockFp8Tests.test_partial_blocks_and_float32_scales) ... ok
+test_rejects_incorrect_scale_shape (test_checkpoint.BlockFp8Tests.test_rejects_incorrect_scale_shape) ... ok
+test_frames_and_early_close_release_state (test_generation.GenerationTest.test_frames_and_early_close_release_state) ... [transformers] The fast path is not available because one of the required library is not installed. Falling back to torch implementation. To install follow https://github.com/fla-org/flash-linear-attention#installation and https://github.com/Dao-AILab/causal-conv1d
+Loaded backbone.model.layers.0.mlp.experts.down_proj on cpu
+Loaded backbone.model.layers.1.mlp.experts.down_proj on cpu
+ok
+test_comparison_requires_stronger_baseline_and_quality (test_metrics.MetricsTests.test_comparison_requires_stronger_baseline_and_quality) ... ok
+test_failure_remains_in_wall_time_and_blocks_promotion (test_metrics.MetricsTests.test_failure_remains_in_wall_time_and_blocks_promotion) ... ok
+test_invalid_timing_and_nan_fail_closed (test_metrics.MetricsTests.test_invalid_timing_and_nan_fail_closed) ... ok
+test_last_audio_not_terminal_controls_rtf (test_metrics.MetricsTests.test_last_audio_not_terminal_controls_rtf) ... ok
+test_missing_frame_telemetry_is_not_inferred_from_pcm (test_metrics.MetricsTests.test_missing_frame_telemetry_is_not_inferred_from_pcm) ... ok
+test_missing_or_duplicate_requests_are_rejected (test_metrics.MetricsTests.test_missing_or_duplicate_requests_are_rejected) ... ok
+test_checkpoint_mapping_and_cached_decode (test_model.ModelTests.test_checkpoint_mapping_and_cached_decode) ... Loaded backbone.model.layers.0.mlp.experts.down_proj on cpu
+Loaded backbone.model.layers.1.mlp.experts.down_proj on cpu
+ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.340s
+
+OK

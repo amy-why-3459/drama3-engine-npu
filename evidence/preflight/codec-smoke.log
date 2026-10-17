@@ -1,0 +1,5 @@
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch/nn/utils/weight_norm.py:144: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+[W1014 08:53:47.333037874 NPUCachingAllocator.cpp:202] Warning: The current CANN and HDK(driver) versions require processing for 32 padding size, with memory allocation. (function operator())
+{'shape': [1, 16384], 'max_abs': 0.027802230790257454}
+CODEC_SYNTHETIC_INDICES_PASS

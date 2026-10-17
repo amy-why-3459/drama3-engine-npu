@@ -1,0 +1,51 @@
+{
+  "engine": "drama3-engine",
+  "source_revision": "1c3e77e",
+  "concurrency": 2,
+  "workload_sha256": "8b9a24759ce144633917764a5481726e90f1a458f527c2fb964f7667e762483c",
+  "run_id": "real-http-c2-smoke",
+  "endpoint": "http://127.0.0.1:8093/v1/audio/speech",
+  "request_adapter": null,
+  "metrics": {
+    "requests": 2,
+    "successful_requests": 2,
+    "failed_requests": 0,
+    "wall_time_s": 37.89661376364529,
+    "throughput_frames_s": 2.744308519189346,
+    "audio_seconds_per_wall_second": 0.12744543871428074,
+    "ttfa_p50_ms": 2319.7551229968667,
+    "ttfa_p95_ms": 3117.870445456356,
+    "rtf_mean": 14.455915563185266,
+    "eligible_for_comparison": true
+  },
+  "quality": "NOT_RUN",
+  "clean_exit": null,
+  "status": "INCONCLUSIVE",
+  "traces": [
+    {
+      "request_id": "real-http-c2-smoke-measured-000000",
+      "sent_s": 5749484.413322237,
+      "first_audio_s": 5749485.846282558,
+      "last_audio_s": 5749515.43459622,
+      "terminal_s": 5749515.4349881,
+      "audio_samples": 88064,
+      "sample_rate": 44100,
+      "generated_frames": 43,
+      "success": true,
+      "error": null
+    },
+    {
+      "request_id": "real-http-c2-smoke-measured-000001",
+      "sent_s": 5749484.414124218,
+      "first_audio_s": 5749487.620674144,
+      "last_audio_s": 5749522.309632383,
+      "terminal_s": 5749522.309936001,
+      "audio_samples": 124928,
+      "sample_rate": 44100,
+      "generated_frames": 61,
+      "success": true,
+      "error": null
+    }
+  ],
+  "notes": "Client completion does not establish server clean exit or audio quality. Frame telemetry must count emitted model acoustic frames excluding EOS and context overlap."
+}

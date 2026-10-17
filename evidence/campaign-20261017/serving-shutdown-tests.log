@@ -1,0 +1,17 @@
+test_actual_batch_dispatch_and_per_request_error (tests.test_serving.BatchedServiceTests.test_actual_batch_dispatch_and_per_request_error) ... ok
+test_backend_failure_is_not_successful_completion (tests.test_serving.BatchedServiceTests.test_backend_failure_is_not_successful_completion) ... ok
+test_backpressure_does_not_block_other_requests_or_cancellation (tests.test_serving.BatchedServiceTests.test_backpressure_does_not_block_other_requests_or_cancellation) ... ok
+test_http_pcm_and_request_id_telemetry_contract (tests.test_serving.BatchedServiceTests.test_http_pcm_and_request_id_telemetry_contract) ... /usr/local/python3.12.13/lib/python3.12/site-packages/torch/jit/_script.py:362: DeprecationWarning: `torch.jit.script_method` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+Executing <Task pending name='Task-26' coro=<RequestHandler.start() running at /usr/local/python3.12.13/lib/python3.12/site-packages/aiohttp/web_protocol.py:686> wait_for=<Task pending name='Task-28' coro=<RequestHandler._handle_request() running at /usr/local/python3.12.13/lib/python3.12/site-packages/aiohttp/web_protocol.py:577> wait_for=<Future pending cb=[Task.task_wakeup()] created at /usr/local/python3.12.13/lib/python3.12/asyncio/base_events.py:448> cb=[Task.task_wakeup()] created at /usr/local/python3.12.13/lib/python3.12/site-packages/aiohttp/web_protocol.py:682> created at /usr/local/python3.12.13/lib/python3.12/site-packages/aiohttp/web_protocol.py:381> took 15.514 seconds
+ok
+test_interleaving_frame_telemetry_and_cleanup (tests.test_serving.BatchedServiceTests.test_interleaving_frame_telemetry_and_cleanup) ... ok
+test_backend_failure_is_not_successful_completion (tests.test_serving.ServiceTests.test_backend_failure_is_not_successful_completion) ... ok
+test_backpressure_does_not_block_other_requests_or_cancellation (tests.test_serving.ServiceTests.test_backpressure_does_not_block_other_requests_or_cancellation) ... ok
+test_http_pcm_and_request_id_telemetry_contract (tests.test_serving.ServiceTests.test_http_pcm_and_request_id_telemetry_contract) ... ok
+test_interleaving_frame_telemetry_and_cleanup (tests.test_serving.ServiceTests.test_interleaving_frame_telemetry_and_cleanup) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 15.770s
+
+OK

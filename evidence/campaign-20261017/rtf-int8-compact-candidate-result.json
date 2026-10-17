@@ -1,0 +1,24 @@
+{
+  "revision": "d7b796e",
+  "status": "FAIL",
+  "targets": {
+    "c1": 0.1,
+    "c64": 1
+  },
+  "target_met": false,
+  "previous_graph_exit": 0,
+  "graphs_enabled": true,
+  "physical_devices": [
+    0
+  ],
+  "codec_precision": "strict FP32",
+  "expert_precision": "experimental W8A8; speech quality not qualified",
+  "context_length": 768,
+  "verified_workload_max_prompt_plus_generation": 743,
+  "allocator": "expandable_segments:True",
+  "server_pid": 1199618,
+  "worker_process": true,
+  "c1_client_exit": 1,
+  "error": "RuntimeError('C1 client failed')",
+  "server_exit": 0
+}

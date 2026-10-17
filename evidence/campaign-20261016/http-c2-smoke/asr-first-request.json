@@ -1,0 +1,11 @@
+{
+  "status": "DIAGNOSTIC_ONLY",
+  "audio": "evidence/campaign-20261016/http-c2-smoke/real-http-c2-smoke-measured-000000.wav",
+  "asr_model": "/dataset/models/whisper-large-v3",
+  "duration_seconds": 1.9969160997732427,
+  "rms": 0.05520084500312805,
+  "peak": 0.533966064453125,
+  "clipped_fraction": 0.0,
+  "transcript": " Get the trust fund to the bank early.",
+  "notes": "One ASR transcript does not establish WER, speaker similarity or model parity."
+}

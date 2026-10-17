@@ -1,0 +1,13 @@
+{
+  "status": "FAIL",
+  "server_exit": 0,
+  "client_exit": 1,
+  "quality_controller_exit": 143,
+  "warmup_requests": 4,
+  "warmup_successful": 0,
+  "measured_requests": 0,
+  "observed": "Nonfinite logits after two emitted frames in each request",
+  "reproduction": "gdn-cross-device-before.log: current device 0, input device 1; NaN output and 84.8% mismatched elements; probe exit 1",
+  "fix_under_test": "Set torch.npu.device(query.device) around Triton kernel launch",
+  "notes": "Original PCM, wire payloads and warmup failures retained in runs/batched-c4-smoke-20261017; quality controller intentionally stopped before evaluation"
+}

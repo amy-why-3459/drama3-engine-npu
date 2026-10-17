@@ -1,0 +1,4 @@
+{"request_id": "batched-20261017-c4-smoke-warmup-000000", "generated_frames": 2, "emitted_frames": 2, "status": "ValueError: Sampling logits contain NaN, positive infinity or no finite candidate"}
+{"request_id": "batched-20261017-c4-smoke-warmup-000001", "generated_frames": 2, "emitted_frames": 2, "status": "ValueError: Sampling logits contain NaN, positive infinity or no finite candidate"}
+{"request_id": "batched-20261017-c4-smoke-warmup-000002", "generated_frames": 2, "emitted_frames": 2, "status": "ValueError: Sampling logits contain NaN, positive infinity or no finite candidate"}
+{"request_id": "batched-20261017-c4-smoke-warmup-000003", "generated_frames": 2, "emitted_frames": 2, "status": "ValueError: Sampling logits contain NaN, positive infinity or no finite candidate"}

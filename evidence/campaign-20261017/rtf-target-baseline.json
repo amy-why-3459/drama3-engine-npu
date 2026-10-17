@@ -1,0 +1,38 @@
+{
+  "1": {
+    "metrics": {
+      "requests": 8,
+      "successful_requests": 8,
+      "failed_requests": 0,
+      "wall_time_s": 177.50771573372185,
+      "throughput_frames_s": 4.18009998569904,
+      "audio_seconds_per_wall_second": 0.19412346418847246,
+      "ttfa_p50_ms": 1091.5730325505137,
+      "ttfa_p95_ms": 1583.6114889010787,
+      "rtf_mean": 5.3296455441343245,
+      "eligible_for_comparison": true
+    },
+    "source_revision": "f022d5c",
+    "quality": "NOT_RUN",
+    "server_exit": "UNVERIFIED",
+    "profiled": true
+  },
+  "64": {
+    "metrics": {
+      "requests": 64,
+      "successful_requests": 64,
+      "failed_requests": 0,
+      "wall_time_s": 151.8812370505184,
+      "throughput_frames_s": 36.35077055741663,
+      "audio_seconds_per_wall_second": 1.6881264875643822,
+      "ttfa_p50_ms": 49841.1728721112,
+      "ttfa_p95_ms": 49855.954079236835,
+      "rtf_mean": 31.33616841141433,
+      "eligible_for_comparison": true
+    },
+    "source_revision": "f022d5c",
+    "quality": "NOT_RUN",
+    "server_exit": "UNVERIFIED",
+    "profiled": false
+  }
+}

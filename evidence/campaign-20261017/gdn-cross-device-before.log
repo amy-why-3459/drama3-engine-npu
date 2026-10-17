@@ -1,0 +1,14 @@
+[W1017 01:29:34.313414338 NPUCachingAllocator.cpp:202] Warning: The current CANN and HDK(driver) versions require processing for 32 padding size, with memory allocation. (function operator())
+Traceback (most recent call last):
+  File "/home/why/drama3-engine/tools/probe_standalone_recurrent.py", line 52, in <module>
+    main()
+  File "/home/why/drama3-engine/tools/probe_standalone_recurrent.py", line 28, in main
+    torch.testing.assert_close(output.cpu(), expected.cpu(), atol=.002, rtol=.002)
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/testing/_comparison.py", line 1600, in assert_close
+    raise error_metas[0].to_error(msg)
+AssertionError: Tensor-likes are not close!
+
+Mismatched elements: 3475 / 4096 (84.8%)
+Greatest absolute difference: nan at index (0, 0, 0, 34) (up to 0.002 allowed)
+Greatest relative difference: nan at index (0, 0, 0, 34) (up to 0.002 allowed)
+[ERROR] 2026-10-17-01:29:36 (PID:1178333, Device:0, RankID:-1) ERR99999 UNKNOWN applicaiton exception

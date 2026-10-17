@@ -1,0 +1,27 @@
+{
+  "revision": "d7b796e",
+  "status": "EXPERIMENTAL_NOT_QUALIFIED",
+  "cpu_tests": {
+    "count": 45,
+    "exit_code": 0
+  },
+  "real_expert_graph": {
+    "physical_npu": 0,
+    "batches": [
+      1,
+      3,
+      8,
+      64
+    ],
+    "comparison": "W8A8 eager vs W8A8 graph, exact",
+    "exit_code": 0
+  },
+  "tiny_model": {
+    "physical_npu": 1,
+    "tests": 2,
+    "exit_code": 0,
+    "scope": "checkpoint conversion, mixed lengths, request arrivals/removal, GDN and tower graph buckets"
+  },
+  "speech_quality": "NOT_YET_MEASURED",
+  "rtf_targets_met": false
+}

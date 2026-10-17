@@ -1,0 +1,45 @@
+{
+  "OmniRSI": {
+    "path": "/home/why/drama3-research/OmniRSI",
+    "revision": "4ad551a916678a177d1ffc035a972bebd5b34c39"
+  },
+  "vllm-omni": {
+    "path": "/home/why/drama3-research/vllm-omni",
+    "revision": "41ed44cc014dfe0a46499ffd63473addf05777f5"
+  },
+  "sglang-omni": {
+    "path": "/home/why/drama3-research/sglang-omni",
+    "revision": "e9e016b83e1a5d92b4232f90427a44afac8d84b6"
+  },
+  "sglang": {
+    "path": "/home/why/drama3-research/sglang",
+    "revision": "e00930c5489053f26d86b179cee0d087f846acbb"
+  },
+  "kda": {
+    "path": "/home/why/drama3-research/kda",
+    "revision": "ef6ce617693ef0782b3ecb9f37e39bbf10226a90"
+  },
+  "model": {
+    "repo": "fishaudio/drama-3",
+    "revision": "e0a9218aa48888270f06ef1ed9ea67622c0e17d2",
+    "path": "/home/why/drama3-research/model",
+    "download_status": "in_progress"
+  },
+  "scope": {
+    "hardware": "Ascend 910B1",
+    "baseline_npu_patches_authorized": true,
+    "concurrency": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      32,
+      64
+    ],
+    "target_throughput_speedup": 2.0,
+    "overall_status": "INCONCLUSIVE",
+    "device_count": "pending_baseline_capacity_validation",
+    "quality_thresholds": "pending_baseline_quality_measurement"
+  }
+}

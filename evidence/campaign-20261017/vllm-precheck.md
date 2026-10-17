@@ -1,0 +1,7 @@
+# Local vLLM quantization precheck
+
+Scope: local experimental adaptation, no PR submission. User intent is the requested DRAMA-3 NPU engine, complete baseline/quality measurements, and 2x throughput versus the better baseline; the affected user is the requester running this model on Ascend. This change removes an observed backend-selection obstruction, not a measured performance bottleneck. The user explicitly requested local commits.
+
+The original main probe selected Fp8MoeBackend.NONE and exited 2. The changed branch delegates only NPU non-linear layers to the installed Ascend implementation and selects AscendFusedMoEMethod with exit 0. Existing linear behavior and the non-NPU FP8 path are preserved. No new examples, broad exception handlers, event-loop work, tensor copies, hot-path state, or dependency installation into the shared runtime were introduced. The simplification is reuse of the existing Ascend scheme instead of duplicating FP8 expansion. No full-model NPU support contract is asserted; the TP1 guard remains.
+
+Changed-file pre-commit gates all pass, including mypy, SPDX, import policy and test markers. Both main and adapted focused suites pass 8 assertions then abort with heap corruption and exit 134. This is not a clean test PASS or ready-for-review full-model adaptation. The exact full-model cause, loading/execution, GPU validation and complete baseline are unverified. See vllm-validation.json and raw logs.

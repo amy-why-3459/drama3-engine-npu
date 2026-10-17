@@ -1,0 +1,15 @@
+[
+  {
+    "request_id": "sglang-real-c2-smoke-warmup-000000",
+    "sent_s": 5751259.976613299,
+    "first_audio_s": 5751371.266371351,
+    "last_audio_s": 5751384.080310765,
+    "terminal_s": 5751384.081403413,
+    "audio_samples": 96256,
+    "sample_rate": 44100,
+    "generated_frames": null,
+    "success": true,
+    "error": null,
+    "server_request_id": "speech-dbaeddab-5ad1-489e-a08e-dbd9a217e4b6"
+  }
+]

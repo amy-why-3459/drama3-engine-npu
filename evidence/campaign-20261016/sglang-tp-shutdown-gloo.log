@@ -1,0 +1,11 @@
+[2026-10-16 17:31:13] Failed to import torchada: No module named 'torchada'. MUSA platform compatibility will not work.
+[W1016 17:31:13.088895442 ProcessGroupGloo.cpp:511] Warning: Unable to resolve hostname to a (local) address. Using the loopback address as fallback. Manually set the network interface to bind to with GLOO_SOCKET_IFNAME. (function operator())
+[2026-10-16 17:31:13] Failed to import torchada: No module named 'torchada'. MUSA platform compatibility will not work.
+[W1016 17:31:13.794610242 ProcessGroupGloo.cpp:511] Warning: Unable to resolve hostname to a (local) address. Using the loopback address as fallback. Manually set the network interface to bind to with GLOO_SOCKET_IFNAME. (function operator())
+[Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+/home/why/drama3-research/sglang/python/sglang/srt/utils/common.py:2553: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /pytorch/torch/csrc/utils/tensor_numpy.cpp:213.)
+  tensor_data = torch.ByteTensor(
+RANK_0_COLLECTIVE_SHUTDOWN_PASS
+RANK_1_COLLECTIVE_SHUTDOWN_PASS
+TP_SHUTDOWN_PASS

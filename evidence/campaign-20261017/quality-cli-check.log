@@ -1,0 +1,14 @@
+usage: evaluate_seed_outputs.py [-h] --run RUN --workload WORKLOAD --manifest
+                                MANIFEST --assets ASSETS --output OUTPUT
+                                [--asr-model ASR_MODEL]
+                                [--sglang-root SGLANG_ROOT]
+
+options:
+  -h, --help            show this help message and exit
+  --run RUN
+  --workload WORKLOAD
+  --manifest MANIFEST
+  --assets ASSETS
+  --output OUTPUT
+  --asr-model ASR_MODEL
+  --sglang-root SGLANG_ROOT

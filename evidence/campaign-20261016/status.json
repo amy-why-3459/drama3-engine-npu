@@ -1,0 +1,224 @@
+{
+  "status": "INCONCLUSIVE",
+  "target": "2x acoustic-frame throughput versus the stronger baseline at every concurrency",
+  "model_directory": "/dataset/models/drama-3",
+  "model_revision": "e0a9218aa48888270f06ef1ed9ea67622c0e17d2",
+  "baseline_main_revisions": {
+    "vllm-omni": "6d29fde51c08b2512eafa8778315c2eda745bebe",
+    "sglang-omni": "2c23b68f4f763c14cfb845eadb4883a5e791b701"
+  },
+  "knowledge_revision": "4ad551a916678a177d1ffc035a972bebd5b34c39",
+  "tests": {
+    "passed": 23,
+    "process_exit": 0,
+    "log": "unit-tests-server-id.log",
+    "focused_http_test_log": "benchmark-server-id-tests.log"
+  },
+  "checkpoint": {
+    "verified_shards": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "missing_shards": [],
+    "codec_verified": true,
+    "metadata_verified": true,
+    "audit": "checkpoint-audit.json",
+    "audit_process_exit": 0,
+    "download_process_exit": 0,
+    "download_log": "download-missing-stable.log"
+  },
+  "npu_probe": {
+    "engine": "current SGLang-Omni main plus experimental NPU port",
+    "real_weights": false,
+    "process_exit": 0,
+    "finite_checks": true,
+    "attention": "native page_size=16",
+    "gdn_state_dtype": "float32",
+    "log": "sglang-integrated-page16-probe.log",
+    "limitations": "Synthetic attention probe only; real service smoke is recorded separately, not a formal baseline."
+  },
+  "measurements": [
+    {
+      "concurrency": 1,
+      "vllm-omni": null,
+      "sglang-omni": null,
+      "drama3-engine": null,
+      "speedup": null
+    },
+    {
+      "concurrency": 2,
+      "vllm-omni": null,
+      "sglang-omni": null,
+      "drama3-engine": null,
+      "speedup": null
+    },
+    {
+      "concurrency": 4,
+      "vllm-omni": null,
+      "sglang-omni": null,
+      "drama3-engine": null,
+      "speedup": null
+    },
+    {
+      "concurrency": 8,
+      "vllm-omni": null,
+      "sglang-omni": null,
+      "drama3-engine": null,
+      "speedup": null
+    },
+    {
+      "concurrency": 16,
+      "vllm-omni": null,
+      "sglang-omni": null,
+      "drama3-engine": null,
+      "speedup": null
+    },
+    {
+      "concurrency": 32,
+      "vllm-omni": null,
+      "sglang-omni": null,
+      "drama3-engine": null,
+      "speedup": null
+    },
+    {
+      "concurrency": 64,
+      "vllm-omni": null,
+      "sglang-omni": null,
+      "drama3-engine": null,
+      "speedup": null
+    }
+  ],
+  "remaining": [
+    "Complete full Seed-TTS WER/CER and speaker-similarity evaluation",
+    "Qualify real-weight SGLang NPU port, including clean server lifecycle",
+    "Resolve current vLLM main NPU loading/execution and single-rank restriction",
+    "Implement and validate batched standalone execution",
+    "Collect matched baseline and candidate concurrency sweeps with server lifecycle evidence",
+    "Profile and optimize; directly validate the 2x target"
+  ],
+  "real_weight_smoke": {
+    "status": "SMOKE_PASS",
+    "process_exit": 0,
+    "devices": [
+      "cpu",
+      "npu:0 (physical 7)"
+    ],
+    "frames": 32,
+    "termination": "frame_limit",
+    "log": "real-smoke-cpu-npu.log",
+    "audio": "real-smoke-cpu-npu.wav",
+    "performance_eligible": false,
+    "quality": "NOT_EVALUATED",
+    "asr_transcript": "Hello."
+  },
+  "npu_grouped_smoke": {
+    "status": "SMOKE_PASS",
+    "process_exit": 0,
+    "physical_devices": [
+      4,
+      7
+    ],
+    "frames": 76,
+    "termination": "eos",
+    "audio_seconds": 3.5294331065759637,
+    "log": "real-smoke-npu-grouped.log",
+    "performance_eligible": false,
+    "quality": "ASR_DIAGNOSTIC_ONLY",
+    "asr_transcript": "Hello, this is a speech synthesis test."
+  },
+  "workload_preparation": {
+    "status": "PREPARED_NOT_EVALUATED",
+    "process_exit": 0,
+    "count": 128,
+    "unique_references": 83,
+    "manifest": "seed-en-128/manifest.json",
+    "workload": "seed-en-128/workload.jsonl",
+    "log": "prepare-seed-workload.log"
+  },
+  "http_smoke": {
+    "status": "SMOKE_PASS",
+    "concurrency": 2,
+    "warmup_requests": 1,
+    "measured_requests": 2,
+    "client_exit": 0,
+    "server_exit": 0,
+    "successful_requests": 2,
+    "frame_counts": [
+      43,
+      61
+    ],
+    "pcm_frame_counts_match": true,
+    "asr_first_request": "Get the trust fund to the bank early.",
+    "artifacts": "http-c2-smoke",
+    "performance_eligible": false,
+    "reason": "Small functionality cohort; not matched to a measured baseline or quality-qualified."
+  },
+  "sglang_real_server": {
+    "status": "REQUESTS_PASS_LIFECYCLE_FAIL",
+    "log": "sglang-real-server-attempt4.log",
+    "previous_attempts": [
+      {
+        "log": "sglang-real-server-attempt1.log",
+        "exit": 134
+      },
+      {
+        "log": "sglang-real-server-attempt2.log",
+        "exit": 134
+      },
+      {
+        "log": "sglang-real-server-attempt3.log",
+        "exit": 134
+      }
+    ],
+    "root_process_exit": 0,
+    "client_exit": 0,
+    "successful_requests": 2,
+    "frame_counts": [
+      42,
+      73
+    ],
+    "pcm_frame_counts_match": true,
+    "asr_first_request": "Get the trust fund to the bank early.",
+    "performance_eligible": false,
+    "artifacts": "sglang-c2-smoke",
+    "failure": "TP follower Gloo connection closed by peer during shutdown, followed by corrupted size vs. prev_size; root exit 0 is not a clean lifecycle."
+  },
+  "sglang_shutdown_regression": {
+    "status": "INCONCLUSIVE",
+    "client_exit": 0,
+    "root_process_exit": 0,
+    "all_owned_processes_gone": true,
+    "tp_stopped_messages": 2,
+    "gloo_disconnect_observed": false,
+    "heap_corruption_observed": false,
+    "forced_termination_observed": false,
+    "worker_exit_codes": "NOT_INSTRUMENTED",
+    "shared_memory_cleanup_warning": true,
+    "performance_eligible": false,
+    "reason": "Functionality/shutdown regression on physical 0,1, not matched formal baseline; incomplete quality qualification and resource_tracker warning.",
+    "server_log": "../sglang-real-server-attempt5.log",
+    "physical_devices": [
+      0,
+      1
+    ],
+    "warmup_requests": 2,
+    "measured_requests": 2,
+    "frame_counts": [
+      44,
+      65
+    ],
+    "pcm_frame_counts_match": true,
+    "artifacts": "sglang-c2-shutdown-regression",
+    "gloo_regression_exit": 0,
+    "gloo_regression_log": "sglang-tp-shutdown-gloo.log",
+    "port_precommit_exit": 0,
+    "port_precommit_log": "sglang-port-precommit-pass.log",
+    "patch_sha256": "4c9699b4f2c4a0765bf76974b21426562a3973f0170f5a5e38f14ca8ab18280a"
+  }
+}

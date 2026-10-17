@@ -1,0 +1,590 @@
+diff --git a/sglang_omni/models/fishaudio_drama3/audio_decoder.py b/sglang_omni/models/fishaudio_drama3/audio_decoder.py
+index 9c01bd5..11a3da9 100644
+--- a/sglang_omni/models/fishaudio_drama3/audio_decoder.py
++++ b/sglang_omni/models/fishaudio_drama3/audio_decoder.py
+@@ -55,8 +55,9 @@ class AudioDecoder(nn.Module):
+     is the main token's offset in the semantic band.
+     """
+ 
+-    def __init__(self, config: FishOmniConfig) -> None:
++    def __init__(self, config: FishOmniConfig, sampling_group=None) -> None:
+         super().__init__()
++        self.sampling_group = sampling_group
+         decoder_config = config.audio_decoder_config
+         self.semantic_begin_id = config.semantic_start_token_id
+         self.semantic_end_id = config.semantic_end_token_id
+@@ -334,6 +335,13 @@ class AudioDecoder(nn.Module):
+             self.codebook_size,
+             sampler,
+         )
++        if self.sampling_group is not None:
++            main_tokens = self.sampling_group.broadcast(main_tokens)
++            codebook_zero = (main_tokens - self.semantic_begin_id).clamp(
++                0, self.codebook_size - 1
++            )
++        else:
++            pass
+         label_is_semantic = self.is_semantic(main_tokens)
+         hidden_states = self.run_shared_layers(
+             hidden_states,
+@@ -369,4 +377,8 @@ class AudioDecoder(nn.Module):
+                     FIRST_CODEBOOK_HEAD_STREAM + residual_index,
+                 )
+             )
++            if self.sampling_group is not None:
++                codes[-1] = self.sampling_group.broadcast(codes[-1])
++            else:
++                pass
+         return torch.stack([main_tokens, *codes], dim=-1)
+diff --git a/sglang_omni/models/fishaudio_drama3/engine_builder.py b/sglang_omni/models/fishaudio_drama3/engine_builder.py
+index d43294c..f1f9ffd 100644
+--- a/sglang_omni/models/fishaudio_drama3/engine_builder.py
++++ b/sglang_omni/models/fishaudio_drama3/engine_builder.py
+@@ -15,6 +15,7 @@ from sglang.srt.mem_cache.memory_pool import HybridLinearKVPool
+ from sglang.srt.model_executor.cuda_graph_config import Backend as CudaGraphBackend
+ from sglang.srt.models.registry import ModelRegistry
+ from sglang.srt.server_args import ServerArgs
++from sglang.srt.utils import is_npu
+ from transformers import AutoConfig
+ 
+ from sglang_omni.model_runner.model_worker import ModelWorker
+@@ -75,7 +76,7 @@ from sglang_omni.utils.checkpoint import resolve_checkpoint
+ 
+ FISH_OMNI_ARCHITECTURE = "FishOmniModel"
+ # The tower re-plans this backend's metadata for its first frame.
+-ATTENTION_BACKEND = "triton"
++ATTENTION_BACKEND = "ascend" if is_npu() else "triton"
+ PREFILL_CUDA_GRAPH_MAX_TOKENS = 2048
+ DECODE_STEPS_BETWEEN_PREFILLS = 4
+ 
+@@ -111,6 +112,8 @@ class Drama3EngineBuilder(SGLangGenerationEngineBuilder[Drama3RequestData]):
+         tower_fused_layers: bool = DEFAULT_TOWER_FUSED_LAYERS,
+         enable_async_decode: bool = DEFAULT_ENABLE_ASYNC_DECODE,
+         async_decode_min_batch_size: int = DEFAULT_ASYNC_DECODE_MIN_BATCH_SIZE,
++        tp_rank: int = 0,
++        nccl_port: int | None = None,
+     ) -> None:
+         self.context_length = context_length
+         self.max_running_requests = max_running_requests
+@@ -127,6 +130,11 @@ class Drama3EngineBuilder(SGLangGenerationEngineBuilder[Drama3RequestData]):
+         self.async_decode_min_batch_size = async_decode_min_batch_size
+         self.frame_streamer: Drama3FrameStreamer | None = None
+         self.sglang_runner: SGLModelRunner | None = None
++        self.tp_rank = tp_rank
++        self.nccl_port = nccl_port
++
++    def infra_kwargs(self):
++        return {"tp_rank": self.tp_rank, "nccl_port": self.nccl_port}
+ 
+     def resolve_checkpoint(self, model_path: str) -> str:
+         return resolve_checkpoint(model_path)
+@@ -141,8 +149,10 @@ class Drama3EngineBuilder(SGLangGenerationEngineBuilder[Drama3RequestData]):
+     def generation_defaults(self, *, dtype: str) -> GenerationDefaults:
+         return {
+             "max_running_requests": self.max_running_requests,
+-            "disable_cuda_graph": False,
+-            "cuda_graph_backend_prefill": CudaGraphBackend.BREAKABLE,
++            "disable_cuda_graph": is_npu(),
++            "cuda_graph_backend_prefill": (
++                CudaGraphBackend.DISABLED if is_npu() else CudaGraphBackend.BREAKABLE
++            ),
+             "cuda_graph_max_bs_prefill": PREFILL_CUDA_GRAPH_MAX_TOKENS,
+             "prefill_decode_interval": DECODE_STEPS_BETWEEN_PREFILLS,
+             "disable_overlap_schedule": True,
+@@ -156,7 +166,8 @@ class Drama3EngineBuilder(SGLangGenerationEngineBuilder[Drama3RequestData]):
+         }
+ 
+     def adjust_overrides(self, overrides: dict[str, object]) -> None:
+-        overrides.setdefault("page_size", 1)
++        # ATB paged attention on 910B does not populate output for one-token pages.
++        overrides.setdefault("page_size", 16 if is_npu() else 1)
+ 
+     def validate_before_infrastructure(self, server_args: ServerArgs) -> None:
+         attention_backends = {
+@@ -202,15 +213,20 @@ class Drama3EngineBuilder(SGLangGenerationEngineBuilder[Drama3RequestData]):
+                 f"Drama 3 needs the {ATTENTION_BACKEND} attention backend; got "
+                 f"{sorted(map(str, attention_backends))}"
+             )
+-        elif server_args.page_size != 1 or server_args.kv_cache_dtype != "auto":
++        elif (
++            server_args.page_size != (16 if is_npu() else 1)
++            or server_args.kv_cache_dtype != "auto"
++        ):
+             raise ValueError(
+-                "Drama 3 keeps page_size=1 and the KV cache in the model dtype"
++                "Drama 3 uses page_size=16 on NPU (1 elsewhere) and model-dtype KV"
+             )
+         elif (
+-            parallel_sizes != (1, 1, 1) or server_args.speculative_algorithm is not None
++            parallel_sizes not in ((1, 1, 1), (2, 1, 1))
++            or (server_args.tp_size != 1 and not is_npu())
++            or server_args.speculative_algorithm is not None
+         ):
+             raise ValueError(
+-                f"Drama 3 runs on one rank without speculative decoding; got "
++                f"Drama 3 allows one rank or NPU TP2 without speculative decoding; got "
+                 f"tp/pp/dp={parallel_sizes} and "
+                 f"speculative_algorithm={server_args.speculative_algorithm}"
+             )
+diff --git a/sglang_omni/models/fishaudio_drama3/model_runner.py b/sglang_omni/models/fishaudio_drama3/model_runner.py
+index 2b93ad7..e18bdf9 100644
+--- a/sglang_omni/models/fishaudio_drama3/model_runner.py
++++ b/sglang_omni/models/fishaudio_drama3/model_runner.py
+@@ -18,6 +18,7 @@ from sglang.srt.model_executor.runner.decode_cuda_graph_runner import (
+     DecodeCudaGraphRunner,
+ )
+ from sglang.srt.model_executor.runner.eager_runner import EagerRunner
++from sglang.srt.utils import is_npu
+ 
+ from sglang_omni.model_runner.base import ModelRunner
+ from sglang_omni.model_runner.model_worker import ModelWorker
+@@ -54,6 +55,17 @@ __all__ = [
+     "request_ids_of",
+ ]
+ 
++if is_npu():
++    from sglang.srt.hardware_backend.npu.attention.ascend_backend import (
++        AscendAttnBackend,
++    )
++
++    from sglang_omni.models.fishaudio_drama3.npu_attention import install_prefill
++
++    FULL_ATTENTION_BACKEND = AscendAttnBackend
++else:
++    FULL_ATTENTION_BACKEND = TritonAttnBackend
++
+ 
+ class Drama3ModelRunner(ModelRunner[Drama3RequestData]):
+     """Hands each forward its frames, RAS windows and sampling knobs, then appends
+@@ -80,9 +92,11 @@ class Drama3ModelRunner(ModelRunner[Drama3RequestData]):
+                 f"Drama 3 needs the hybrid linear-attention backend; got "
+                 f"{type(attention_backend).__name__}"
+             )
+-        elif not isinstance(attention_backend.full_attn_backend, TritonAttnBackend):
++        elif not isinstance(
++            attention_backend.full_attn_backend, FULL_ATTENTION_BACKEND
++        ):
+             raise RuntimeError(
+-                f"Drama 3 needs triton for full attention; got "
++                f"Drama 3 needs {FULL_ATTENTION_BACKEND.__name__} for full attention; got "
+                 f"{type(attention_backend.full_attn_backend).__name__}"
+             )
+         elif not (
+@@ -125,6 +139,10 @@ class Drama3ModelRunner(ModelRunner[Drama3RequestData]):
+             )
+         else:
+             pass
++        if is_npu():
++            install_prefill(attention_backend.linear_attn_backend)
++        else:
++            pass
+         self.decode_buffers: Drama3DecodeBuffers = decode_buffers
+         self.request_slot_count = request_pool.size
+         self.state_pool = Drama3DecodeStatePool.allocate(
+diff --git a/sglang_omni/models/fishaudio_drama3/npu_attention.py b/sglang_omni/models/fishaudio_drama3/npu_attention.py
+new file mode 100644
+index 0000000..01bfdb6
+--- /dev/null
++++ b/sglang_omni/models/fishaudio_drama3/npu_attention.py
+@@ -0,0 +1,48 @@
++# SPDX-License-Identifier: Apache-2.0
++"""Scoped FP32 recurrent-state prefill for the experimental 910B port."""
++
++from types import MethodType
++
++import torch
++from sgl_kernel_npu.fla.chunk import chunk_gated_delta_rule_npu
++from sglang.srt.hardware_backend.npu.attention.ascend_gdn_backend import (
++    AscendGDNAttnBackend,
++)
++
++
++def chunk_gdn(
++    backend: AscendGDNAttnBackend,
++    q: torch.Tensor,
++    k: torch.Tensor,
++    v: torch.Tensor,
++    g: torch.Tensor,
++    beta: torch.Tensor,
++    initial_state: torch.Tensor,
++    cu_seqlens: torch.Tensor,
++) -> tuple[torch.Tensor, torch.Tensor, None]:
++    if backend.forward_metadata.has_mamba_track_mask:
++        raise NotImplementedError("DRAMA-3 NPU prefill does not support radix tracking")
++    elif q.shape[-1] != v.shape[-1] or initial_state.dtype != torch.float32:
++        raise ValueError(
++            "DRAMA-3 NPU prefill requires equal K/V dimensions and FP32 state"
++        )
++    else:
++        output, final_state, _ = chunk_gated_delta_rule_npu(
++            q=q.unsqueeze(0),
++            k=k.unsqueeze(0),
++            v=v.unsqueeze(0),
++            g=g.unsqueeze(0),
++            beta=beta.unsqueeze(0),
++            initial_state=initial_state,
++            cu_seqlens=cu_seqlens,
++            use_qk_l2norm_in_kernel=True,
++            output_final_state=True,
++        )
++        return output.squeeze(0), final_state, None
++
++
++def install_prefill(backend: AscendGDNAttnBackend) -> None:
++    if not isinstance(backend, AscendGDNAttnBackend):
++        raise TypeError("Expected Ascend GDN backend")
++    else:
++        backend.chunk_gdn = MethodType(chunk_gdn, backend)
+diff --git a/sglang_omni/models/fishaudio_drama3/npu_quantization.py b/sglang_omni/models/fishaudio_drama3/npu_quantization.py
+new file mode 100644
+index 0000000..17eebff
+--- /dev/null
++++ b/sglang_omni/models/fishaudio_drama3/npu_quantization.py
+@@ -0,0 +1,62 @@
++# SPDX-License-Identifier: Apache-2.0
++"""Load the original block-FP8 experts into the Ascend BF16 MoE runner."""
++
++import torch
++from sglang.srt.layers.quantization.fp8 import Fp8MoEMethod
++from sglang.srt.layers.quantization.unquant import UnquantizedFusedMoEMethod
++
++
++def expand_expert_blocks(weight: torch.Tensor, scales: torch.Tensor) -> torch.Tensor:
++    """CPU expansion avoids unsupported FP8 arithmetic on Ascend 910B.
++
++    Expand one expert at a time, retaining float32 scale multiplication before
++    the single BF16 rounding. Loading keeps the upstream FP8 shard mapping.
++    """
++    experts, rows, columns = weight.shape
++    expected = (experts, (rows + 127) // 128, (columns + 127) // 128)
++    if tuple(scales.shape) != expected:
++        raise ValueError(f"FP8 scale shape {tuple(scales.shape)} != {expected}")
++    else:
++        pass
++    expanded = torch.empty(weight.shape, dtype=torch.bfloat16, device="cpu")
++    for expert in range(experts):
++        source = weight[expert].cpu().float()
++        scale = scales[expert].cpu().float()
++        for row in range(0, rows, 128):
++            row_scales = scale[row // 128].repeat_interleave(128)[:columns]
++            expanded[expert, row : row + 128] = source[
++                row : row + 128
++            ] * row_scales.unsqueeze(0)
++    return expanded
++
++
++class AscendExpertFp8Method(Fp8MoEMethod):
++    """FP8 checkpoint loader with BF16 execution; no extra weight quantization."""
++
++    def __init__(self, quant_config):
++        super().__init__(quant_config)
++        if self.weight_block_size != [128, 128] or self.is_fp4_expert:
++            raise ValueError("DRAMA-3 NPU port requires 128x128 block-FP8 experts")
++        else:
++            pass
++        self.unquantized = UnquantizedFusedMoEMethod()
++
++    def create_moe_runner(self, layer, moe_runner_config):
++        self.moe_runner_config = moe_runner_config
++        self.unquantized.create_moe_runner(layer, moe_runner_config)
++        self.runner = self.unquantized.runner
++
++    def process_weights_after_loading(self, layer):
++        for prefix in ("w13", "w2"):
++            weight = getattr(layer, f"{prefix}_weight")
++            scales = getattr(layer, f"{prefix}_weight_scale_inv")
++            expanded = expand_expert_blocks(weight, scales)
++            setattr(
++                layer,
++                f"{prefix}_weight",
++                torch.nn.Parameter(expanded.to(weight.device), requires_grad=False),
++            )
++        self.unquantized.process_weights_after_loading(layer)
++
++    def apply(self, layer, dispatch_output):
++        return self.unquantized.apply(layer, dispatch_output)
+diff --git a/sglang_omni/models/fishaudio_drama3/quantization.py b/sglang_omni/models/fishaudio_drama3/quantization.py
+index 28575cd..9cf9759 100644
+--- a/sglang_omni/models/fishaudio_drama3/quantization.py
++++ b/sglang_omni/models/fishaudio_drama3/quantization.py
+@@ -25,6 +25,9 @@ from sglang.srt.layers.quantization.gptq.gptq import (
+ )
+ from sglang.srt.layers.quantization.unquant import UnquantizedLinearMethod
+ from sglang.srt.layers.quantization.utils import replace_parameter
++from sglang.srt.utils import is_npu
++
++from sglang_omni.models.fishaudio_drama3.npu_quantization import AscendExpertFp8Method
+ 
+ QUANTIZATION_METHOD = "bsgemm-moe"
+ EXPERT_WEIGHT_BLOCK_SIZE = [128, 128]
+@@ -97,7 +100,10 @@ class ExpertFp8Config(QuantizationConfig):
+         # The interface passes the layer prefix; the choice here depends on the
+         # layer type alone.
+         if isinstance(layer, FusedMoE):
+-            return Fp8MoEMethod(self.expert_fp8_config)
++            if is_npu():
++                return AscendExpertFp8Method(self.expert_fp8_config)
++            else:
++                return Fp8MoEMethod(self.expert_fp8_config)
+         elif isinstance(layer, LinearBase):
+             return UnquantizedLinearMethod()
+         else:
+diff --git a/sglang_omni/models/fishaudio_drama3/request_builders.py b/sglang_omni/models/fishaudio_drama3/request_builders.py
+index 37f22b7..000c12d 100644
+--- a/sglang_omni/models/fishaudio_drama3/request_builders.py
++++ b/sglang_omni/models/fishaudio_drama3/request_builders.py
+@@ -3,12 +3,15 @@
+ 
+ from __future__ import annotations
+ 
++import json
+ import math
++import os
+ from array import array
+ from dataclasses import dataclass, field
+ 
+ import torch
+ from sglang.srt.managers.schedule_batch import Req
++from sglang.srt.runtime_context import get_parallel
+ from sglang.srt.sampling.sampling_params import SamplingParams
+ 
+ from sglang_omni.models.fishaudio_drama3.hf_config import FishOmniConfig
+@@ -233,6 +236,21 @@ class Drama3ResultAdapter:
+             sampled_rows = sampled_rows[:-1]
+         else:
+             pass
++        telemetry = os.environ.get("DRAMA3_FRAME_TELEMETRY")
++        if telemetry and get_parallel().tp_rank == 0:
++            with open(telemetry, "a", encoding="utf-8") as output:
++                output.write(
++                    json.dumps(
++                        {
++                            "request_id": payload.request_id,
++                            "generated_frames": len(sampled_rows),
++                            "finish_reason": str(request_data.finish_reason),
++                        }
++                    )
++                    + "\n"
++                )
++        else:
++            pass
+         frame_width = len(request_data.frame_rows[0])
+         payload.data = Drama3GenerationResult(
+             frames=torch.tensor(sampled_rows, dtype=torch.int64, device="cpu").reshape(
+diff --git a/sglang_omni/models/fishaudio_drama3/sglang_model.py b/sglang_omni/models/fishaudio_drama3/sglang_model.py
+index ea11956..7c72274 100644
+--- a/sglang_omni/models/fishaudio_drama3/sglang_model.py
++++ b/sglang_omni/models/fishaudio_drama3/sglang_model.py
+@@ -137,8 +137,10 @@ class Drama3ForCausalLM(nn.Module):
+                 f"text_config.tower_layer_count={text_config.tower_layer_count} but "
+                 f"the decoder has {tower_layer_count} tower layers"
+             )
+-        elif get_parallel().pp_size != 1 or get_parallel().tp_size != 1:
+-            raise NotImplementedError("Drama 3 runs with one tensor and pipeline rank")
++        elif get_parallel().pp_size != 1 or get_parallel().tp_size not in (1, 2):
++            raise NotImplementedError("Drama 3 supports TP1/TP2 and one pipeline rank")
++        elif decoder_config.n_local_heads % get_parallel().tp_size:
++            raise ValueError("Tower KV heads must divide evenly across TP ranks")
+         else:
+             pass
+         self.config = config
+@@ -152,13 +154,18 @@ class Drama3ForCausalLM(nn.Module):
+             prefix=add_prefix("lm_head", prefix),
+         )
+         self.logits_processor = LogitsProcessor(text_config)
+-        self.audio_decoder = AudioDecoder(config)
++        self.audio_decoder = AudioDecoder(
++            config,
++            sampling_group=(
++                get_parallel().tp_group if get_parallel().tp_size > 1 else None
++            ),
++        )
+         self.tower_attention = nn.ModuleList(
+             RadixAttention(
+-                num_heads=decoder_config.n_head,
++                num_heads=decoder_config.n_head // get_parallel().tp_size,
+                 head_dim=decoder_config.head_dim,
+                 scaling=decoder_config.head_dim**-0.5,
+-                num_kv_heads=decoder_config.n_local_heads,
++                num_kv_heads=decoder_config.n_local_heads // get_parallel().tp_size,
+                 layer_id=text_config.num_hidden_layers + tower_index,
+                 prefix=add_prefix(f"tower_attention.{tower_index}", prefix),
+             )
+diff --git a/sglang_omni/models/fishaudio_drama3/stages.py b/sglang_omni/models/fishaudio_drama3/stages.py
+index cf7b9bd..2907c21 100644
+--- a/sglang_omni/models/fishaudio_drama3/stages.py
++++ b/sglang_omni/models/fishaudio_drama3/stages.py
+@@ -144,6 +144,9 @@ def create_tts_engine_executor(
+     *,
+     device: str | None = None,
+     gpu_id: int | None = None,
++    tp_rank: int = 0,
++    tp_size: int = 1,
++    nccl_port: int | None = None,
+     total_gpu_memory_fraction: float | None = None,
+     process_total_gpu_memory_fraction: float | None = None,
+     context_length: int = DEFAULT_CONTEXT_LENGTH,
+@@ -164,6 +167,10 @@ def create_tts_engine_executor(
+     async_decode_min_batch_size: int = DEFAULT_ASYNC_DECODE_MIN_BATCH_SIZE,
+ ) -> OmniScheduler[Drama3RequestData]:
+     overrides = dict(server_args_overrides or {})
++    if overrides.get("tp_size", tp_size) != tp_size:
++        raise ValueError("Set TP size on the stage topology, not server_args_overrides")
++    else:
++        overrides["tp_size"] = tp_size
+     mem_fraction_static = overrides.get("mem_fraction_static")
+     if total_gpu_memory_fraction is None:
+         pass
+@@ -192,6 +199,8 @@ def create_tts_engine_executor(
+         tower_fused_layers=tower_fused_layers,
+         enable_async_decode=enable_async_decode,
+         async_decode_min_batch_size=async_decode_min_batch_size,
++        tp_rank=tp_rank,
++        nccl_port=nccl_port,
+     ).build(
+         model_path,
+         device=device,
+diff --git a/sglang_omni/models/fishaudio_drama3/tower_prefill.py b/sglang_omni/models/fishaudio_drama3/tower_prefill.py
+index 58cde35..6f77695 100644
+--- a/sglang_omni/models/fishaudio_drama3/tower_prefill.py
++++ b/sglang_omni/models/fishaudio_drama3/tower_prefill.py
+@@ -12,6 +12,7 @@ from sglang.srt.layers.attention.hybrid_linear_attn_backend import (
+ from sglang.srt.layers.radix_attention import RadixAttention
+ from sglang.srt.model_executor.forward_batch_info import ForwardBatch, ForwardMode
+ from sglang.srt.model_executor.forward_context import get_attn_backend
++from sglang.srt.runtime_context import get_parallel
+ from torch import nn
+ 
+ from sglang_omni.models.fishaudio_drama3.audio_decoder import AudioDecoder
+@@ -33,7 +34,16 @@ class PagedTowerAttention:
+     ) -> torch.Tensor:
+         layer = self.layers[layer_index]
+         assert isinstance(layer, RadixAttention)
+-        return layer(query, key, value, self.forward_batch)
++        parallel = get_parallel()
++        if parallel.tp_size == 1:
++            return layer(query, key, value, self.forward_batch)
++        else:
++            rank = parallel.tp_rank
++            query = query.chunk(parallel.tp_size, dim=-1)[rank].contiguous()
++            key = key.chunk(parallel.tp_size, dim=-1)[rank].contiguous()
++            value = value.chunk(parallel.tp_size, dim=-1)[rank].contiguous()
++            attended = layer(query, key, value, self.forward_batch)
++            return parallel.tp_group.all_gather(attended, dim=-1)
+ 
+     def forward_mode(self) -> ForwardMode:
+         return self.forward_batch.forward_mode
+diff --git a/sglang_omni/pipeline/stage_workers.py b/sglang_omni/pipeline/stage_workers.py
+index db91a78..bac9c6d 100644
+--- a/sglang_omni/pipeline/stage_workers.py
++++ b/sglang_omni/pipeline/stage_workers.py
+@@ -519,6 +519,13 @@ class StageGroup:
+                         pass
+                 else:
+                     pass
++                logger.info(
++                    "Worker shutdown: process=%s pid=%s exitcode=%s alive=%s",
++                    spec.process_name,
++                    p.pid,
++                    p.exitcode,
++                    p.is_alive(),
++                )
+         finally:
+             self.close_control_channels()
+             self._processes.clear()  # noqa: leading-underscore  # upstream spelling, or the public name is already taken
+diff --git a/sglang_omni/platforms/device_graph.py b/sglang_omni/platforms/device_graph.py
+index 169b13e..cbf809a 100644
+--- a/sglang_omni/platforms/device_graph.py
++++ b/sglang_omni/platforms/device_graph.py
+@@ -15,7 +15,13 @@ from typing import Literal, Protocol, TypedDict
+ 
+ import torch
+ from torch.cuda import _POOL_HANDLE as CudaGraphPoolHandle
+-from torch.xpu import _POOL_HANDLE as XpuGraphPoolHandle
++
++try:
++    from torch.xpu import _POOL_HANDLE as XpuGraphPoolHandle
++except ImportError:
++    # torch-npu 2.10 uses a Torch build without the later XPU graph type alias.
++    # This alias is only a type declaration; it does not enable XPU graphs.
++    XpuGraphPoolHandle = tuple[int, int]
+ 
+ 
+ class CudaCaptureKwargs(TypedDict, total=False):
+diff --git a/sglang_omni/scheduling/message.py b/sglang_omni/scheduling/message.py
+index ea19d89..d8ae932 100644
+--- a/sglang_omni/scheduling/message.py
++++ b/sglang_omni/scheduling/message.py
+@@ -8,7 +8,7 @@ from queue import Queue
+ from typing import Literal, Protocol
+ 
+ IncomingMessageType = Literal[
+-    "new_request", "stream_chunk", "stream_done", "abort", "admin"
++    "new_request", "stream_chunk", "stream_done", "abort", "admin", "shutdown"
+ ]
+ 
+ 
+diff --git a/sglang_omni/scheduling/omni_scheduler.py b/sglang_omni/scheduling/omni_scheduler.py
+index 88e0de9..41d42df 100644
+--- a/sglang_omni/scheduling/omni_scheduler.py
++++ b/sglang_omni/scheduling/omni_scheduler.py
+@@ -1082,12 +1082,19 @@ class OmniScheduler(Generic[RequestDataT]):
+             pass
+ 
+         recv_msgs = self.drain_local_inbox() if self.is_entry_rank else []
+-        return broadcast_pyobj(
++        recv_msgs = broadcast_pyobj(
+             recv_msgs,
+             self.tp_group.rank,
+             self.tp_cpu_group,
+             src=self.tp_group.ranks[0],
+         )
++        if any(msg.type == "shutdown" for msg in recv_msgs):
++            # All ranks leave at the same collective boundary. A local stop
++            # flag can strand a peer in the next broadcast or model collective.
++            self.running = False
++            return []
++        else:
++            return recv_msgs
+ 
+     def drain_local_inbox(self) -> list[IncomingMessage]:
+         recv_msgs: list[IncomingMessage] = []
+@@ -2542,6 +2549,16 @@ class OmniScheduler(Generic[RequestDataT]):
+         self.start()
+ 
+     def stop(self) -> None:
++        if self.tp_size > 1 and self.scheduler_thread_id is not None:
++            if self.is_entry_rank:
++                self.inbox.put(IncomingMessage(request_id="", type="shutdown"))
++            else:
++                pass
++            # Cleanup belongs to the serving thread after every rank receives
++            # the leader's shutdown marker. Followers must keep participating.
++            return
++        else:
++            pass
+         self.running = False
+         retains_scheduler_thread = (
+             self.session_bridge is not None and self.scheduler_thread_id is not None
+@@ -3328,6 +3345,10 @@ class OmniScheduler(Generic[RequestDataT]):
+         while self.running:
+             self.process_admin_requests()
+             recv_reqs = self.recv_requests()
++            if not self.running:
++                break
++            else:
++                pass
+             recv_reqs.extend(self.take_deferred_request_payloads())
+             self.process_input_requests(recv_reqs)
+             if self._engine_paused:  # noqa: leading-underscore
+@@ -3641,6 +3662,10 @@ class OmniScheduler(Generic[RequestDataT]):
+         while self.running:
+             self.process_admin_requests()
+             recv_reqs = self.recv_requests()
++            if not self.running:
++                break
++            else:
++                pass
+             recv_reqs.extend(self.take_deferred_request_payloads())
+             self.process_input_requests(recv_reqs)
+             if self._engine_paused:  # noqa: leading-underscore

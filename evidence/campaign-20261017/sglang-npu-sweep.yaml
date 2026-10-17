@@ -1,0 +1,39 @@
+config_cls: Drama3PipelineConfig
+model_path: /dataset/models/drama-3
+stages:
+  preprocessing:
+    gpu: null
+    total_reserve_bytes: null
+    factory:
+      device: cpu
+      reference_encode_dtype: float32
+      max_concurrency: 64
+  tts_engine:
+    gpu: [0, 1]
+    tp_size: 2
+    gpu_memory_fraction: 0.80
+    factory:
+      device: npu
+      context_length: 2048
+      max_running_requests: 64
+      max_new_tokens: 500
+      max_prompt_rows: 1024
+      first_frame_cuda_graphs: false
+      triton_sampling: false
+      tower_fused_layers: false
+    engine:
+      max_total_tokens: 32768
+      mamba_ssm_dtype: float32
+  vocoder:
+    gpu: 1
+    gpu_memory_fraction: 0.10
+    factory:
+      device: npu
+      codec_path: /dataset/models/drama-3
+      stream_stride: 2
+      stream_followup_stride_ramp: [25]
+      stream_followup_stride: 25
+      stream_overlap_tokens: 25
+      window_cuda_graphs: false
+      decode_dtype: float32
+      max_batch_size: 16

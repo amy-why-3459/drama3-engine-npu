@@ -1,0 +1,33 @@
+{
+  "status": "COMPONENT_VALIDATED",
+  "full_model_batched": "NOT_RUN",
+  "speedup": "NOT_MEASURED",
+  "checks": [
+    {
+      "name": "cpu_regressions",
+      "tests": 31,
+      "exit_code": 0,
+      "log": "batched-native-tests.log"
+    },
+    {
+      "name": "native_tower_attention",
+      "cases": 6,
+      "physical_npu": 7,
+      "exit_code": 0,
+      "log": "tower-native-attention.log"
+    },
+    {
+      "name": "tiny_batched_generation",
+      "physical_npu": 7,
+      "exit_code": 0,
+      "log": "batched-generation-npu.log"
+    },
+    {
+      "name": "fp32_state_gdn_prefill",
+      "cases": 6,
+      "physical_npu": 7,
+      "exit_code": 0,
+      "log": "standalone-gdn-prefill.log"
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "status": "INCONCLUSIVE",
+  "checks": {
+    "comparable": "unknown",
+    "correctness": "pass",
+    "lifecycle": "pass"
+  },
+  "metrics": [
+    {
+      "name": "Layer latency",
+      "unit": "ms",
+      "direction": "lower",
+      "scenario": "B1",
+      "before": {
+        "mean": 4.5437440276145935,
+        "std": 0.25629915657663094,
+        "n": 2
+      },
+      "after": {
+        "mean": 1.1261159709344306,
+        "std": 0.03110501079406423,
+        "n": 2
+      },
+      "improvement_pct": 75.21612212108641,
+      "observation": "repeated trials"
+    },
+    {
+      "name": "Layer latency",
+      "unit": "ms",
+      "direction": "lower",
+      "scenario": "B8",
+      "before": {
+        "mean": 4.305106991281113,
+        "std": 0.1706312088755839,
+        "n": 2
+      },
+      "after": {
+        "mean": 1.0203115176409483,
+        "std": 0.0005034572763527889,
+        "n": 2
+      },
+      "improvement_pct": 76.29997303882745,
+      "observation": "repeated trials"
+    },
+    {
+      "name": "Layer latency",
+      "unit": "ms",
+      "direction": "lower",
+      "scenario": "B64",
+      "before": {
+        "mean": 4.190081637352705,
+        "std": 0.0279106967551268,
+        "n": 2
+      },
+      "after": {
+        "mean": 1.0394421871751547,
+        "std": 0.0007997584019779183,
+        "n": 2
+      },
+      "improvement_pct": 75.19279390862002,
+      "observation": "repeated trials"
+    }
+  ]
+}

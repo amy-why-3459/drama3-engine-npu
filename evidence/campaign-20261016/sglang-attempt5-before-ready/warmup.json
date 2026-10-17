@@ -1,0 +1,28 @@
+[
+  {
+    "request_id": "sglang-shutdown-c2-warmup-000000",
+    "sent_s": 5752167.538894187,
+    "first_audio_s": null,
+    "last_audio_s": null,
+    "terminal_s": 5752167.540684793,
+    "audio_samples": 0,
+    "sample_rate": 44100,
+    "generated_frames": null,
+    "success": false,
+    "error": "ClientConnectorError: Cannot connect to host 127.0.0.1:8094 ssl:default [Connect call failed ('127.0.0.1', 8094)]",
+    "server_request_id": null
+  },
+  {
+    "request_id": "sglang-shutdown-c2-warmup-000001",
+    "sent_s": 5752167.539804491,
+    "first_audio_s": null,
+    "last_audio_s": null,
+    "terminal_s": 5752167.540820777,
+    "audio_samples": 0,
+    "sample_rate": 44100,
+    "generated_frames": null,
+    "success": false,
+    "error": "ClientConnectorError: Cannot connect to host 127.0.0.1:8094 ssl:default [Connect call failed ('127.0.0.1', 8094)]",
+    "server_request_id": null
+  }
+]

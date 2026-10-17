@@ -1,0 +1,41 @@
+[W1017 01:30:19.001001877 NPUCachingAllocator.cpp:202] Warning: The current CANN and HDK(driver) versions require processing for 32 padding size, with memory allocation. (function operator())
+{
+  "status": "PASS",
+  "scope": "component_only_single_round",
+  "cases": [
+    {
+      "batch": 1,
+      "output_max_abs": 1.1920928955078125e-07,
+      "state_max_abs": 5.960464477539063e-08,
+      "reference_ms": 2.0167377591133118,
+      "fused_ms": 0.8296733722090721
+    },
+    {
+      "batch": 8,
+      "output_max_abs": 9.5367431640625e-07,
+      "state_max_abs": 5.960464477539063e-08,
+      "reference_ms": 1.865457072854042,
+      "fused_ms": 0.773228332400322
+    },
+    {
+      "batch": 32,
+      "output_max_abs": 7.62939453125e-06,
+      "state_max_abs": 1.1920928955078125e-07,
+      "reference_ms": 1.8234285898506641,
+      "fused_ms": 0.7684752158820629
+    }
+  ]
+}
+test_matches_reference_with_mixed_lengths_and_arrivals (tests.test_batching.BatchedGenerationTest.test_matches_reference_with_mixed_lengths_and_arrivals) ... [transformers] The fast path is not available because one of the required library is not installed. Falling back to torch implementation. To install follow https://github.com/fla-org/flash-linear-attention#installation and https://github.com/Dao-AILab/causal-conv1d
+[W1017 01:30:44.554485318 NPUCachingAllocator.cpp:202] Warning: The current CANN and HDK(driver) versions require processing for 32 padding size, with memory allocation. (function operator())
+Loaded backbone.model.layers.0.mlp.experts.down_proj on npu:0
+Loaded backbone.model.layers.1.mlp.experts.down_proj on npu:0
+Loaded backbone.model.layers.2.mlp.experts.down_proj on npu:1
+Loaded backbone.model.layers.3.mlp.experts.down_proj on npu:1
+ok
+
+----------------------------------------------------------------------
+Ran 1 test in 4.476s
+
+OK
+NPU_TINY_BATCHED_GENERATION_PASS

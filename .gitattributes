@@ -1,0 +1,3 @@
+# Preserve raw tool output and patch context in captured evidence.
+evidence/**/*.log -whitespace
+evidence/**/*.patch -whitespace

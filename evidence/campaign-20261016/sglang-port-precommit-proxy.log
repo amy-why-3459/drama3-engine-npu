@@ -1,0 +1,73 @@
+[INFO] Initializing environment for https://github.com/PyCQA/autoflake.
+[INFO] Initializing environment for https://github.com/pre-commit/pre-commit-hooks.
+[INFO] Initializing environment for https://github.com/PyCQA/isort.
+[WARNING] repo `https://github.com/PyCQA/isort` uses deprecated stage names (commit, merge-commit, push) which will be removed in a future version.  Hint: often `pre-commit autoupdate --repo https://github.com/PyCQA/isort` will fix this.  if it does not -- consider reporting an issue to that repo.
+[INFO] Initializing environment for https://github.com/astral-sh/ruff-pre-commit.
+[INFO] Initializing environment for https://github.com/psf/black.
+[INFO] Initializing environment for https://github.com/psf/black:.[jupyter].
+[INFO] Initializing environment for https://github.com/pre-commit/mirrors-clang-format.
+[INFO] Initializing environment for https://github.com/kynan/nbstripout.
+[INFO] Installing environment for https://github.com/PyCQA/autoflake.
+[INFO] Once installed this environment will be reused.
+[INFO] This may take a few minutes...
+[INFO] Installing environment for https://github.com/pre-commit/pre-commit-hooks.
+[INFO] Once installed this environment will be reused.
+[INFO] This may take a few minutes...
+[INFO] Installing environment for https://github.com/PyCQA/isort.
+[INFO] Once installed this environment will be reused.
+[INFO] This may take a few minutes...
+[INFO] Installing environment for https://github.com/astral-sh/ruff-pre-commit.
+[INFO] Once installed this environment will be reused.
+[INFO] This may take a few minutes...
+[INFO] Installing environment for https://github.com/psf/black.
+[INFO] Once installed this environment will be reused.
+[INFO] This may take a few minutes...
+[INFO] Installing environment for https://github.com/pre-commit/mirrors-clang-format.
+[INFO] Once installed this environment will be reused.
+[INFO] This may take a few minutes...
+[INFO] Installing environment for https://github.com/kynan/nbstripout.
+[INFO] Once installed this environment will be reused.
+[INFO] This may take a few minutes...
+autoflake.....................................................................Passed
+check for broken symlinks.....................................................Passed
+detect destroyed symlinks.....................................................Passed
+trim trailing whitespace......................................................Passed
+fix end of files..............................................................Passed
+check yaml....................................................................Passed
+check toml....................................................................Passed
+check python ast..............................................................Passed
+check for added large files...................................................Passed
+check for merge conflicts.....................................................Passed
+check that scripts with shebangs are executable...............................Passed
+detect private key............................................................Passed
+debug statements (python).....................................................Passed
+don't commit to branch........................................................Passed
+isort.........................................................................Failed
+- hook id: isort
+- files were modified by this hook
+
+Fixing /home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/models/fishaudio_drama3/model_runner.py
+Fixing /home/why/drama3-research/sglang-omni-npu-20261017/sglang_omni/models/fishaudio_drama3/request_builders.py
+
+ruff (legacy alias)...........................................................Passed
+ruff check....................................................................Passed
+black-jupyter.................................................................Failed
+- hook id: black-jupyter
+- files were modified by this hook
+
+reformatted sglang_omni/models/fishaudio_drama3/request_builders.py
+reformatted sglang_omni/models/fishaudio_drama3/sglang_model.py
+reformatted sglang_omni/models/fishaudio_drama3/audio_decoder.py
+
+All done! ✨ 🍰 ✨
+3 files reformatted, 1665 files left unchanged.
+
+clang-format..................................................................Passed
+nbstripout................................................(no files to check)Skipped
+sort CI_PERMISSIONS.json......................................................Passed
+rustfmt sglang-omni-router....................................................Passed
+leading-underscore class, function, and attribute names.......................Failed
+- hook id: leading-underscore-names
+- files were modified by this hook
+if statements must have else..................................................Passed
+document heading structure (one H1, max H3)...................................Passed

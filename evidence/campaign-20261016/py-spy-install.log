@@ -1,0 +1,9 @@
+Collecting py-spy
+  Downloading py_spy-0.4.2-py2.py3-none-manylinux_2_17_aarch64.manylinux2014_aarch64.whl.metadata (510 bytes)
+Downloading py_spy-0.4.2-py2.py3-none-manylinux_2_17_aarch64.manylinux2014_aarch64.whl (2.8 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.8/2.8 MB 90.8 MB/s eta 0:00:00
+Installing collected packages: py-spy
+Successfully installed py-spy-0.4.2
+
+[notice] A new release of pip is available: 25.0.1 -> 26.2.1
+[notice] To update, run: python -m pip install --upgrade pip

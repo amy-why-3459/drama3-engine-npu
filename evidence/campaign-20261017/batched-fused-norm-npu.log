@@ -1,0 +1,13 @@
+test_matches_reference_with_mixed_lengths_and_arrivals (tests.test_batching.BatchedGenerationTest.test_matches_reference_with_mixed_lengths_and_arrivals) ... [transformers] The fast path is not available because one of the required library is not installed. Falling back to torch implementation. To install follow https://github.com/fla-org/flash-linear-attention#installation and https://github.com/Dao-AILab/causal-conv1d
+[W1017 01:39:33.606161766 NPUCachingAllocator.cpp:202] Warning: The current CANN and HDK(driver) versions require processing for 32 padding size, with memory allocation. (function operator())
+Loaded backbone.model.layers.0.mlp.experts.down_proj on npu:0
+Loaded backbone.model.layers.1.mlp.experts.down_proj on npu:0
+Loaded backbone.model.layers.2.mlp.experts.down_proj on npu:1
+Loaded backbone.model.layers.3.mlp.experts.down_proj on npu:1
+ok
+
+----------------------------------------------------------------------
+Ran 1 test in 17.902s
+
+OK
+NPU_TINY_BATCHED_GENERATION_PASS

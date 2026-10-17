@@ -1,0 +1,20 @@
+{
+  "purpose": "functional smoke, not a formal concurrency benchmark",
+  "client_exit": 0,
+  "server_exit": 0,
+  "server_shutdown": "SIGTERM handled by aiohttp after client completion",
+  "physical_devices": [
+    4,
+    7
+  ],
+  "source_revision": "1c3e77e",
+  "warmup_requests": 1,
+  "measured_requests": 2,
+  "server_generated_frames": [
+    43,
+    61
+  ],
+  "pcm_samples_match_frames": true,
+  "quality": "one of two measured clips independently transcribed; no corpus WER or speaker similarity",
+  "baseline_comparison_eligible": false
+}

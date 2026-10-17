@@ -1,0 +1,33 @@
+{
+  "revision": "2d22d59",
+  "status": "REQUESTS_COMPLETE",
+  "targets": {
+    "c1": 0.1,
+    "c64": 1
+  },
+  "target_met": false,
+  "previous_graph_exit": 0,
+  "graphs_enabled": true,
+  "physical_devices": [
+    0,
+    1
+  ],
+  "codec_precision": "strict FP32",
+  "server_pid": 1189608,
+  "c1_client_exit": 0,
+  "server_exit": 0,
+  "quality": "NOT_RUN",
+  "metrics": {
+    "requests": 1,
+    "successful_requests": 1,
+    "failed_requests": 0,
+    "wall_time_s": 5.914207784458995,
+    "throughput_frames_s": 7.608795909783274,
+    "audio_seconds_per_wall_second": 0.35335179191011673,
+    "ttfa_p50_ms": 684.4029445201159,
+    "ttfa_p95_ms": 684.4029445201159,
+    "rtf_mean": 2.82801463648866,
+    "eligible_for_comparison": true
+  },
+  "scope": "One measured C1 request after one warmup; lifecycle isolation only, not a performance qualification."
+}
